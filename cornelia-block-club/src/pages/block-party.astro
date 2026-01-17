@@ -1,0 +1,162 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import GoogleFormEmbed from '../components/GoogleFormEmbed.astro';
+import ResourceLink from '../components/ResourceLink.astro';
+---
+
+<BaseLayout title="Block Party" description="Information about Cornelia Ave block parties - how they work, how to help, and past events.">
+  <!-- Hero -->
+  <section class="bg-accent text-white py-12 md:py-16">
+    <div class="container-narrow text-center">
+      <span class="text-5xl mb-4 block">🎉</span>
+      <h1 class="text-white mb-4">Block Parties</h1>
+      <p class="text-white/90 text-lg max-w-2xl mx-auto">
+        Twice a year, we close the street, set up tables, and enjoy time with neighbors.
+      </p>
+    </div>
+  </section>
+
+  <div class="section">
+    <div class="container-narrow space-y-12">
+
+      <!-- About Our Block Parties -->
+      <section>
+        <h2 class="mb-6">How Block Parties Work</h2>
+        <div class="prose max-w-none">
+          <p class="text-text-muted text-lg mb-6">
+            We host block parties twice a year—usually early summer and fall. These are casual, bring-a-dish affairs where we close the street, set up tables, and hang out. No RSVP required, just show up!
+          </p>
+
+          <div class="bg-white rounded-xl p-6 border border-bg-alt">
+            <h3 class="text-xl mb-4">The Basics</h3>
+            <ul class="space-y-3">
+              <li class="flex items-start gap-3">
+                <span class="text-primary font-bold">✓</span>
+                <span><strong>Permits are free</strong> and handled through the alderman's office</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-primary font-bold">✓</span>
+                <span><strong>Street closure:</strong> typically 10am-10pm</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-primary font-bold">✓</span>
+                <span><strong>One block only</strong> (intersection to intersection)</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-primary font-bold">✓</span>
+                <span><strong>Bring-a-dish style:</strong> potluck with some shared basics provided</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-red-500 font-bold">✗</span>
+                <span><strong>No fireworks</strong> (they're illegal and can get future permits denied)</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- What to Bring -->
+      <section>
+        <h2 class="mb-6">What to Bring</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div class="bg-white rounded-xl p-6 border border-bg-alt">
+            <h3 class="text-lg font-semibold mb-3">Food & Drink</h3>
+            <ul class="text-text-muted space-y-2 text-sm">
+              <li>• A dish to share (apps, sides, desserts)</li>
+              <li>• Your own beverages (BYOB is fine)</li>
+              <li>• Plates/cups if you can (we'll have some)</li>
+            </ul>
+          </div>
+          <div class="bg-white rounded-xl p-6 border border-bg-alt">
+            <h3 class="text-lg font-semibold mb-3">Nice to Have</h3>
+            <ul class="text-text-muted space-y-2 text-sm">
+              <li>• Lawn chairs</li>
+              <li>• Games (cornhole, frisbee, etc.)</li>
+              <li>• Good vibes</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Want to Help Plan? -->
+      <section>
+        <h2 class="mb-6">Want to Help Plan?</h2>
+        <p class="text-text-muted mb-6">
+          If you'd like to help coordinate our next block party—whether it's helping with setup, cleanup, organizing activities, or just bringing extra supplies—let us know! Fill out the form below and we'll reach out.
+        </p>
+
+        <!-- Placeholder for Google Form - replace formUrl with actual form URL -->
+        <div class="bg-bg-alt rounded-xl p-8 text-center border-2 border-dashed border-text-muted/30">
+          <p class="text-text-muted mb-4">
+            <strong>Block Party Volunteer Interest Form</strong>
+          </p>
+          <p class="text-sm text-text-muted mb-4">
+            [Google Form will be embedded here]
+          </p>
+          <p class="text-xs text-text-muted">
+            Form URL: Replace this placeholder with your Google Form embed URL
+          </p>
+        </div>
+
+        <!-- Uncomment and add your Google Form URL when ready:
+        <GoogleFormEmbed
+          formUrl="https://docs.google.com/forms/d/e/YOUR_FORM_ID/viewform?embedded=true"
+          title="Block Party Volunteer Interest Form"
+          height="700"
+        />
+        -->
+      </section>
+
+      <!-- Past Block Parties -->
+      <section>
+        <h2 class="mb-6">Past Block Parties</h2>
+        <div class="bg-bg-alt rounded-xl p-8 text-center">
+          <p class="text-text-muted mb-2">
+            Photos and recaps from past events coming soon!
+          </p>
+          <p class="text-sm text-text-muted">
+            Have photos to share? <a href="mailto:cornelia-block-club@gmail.com" class="underline">Send them our way!</a>
+          </p>
+        </div>
+      </section>
+
+      <!-- Official Info -->
+      <section>
+        <h2 class="mb-6">Official Resources</h2>
+        <div class="space-y-3">
+          <ResourceLink
+            href="https://www.chicago.gov/city/en/depts/cdot/provdrs/construction_information/svcs/block_party_permitinformation.html"
+            title="City Block Party Permit Info"
+            description="Official city requirements and guidelines"
+            external
+          />
+          <ResourceLink
+            href="https://www.44thward.org/resources/block-parties/"
+            title="44th Ward Block Party Packet (2025)"
+            description="Permit forms and local requirements"
+            external
+          />
+        </div>
+
+        <div class="mt-6 p-4 bg-bg-alt rounded-lg">
+          <p class="text-sm text-text-muted">
+            <strong>Contact for 44th Ward block parties:</strong><br />
+            <a href="mailto:Esmeralda.Borrero@cityofchicago.org">Esmeralda.Borrero@cityofchicago.org</a>
+          </p>
+        </div>
+      </section>
+
+      <!-- CTA -->
+      <section class="bg-primary rounded-2xl p-8 text-center text-white">
+        <h2 class="text-white mb-4">See You at the Next One!</h2>
+        <p class="text-primary-light mb-6 max-w-lg mx-auto">
+          Block parties are the highlight of our neighborhood calendar. No invitation needed—just walk over and say hello.
+        </p>
+        <a href="/cornelia-block-club/get-involved" class="btn bg-white text-primary hover:bg-bg">
+          Join the Email List for Updates
+        </a>
+      </section>
+
+    </div>
+  </div>
+</BaseLayout>

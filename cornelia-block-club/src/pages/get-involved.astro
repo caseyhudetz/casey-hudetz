@@ -1,0 +1,148 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Card from '../components/Card.astro';
+
+const base = import.meta.env.BASE_URL;
+---
+
+<BaseLayout title="Get Involved" description="Ways to connect with your Cornelia Ave neighbors - join the email list, help with events, share ideas.">
+  <!-- Hero -->
+  <section class="bg-primary text-white py-12 md:py-16">
+    <div class="container-narrow text-center">
+      <span class="text-5xl mb-4 block">🤝</span>
+      <h1 class="text-white mb-4">Get Involved</h1>
+      <p class="text-primary-light text-lg max-w-2xl mx-auto">
+        This isn't a formal organization with meetings and bylaws—just neighbors who want to make our block a little better.
+      </p>
+    </div>
+  </section>
+
+  <div class="section">
+    <div class="container-narrow space-y-12">
+
+      <!-- Ways to Participate -->
+      <section>
+        <h2 class="mb-8 text-center">Ways to Participate</h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <!-- Join Email List -->
+          <div class="bg-white rounded-xl p-6 border border-bg-alt">
+            <div class="text-3xl mb-4">📬</div>
+            <h3 class="text-xl mb-3">Join the Email List</h3>
+            <p class="text-text-muted text-sm mb-4">
+              Get occasional updates about block happenings—a few times a year, max. No spam, no reply-all chaos.
+            </p>
+            <a href={base + "contact"} class="btn-primary text-sm">
+              Sign Up
+            </a>
+          </div>
+
+          <!-- Help with Block Parties -->
+          <div class="bg-white rounded-xl p-6 border border-bg-alt">
+            <div class="text-3xl mb-4">🎉</div>
+            <h3 class="text-xl mb-3">Help with Block Parties</h3>
+            <p class="text-text-muted text-sm mb-4">
+              We always need people to help set up, bring food, or just show up and chat. Many hands make light work!
+            </p>
+            <a href={base + "block-party"} class="btn-outline text-sm">
+              Learn More
+            </a>
+          </div>
+
+          <!-- Propose an Idea -->
+          <div class="bg-white rounded-xl p-6 border border-bg-alt">
+            <div class="text-3xl mb-4">💡</div>
+            <h3 class="text-xl mb-3">Propose an Idea</h3>
+            <p class="text-text-muted text-sm mb-4">
+              Got an idea for the block? A community garden plot? A little free library? Speed bumps? Share it with us.
+            </p>
+            <a href="mailto:cornelia-block-club@gmail.com?subject=Idea%20for%20the%20block" class="btn-outline text-sm">
+              Share Your Idea
+            </a>
+          </div>
+
+          <!-- Connect with Neighbors -->
+          <div class="bg-white rounded-xl p-6 border border-bg-alt">
+            <div class="text-3xl mb-4">🏠</div>
+            <h3 class="text-xl mb-3">Connect with Neighbors</h3>
+            <p class="text-text-muted text-sm mb-4">
+              Looking for a dog walker? Want to organize a plant swap? Let us know and we can help facilitate.
+            </p>
+            <a href="mailto:cornelia-block-club@gmail.com?subject=Neighbor%20connection" class="btn-outline text-sm">
+              Reach Out
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Philosophy Section -->
+      <section class="bg-bg-alt rounded-2xl p-8 md:p-12">
+        <h2 class="mb-6 text-center">Our Philosophy</h2>
+        <div class="max-w-2xl mx-auto space-y-4 text-text-muted">
+          <p>
+            <strong class="text-text">We're privacy-conscious.</strong> We don't share email addresses or create big reply-all chains. When you sign up for our email list, your info stays with us.
+          </p>
+          <p>
+            <strong class="text-text">We keep it simple.</strong> No meetings, no dues, no drama. Just occasional coordination for block events and a resource hub for neighbors.
+          </p>
+          <p>
+            <strong class="text-text">Good vibes only.</strong> This is about building community, not bureaucracy. If you want to help, we want to hear from you.
+          </p>
+        </div>
+      </section>
+
+      <!-- Ideas We'd Love to See -->
+      <section>
+        <h2 class="mb-6">Ideas We'd Love to Explore</h2>
+        <p class="text-text-muted mb-6">
+          These are just ideas—nothing official yet. If any of these excite you, let us know!
+        </p>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div class="bg-white rounded-lg p-4 border border-bg-alt">
+            <span class="text-2xl">📚</span>
+            <h4 class="font-semibold mt-2">Little Free Library</h4>
+            <p class="text-text-muted text-sm mt-1">A book exchange box on our block</p>
+          </div>
+          <div class="bg-white rounded-lg p-4 border border-bg-alt">
+            <span class="text-2xl">🌱</span>
+            <h4 class="font-semibold mt-2">Community Garden</h4>
+            <p class="text-text-muted text-sm mt-1">Shared planters or a garden plot</p>
+          </div>
+          <div class="bg-white rounded-lg p-4 border border-bg-alt">
+            <span class="text-2xl">🐕</span>
+            <h4 class="font-semibold mt-2">Pet Registry</h4>
+            <p class="text-text-muted text-sm mt-1">Help reunite lost pets with owners</p>
+          </div>
+          <div class="bg-white rounded-lg p-4 border border-bg-alt">
+            <span class="text-2xl">🔧</span>
+            <h4 class="font-semibold mt-2">Tool Library</h4>
+            <p class="text-text-muted text-sm mt-1">"Who has a ladder?" made easy</p>
+          </div>
+          <div class="bg-white rounded-lg p-4 border border-bg-alt">
+            <span class="text-2xl">🎧</span>
+            <h4 class="font-semibold mt-2">Walking Tour</h4>
+            <p class="text-text-muted text-sm mt-1">Audio tour of our neighborhood's history</p>
+          </div>
+          <div class="bg-white rounded-lg p-4 border border-bg-alt">
+            <span class="text-2xl">🪴</span>
+            <h4 class="font-semibold mt-2">Plant Swap</h4>
+            <p class="text-text-muted text-sm mt-1">Annual exchange of cuttings and plants</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA -->
+      <section class="bg-accent rounded-2xl p-8 text-center text-white">
+        <h2 class="text-white mb-4">Ready to Connect?</h2>
+        <p class="text-white/90 mb-6 max-w-lg mx-auto">
+          Join our email list to stay in the loop about block happenings. We promise to be respectful of your inbox.
+        </p>
+        <a href={base + "contact"} class="btn bg-white text-accent hover:bg-bg">
+          Sign Up for Updates
+        </a>
+      </section>
+
+    </div>
+  </div>
+</BaseLayout>

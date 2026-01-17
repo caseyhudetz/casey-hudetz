@@ -1,0 +1,58 @@
+---
+interface Props {
+  title: string;
+  href?: string;
+  icon?: string;
+  variant?: 'default' | 'highlight';
+}
+
+const { title, href, icon, variant = 'default' } = Astro.props;
+const Tag = href ? 'a' : 'div';
+---
+
+<Tag
+  href={href}
+  class:list={[
+    'block rounded-xl p-6 transition-all duration-200',
+    variant === 'highlight'
+      ? 'bg-primary text-white hover:bg-primary-light'
+      : 'bg-white border border-bg-alt hover:border-primary/20 hover:shadow-lg',
+    href && 'cursor-pointer group'
+  ]}
+>
+  {icon && (
+    <div class:list={[
+      'text-4xl mb-4',
+      variant === 'highlight' ? '' : ''
+    ]}>
+      {icon}
+    </div>
+  )}
+
+  <h3 class:list={[
+    'font-display text-xl mb-2',
+    variant === 'highlight' ? 'text-white' : 'text-text',
+    href && 'group-hover:underline'
+  ]}>
+    {title}
+  </h3>
+
+  <div class:list={[
+    'text-sm leading-relaxed',
+    variant === 'highlight' ? 'text-primary-light' : 'text-text-muted'
+  ]}>
+    <slot />
+  </div>
+
+  {href && (
+    <div class:list={[
+      'mt-4 text-sm font-semibold flex items-center gap-1',
+      variant === 'highlight' ? 'text-white' : 'text-primary'
+    ]}>
+      Learn more
+      <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+      </svg>
+    </div>
+  )}
+</Tag>

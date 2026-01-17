@@ -1,0 +1,77 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Card from '../components/Card.astro';
+
+const base = import.meta.env.BASE_URL;
+---
+
+<BaseLayout title="Home" description="Welcome to Cornelia Ave Block Club - a community of neighbors in East Lakeview, Chicago.">
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-b from-primary to-primary-light text-white py-16 md:py-24">
+    <div class="container-narrow text-center">
+      <h1 class="font-display text-4xl md:text-5xl lg:text-6xl text-white mb-4">
+        Welcome to Cornelia Ave
+      </h1>
+      <p class="text-xl md:text-2xl text-primary-light font-display mb-6">
+        Between Elaine Place & Broadway
+      </p>
+      <p class="text-lg text-white/90 max-w-2xl mx-auto leading-relaxed">
+        We're neighbors on one of Lakeview's great tree-lined blocks. This site is a simple way to stay connected and find local resources.
+      </p>
+    </div>
+  </section>
+
+  <!-- Quick Links Grid -->
+  <section class="section">
+    <div class="container-narrow">
+      <h2 class="text-center mb-8">What can we help you find?</h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <Card title="Block Party Info" href={base + "block-party"} icon="🎉">
+          Learn about our twice-yearly block parties, how to help out, and see photos from past events.
+        </Card>
+
+        <Card title="Local Resources" href={base + "resources"} icon="📋">
+          Find ward info, report issues to 311, locate schools, and connect with neighborhood organizations.
+        </Card>
+
+        <Card title="Get Involved" href={base + "get-involved"} icon="🤝">
+          Join our email list, help plan events, or share your ideas for making our block even better.
+        </Card>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="section bg-bg-alt">
+    <div class="container-narrow">
+      <div class="max-w-2xl mx-auto text-center">
+        <h2 class="mb-6">Our Little Corner of Lakeview</h2>
+        <p class="text-text-muted text-lg mb-6">
+          Cornelia Avenue between Elaine Place and Broadway is home to a diverse mix of neighbors, beautiful old trees, and a tradition of casual community connection.
+        </p>
+        <p class="text-text-muted text-lg mb-8">
+          This isn't a formal organization with meetings and bylaws—just neighbors who want to make our block a little better. Good vibes only.
+        </p>
+        <a href={base + "get-involved"} class="btn-primary">
+          Join the Community
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="section">
+    <div class="container-narrow">
+      <div class="bg-accent rounded-2xl p-8 md:p-12 text-center text-white">
+        <h2 class="text-white mb-4">Stay in the Loop</h2>
+        <p class="text-white/90 text-lg mb-6 max-w-xl mx-auto">
+          Want occasional updates about block happenings? Join our email list—we promise to keep it brief and infrequent.
+        </p>
+        <a href={base + "contact"} class="btn bg-white text-accent hover:bg-bg">
+          Sign Up for Updates
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

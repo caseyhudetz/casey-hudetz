@@ -1,0 +1,121 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import GoogleFormEmbed from '../components/GoogleFormEmbed.astro';
+---
+
+<BaseLayout title="Contact" description="Get in touch with the Cornelia Ave Block Club - sign up for updates or share your ideas.">
+  <!-- Hero -->
+  <section class="bg-primary text-white py-12 md:py-16">
+    <div class="container-narrow text-center">
+      <span class="text-5xl mb-4 block">✉️</span>
+      <h1 class="text-white mb-4">Stay Connected</h1>
+      <p class="text-primary-light text-lg max-w-2xl mx-auto">
+        Sign up for occasional updates or reach out with questions and ideas.
+      </p>
+    </div>
+  </section>
+
+  <div class="section">
+    <div class="container-narrow space-y-12">
+
+      <!-- Newsletter Signup -->
+      <section>
+        <h2 class="mb-6">Join Our Email List</h2>
+        <p class="text-text-muted mb-6">
+          Get updates about block parties, neighborhood news, and occasional community announcements. We send maybe 4-6 emails per year—no spam, no selling your info, no reply-all nightmares.
+        </p>
+
+        <!-- Placeholder for Google Form - replace formUrl with actual form URL -->
+        <div class="bg-bg-alt rounded-xl p-8 text-center border-2 border-dashed border-text-muted/30">
+          <p class="text-text-muted mb-4">
+            <strong>Newsletter Signup Form</strong>
+          </p>
+          <p class="text-sm text-text-muted mb-4">
+            [Google Form will be embedded here]
+          </p>
+          <p class="text-xs text-text-muted">
+            Form URL: Replace this placeholder with your Google Form embed URL
+          </p>
+        </div>
+
+        <!-- Uncomment and add your Google Form URL when ready:
+        <GoogleFormEmbed
+          formUrl="https://docs.google.com/forms/d/e/YOUR_FORM_ID/viewform?embedded=true"
+          title="Newsletter Signup Form"
+          height="500"
+        />
+        -->
+      </section>
+
+      <!-- Direct Contact -->
+      <section>
+        <h2 class="mb-6">Questions or Ideas?</h2>
+        <div class="bg-white rounded-xl p-6 border border-bg-alt">
+          <p class="text-text-muted mb-4">
+            Have a question, idea, or just want to say hello? Drop us an email:
+          </p>
+          <a
+            href="mailto:cornelia-block-club@gmail.com"
+            class="inline-flex items-center gap-2 text-lg font-semibold text-primary hover:text-primary-light transition-colors"
+          >
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+            </svg>
+            cornelia-block-club@gmail.com
+          </a>
+        </div>
+      </section>
+
+      <!-- What We Won't Do -->
+      <section class="bg-bg-alt rounded-2xl p-8">
+        <h2 class="mb-6">Our Privacy Promise</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div class="flex items-start gap-3">
+            <span class="text-primary text-xl">✓</span>
+            <div>
+              <h4 class="font-semibold">Your email stays private</h4>
+              <p class="text-text-muted text-sm">We never share your info with other neighbors or third parties</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-3">
+            <span class="text-primary text-xl">✓</span>
+            <div>
+              <h4 class="font-semibold">No reply-all chains</h4>
+              <p class="text-text-muted text-sm">We use BCC for group emails—no accidental inbox explosions</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-3">
+            <span class="text-primary text-xl">✓</span>
+            <div>
+              <h4 class="font-semibold">Infrequent emails</h4>
+              <p class="text-text-muted text-sm">Just a few times per year, only when there's something worth sharing</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-3">
+            <span class="text-primary text-xl">✓</span>
+            <div>
+              <h4 class="font-semibold">Easy unsubscribe</h4>
+              <p class="text-text-muted text-sm">Change your mind? Just let us know</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Location Reminder -->
+      <section>
+        <h2 class="mb-6">Our Location</h2>
+        <div class="bg-white rounded-xl p-6 border border-bg-alt">
+          <address class="not-italic">
+            <p class="font-semibold text-lg mb-2">Cornelia Avenue</p>
+            <p class="text-text-muted">
+              Between Elaine Place (west) and Broadway (east)<br />
+              Chicago, IL 60657<br />
+              East Lakeview
+            </p>
+          </address>
+        </div>
+      </section>
+
+    </div>
+  </div>
+</BaseLayout>

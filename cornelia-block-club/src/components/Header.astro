@@ -1,0 +1,100 @@
+---
+const navLinks = [
+  { href: '/', label: 'Home' },
+  { href: '/resources', label: 'Resources' },
+  { href: '/block-party', label: 'Block Party' },
+  { href: '/get-involved', label: 'Get Involved' },
+  { href: '/contact', label: 'Contact' },
+];
+
+const currentPath = Astro.url.pathname;
+const base = import.meta.env.BASE_URL;
+
+function isActive(href: string): boolean {
+  const fullPath = base + href.replace(/^\//, '');
+  return currentPath === fullPath || currentPath === fullPath + '/';
+}
+---
+
+<header class="bg-white/80 backdrop-blur-sm border-b border-bg-alt sticky top-0 z-50">
+  <nav class="container-wide">
+    <div class="flex items-center justify-between h-16 md:h-20">
+      <!-- Logo/Site Title -->
+      <a href={base} class="flex items-center gap-2 text-primary hover:text-primary-light transition-colors">
+        <svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+          <polyline points="9 22 9 12 15 12 15 22"></polyline>
+        </svg>
+        <span class="font-display font-semibold text-lg hidden sm:inline">Cornelia Ave</span>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <ul class="hidden md:flex items-center gap-1">
+        {navLinks.map((link) => (
+          <li>
+            <a
+              href={base + link.href.replace(/^\//, '')}
+              class:list={[
+                'px-4 py-2 rounded-lg font-body text-sm font-medium transition-colors',
+                isActive(link.href)
+                  ? 'bg-primary text-white'
+                  : 'text-text-muted hover:text-primary hover:bg-bg-alt'
+              ]}
+            >
+              {link.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+
+      <!-- Mobile Menu Button -->
+      <button
+        id="mobile-menu-btn"
+        class="md:hidden p-2 rounded-lg text-text-muted hover:text-primary hover:bg-bg-alt transition-colors"
+        aria-label="Toggle menu"
+        aria-expanded="false"
+      >
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path class="menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          <path class="close-icon hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile Navigation -->
+    <div id="mobile-menu" class="hidden md:hidden pb-4">
+      <ul class="flex flex-col gap-1">
+        {navLinks.map((link) => (
+          <li>
+            <a
+              href={base + link.href.replace(/^\//, '')}
+              class:list={[
+                'block px-4 py-3 rounded-lg font-body font-medium transition-colors',
+                isActive(link.href)
+                  ? 'bg-primary text-white'
+                  : 'text-text-muted hover:text-primary hover:bg-bg-alt'
+              ]}
+            >
+              {link.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </nav>
+</header>
+
+<script>
+  const menuBtn = document.getElementById('mobile-menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const menuIcon = menuBtn?.querySelector('.menu-icon');
+  const closeIcon = menuBtn?.querySelector('.close-icon');
+
+  menuBtn?.addEventListener('click', () => {
+    const isExpanded = menuBtn.getAttribute('aria-expanded') === 'true';
+    menuBtn.setAttribute('aria-expanded', (!isExpanded).toString());
+    mobileMenu?.classList.toggle('hidden');
+    menuIcon?.classList.toggle('hidden');
+    closeIcon?.classList.toggle('hidden');
+  });
+</script>

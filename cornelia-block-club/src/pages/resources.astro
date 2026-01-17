@@ -1,0 +1,341 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ResourceLink from '../components/ResourceLink.astro';
+---
+
+<BaseLayout title="Resources" description="Local civic resources for Cornelia Ave residents - ward info, 311 services, schools, and more.">
+  <!-- Hero -->
+  <section class="bg-primary text-white py-12 md:py-16">
+    <div class="container-narrow text-center">
+      <h1 class="text-white mb-4">Local Resources</h1>
+      <p class="text-primary-light text-lg max-w-2xl mx-auto">
+        Your guide to city services, ward contacts, and neighborhood organizations.
+      </p>
+    </div>
+  </section>
+
+  <div class="section">
+    <div class="container-narrow space-y-12">
+
+      <!-- Our Location -->
+      <section>
+        <h2 class="mb-6 flex items-center gap-3">
+          <span class="text-3xl">📍</span>
+          Our Location
+        </h2>
+        <div class="bg-white rounded-xl p-6 border border-bg-alt">
+          <dl class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <dt class="text-text-muted text-sm">Address Range</dt>
+              <dd class="font-semibold">Cornelia Ave between Elaine Place (west) and Broadway (east)</dd>
+            </div>
+            <div>
+              <dt class="text-text-muted text-sm">Zip Code</dt>
+              <dd class="font-semibold">60657</dd>
+            </div>
+            <div>
+              <dt class="text-text-muted text-sm">Neighborhood</dt>
+              <dd class="font-semibold">East Lakeview / Lakeview East</dd>
+            </div>
+            <div>
+              <dt class="text-text-muted text-sm">Community Area</dt>
+              <dd class="font-semibold">Lake View (one of Chicago's 77 community areas)</dd>
+            </div>
+          </dl>
+        </div>
+      </section>
+
+      <!-- Ward Information -->
+      <section>
+        <h2 class="mb-6 flex items-center gap-3">
+          <span class="text-3xl">🏛️</span>
+          Ward Information
+        </h2>
+        <p class="text-text-muted mb-6">Our block is split between two wards:</p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <!-- 44th Ward -->
+          <div class="bg-white rounded-xl p-6 border border-bg-alt">
+            <h3 class="text-xl mb-4">44th Ward</h3>
+            <p class="text-text-muted text-sm mb-4">(likely western portion)</p>
+            <dl class="space-y-3 text-sm">
+              <div>
+                <dt class="text-text-muted">Alderman</dt>
+                <dd class="font-semibold">Bennett Lawson</dd>
+              </div>
+              <div>
+                <dt class="text-text-muted">Office</dt>
+                <dd>3223 N. Sheffield Ave, Suite A<br />Chicago, IL 60657</dd>
+              </div>
+              <div>
+                <dt class="text-text-muted">Phone</dt>
+                <dd><a href="tel:773-525-6034">773-525-6034</a></dd>
+              </div>
+              <div>
+                <dt class="text-text-muted">Email</dt>
+                <dd><a href="mailto:ward44@cityofchicago.org">ward44@cityofchicago.org</a></dd>
+              </div>
+            </dl>
+            <div class="mt-4">
+              <ResourceLink
+                href="https://www.44thward.org/"
+                title="44th Ward Website"
+                description="Newsletter signup available"
+                external
+              />
+            </div>
+          </div>
+
+          <!-- 46th Ward -->
+          <div class="bg-white rounded-xl p-6 border border-bg-alt">
+            <h3 class="text-xl mb-4">46th Ward</h3>
+            <p class="text-text-muted text-sm mb-4">(likely eastern portion near Broadway)</p>
+            <dl class="space-y-3 text-sm">
+              <div>
+                <dt class="text-text-muted">Alderwoman</dt>
+                <dd class="font-semibold">Angela Clay</dd>
+              </div>
+              <div>
+                <dt class="text-text-muted">Office</dt>
+                <dd>4544 N. Broadway<br />Chicago, IL 60640</dd>
+              </div>
+              <div>
+                <dt class="text-text-muted">Phone</dt>
+                <dd><a href="tel:773-878-4646">773-878-4646</a></dd>
+              </div>
+              <div>
+                <dt class="text-text-muted">Email</dt>
+                <dd><a href="mailto:info@46thward.com">info@46thward.com</a></dd>
+              </div>
+            </dl>
+            <div class="mt-4">
+              <ResourceLink
+                href="https://www.46thward.com/"
+                title="46th Ward Website"
+                external
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-6 p-4 bg-bg-alt rounded-lg">
+          <p class="text-sm text-text-muted">
+            <strong>Tip:</strong> Not sure which ward you're in? Look up your address at{' '}
+            <a href="https://chicagoelections.gov/districts-maps/ward-maps-electeds" target="_blank" rel="noopener noreferrer" class="underline">
+              chicagoelections.gov
+            </a>
+          </p>
+        </div>
+      </section>
+
+      <!-- Police District -->
+      <section>
+        <h2 class="mb-6 flex items-center gap-3">
+          <span class="text-3xl">🚔</span>
+          Police District
+        </h2>
+        <div class="bg-white rounded-xl p-6 border border-bg-alt">
+          <dl class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+            <div>
+              <dt class="text-text-muted text-sm">District</dt>
+              <dd class="font-semibold">19th District – Town Hall</dd>
+            </div>
+            <div>
+              <dt class="text-text-muted text-sm">Station</dt>
+              <dd>850 W. Addison St.</dd>
+            </div>
+            <div>
+              <dt class="text-text-muted text-sm">Coverage</dt>
+              <dd>Lawrence to Fullerton, river to lake (includes all of Lakeview)</dd>
+            </div>
+            <div>
+              <dt class="text-text-muted text-sm">Non-emergency</dt>
+              <dd><a href="tel:312-744-8320">312-744-8320</a></dd>
+            </div>
+          </dl>
+          <div class="space-y-3">
+            <ResourceLink
+              href="https://chicagocaps19.org/"
+              title="CAPS Info (19th District)"
+              description="Community policing meetings held monthly in each beat"
+              external
+            />
+            <ResourceLink
+              href="https://www.chicagopolice.org/police-districts/find-your-district/"
+              title="Find Your Beat & Meeting Schedule"
+              external
+            />
+          </div>
+        </div>
+      </section>
+
+      <!-- Report Issues (CHI 311) -->
+      <section>
+        <h2 class="mb-6 flex items-center gap-3">
+          <span class="text-3xl">📞</span>
+          Report Issues (CHI 311)
+        </h2>
+        <p class="text-text-muted mb-6">
+          The CHI 311 system is your go-to for non-emergency city services:
+        </p>
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
+          <ResourceLink
+            href="https://311.chicago.gov"
+            title="311 Website"
+            external
+          />
+          <ResourceLink
+            href="https://apps.apple.com/us/app/chi311/id1441580123"
+            title="CHI 311 iOS App"
+            external
+          />
+          <ResourceLink
+            href="https://play.google.com/store/apps/details?id=org.cityofchicago.chi311"
+            title="CHI 311 Android App"
+            external
+          />
+        </div>
+
+        <div class="bg-white rounded-xl border border-bg-alt overflow-hidden">
+          <table class="w-full text-sm">
+            <thead class="bg-bg-alt">
+              <tr>
+                <th class="text-left p-4 font-semibold">Issue</th>
+                <th class="text-left p-4 font-semibold">How to Report</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-bg-alt">
+              <tr><td class="p-4">Pothole</td><td class="p-4 text-text-muted">311 → "Pothole in Street"</td></tr>
+              <tr><td class="p-4">Streetlight out</td><td class="p-4 text-text-muted">311 → "Street Light Out"</td></tr>
+              <tr><td class="p-4">Graffiti removal</td><td class="p-4 text-text-muted">311 → "Graffiti Removal"</td></tr>
+              <tr><td class="p-4">Alley light out</td><td class="p-4 text-text-muted">311 → "Alley Light Out"</td></tr>
+              <tr><td class="p-4">Tree trimming</td><td class="p-4 text-text-muted">311 → "Tree Trim Request"</td></tr>
+              <tr><td class="p-4">Rodent issue</td><td class="p-4 text-text-muted">311 → "Rodent Baiting Request"</td></tr>
+              <tr><td class="p-4">Abandoned vehicle</td><td class="p-4 text-text-muted">311 → "Abandoned Vehicle"</td></tr>
+              <tr><td class="p-4">Garbage cart issue</td><td class="p-4 text-text-muted">311 → "Garbage Cart Maintenance"</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="mt-4 p-4 bg-accent/10 rounded-lg border border-accent/20">
+          <p class="text-sm">
+            <strong class="text-accent">Pro tip:</strong> Use the app to snap a photo and pin the exact location for faster service.
+          </p>
+        </div>
+      </section>
+
+      <!-- Schools -->
+      <section>
+        <h2 class="mb-6 flex items-center gap-3">
+          <span class="text-3xl">🏫</span>
+          Schools
+        </h2>
+        <p class="text-text-muted mb-6">
+          CPS neighborhood schools are assigned by address. Look up your specific school:
+        </p>
+
+        <ResourceLink
+          href="https://schoolinfo.cps.edu/schoollocator/index.html"
+          title="CPS School Locator"
+          description="Find your assigned neighborhood school by address"
+          external
+        />
+
+        <div class="mt-6 bg-white rounded-xl p-6 border border-bg-alt">
+          <h4 class="font-semibold mb-4">Nearby schools serving East Lakeview:</h4>
+          <ul class="space-y-3 text-sm">
+            <li class="flex items-start gap-2">
+              <span class="text-primary">•</span>
+              <div>
+                <strong>Hawthorne Scholastic Academy</strong>
+                <span class="text-text-muted"> — 3319 N. Clifton Ave (K-8)</span>
+              </div>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-primary">•</span>
+              <div>
+                <strong>Harriet Tubman Elementary</strong>
+                <span class="text-text-muted"> — 2851 N. Seminary Ave (PK-8)</span>
+              </div>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-primary">•</span>
+              <div>
+                <strong>Lake View High School</strong>
+                <span class="text-text-muted"> — 4015 N. Ashland Ave (9-12)</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Neighborhood Organizations -->
+      <section>
+        <h2 class="mb-6 flex items-center gap-3">
+          <span class="text-3xl">🏘️</span>
+          Neighborhood Organizations
+        </h2>
+        <div class="space-y-3">
+          <ResourceLink
+            href="https://eastlakeview.org/"
+            title="East Lakeview Neighbors (ELVN)"
+            description="Our broader neighborhood association"
+            external
+          />
+          <ResourceLink
+            href="https://lakeviewcitizens.org/"
+            title="Lakeview Citizens Council"
+            description="Umbrella org for all Lakeview neighborhood groups"
+            external
+          />
+          <ResourceLink
+            href="https://lakevieweast.com/"
+            title="Lakeview East Chamber of Commerce"
+            description="Local business community"
+            external
+          />
+        </div>
+      </section>
+
+      <!-- Emergency Contacts -->
+      <section>
+        <h2 class="mb-6 flex items-center gap-3">
+          <span class="text-3xl">🚨</span>
+          Emergency Contacts
+        </h2>
+        <div class="bg-white rounded-xl border border-bg-alt overflow-hidden">
+          <table class="w-full">
+            <tbody class="divide-y divide-bg-alt">
+              <tr class="bg-red-50">
+                <td class="p-4 font-semibold text-red-700">Emergency</td>
+                <td class="p-4"><a href="tel:911" class="font-bold text-red-700 text-xl">911</a></td>
+              </tr>
+              <tr>
+                <td class="p-4 font-medium">Non-emergency police</td>
+                <td class="p-4"><a href="tel:312-744-8320">312-744-8320</a></td>
+              </tr>
+              <tr>
+                <td class="p-4 font-medium">City services (311)</td>
+                <td class="p-4"><a href="tel:311">311</a></td>
+              </tr>
+              <tr>
+                <td class="p-4 font-medium">Poison Control</td>
+                <td class="p-4"><a href="tel:1-800-222-1222">1-800-222-1222</a></td>
+              </tr>
+              <tr>
+                <td class="p-4 font-medium">ComEd Outages</td>
+                <td class="p-4"><a href="tel:1-800-334-7661">1-800-334-7661</a></td>
+              </tr>
+              <tr>
+                <td class="p-4 font-medium">Peoples Gas Emergency</td>
+                <td class="p-4"><a href="tel:1-866-556-6002">1-866-556-6002</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+    </div>
+  </div>
+</BaseLayout>

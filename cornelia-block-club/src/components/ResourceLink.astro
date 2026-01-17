@@ -1,0 +1,41 @@
+---
+interface Props {
+  href: string;
+  title: string;
+  description?: string;
+  external?: boolean;
+}
+
+const { href, title, description, external = false } = Astro.props;
+---
+
+<a
+  href={href}
+  target={external ? '_blank' : undefined}
+  rel={external ? 'noopener noreferrer' : undefined}
+  class="flex items-start gap-3 p-4 rounded-lg bg-white border border-bg-alt hover:border-primary/20 hover:shadow-md transition-all duration-200 group"
+>
+  <div class="flex-shrink-0 w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors">
+    {external ? (
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+      </svg>
+    ) : (
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+      </svg>
+    )}
+  </div>
+
+  <div class="flex-1 min-w-0">
+    <h4 class="font-body font-semibold text-text group-hover:text-primary transition-colors">
+      {title}
+      {external && (
+        <span class="sr-only">(opens in new tab)</span>
+      )}
+    </h4>
+    {description && (
+      <p class="text-sm text-text-muted mt-1">{description}</p>
+    )}
+  </div>
+</a>
