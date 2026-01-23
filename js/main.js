@@ -1,7 +1,6 @@
 /**
  * Casey Hudetz Portfolio - Main JavaScript
  */
-
 (function() {
     'use strict';
 
@@ -11,222 +10,162 @@
     const modalOverlay = modal.querySelector('.modal-overlay');
     const modalClose = modal.querySelector('.modal-close');
     const modalVideoContainer = document.getElementById('modal-video-container');
-    const workItems = document.querySelectorAll('.work-item[data-video]');
+    const readerModal = document.getElementById('reader-modal');
+    const readerOverlay = readerModal.querySelector('.reader-overlay');
+    const readerClose = readerModal.querySelector('.reader-close');
+    const readerShare = readerModal.querySelector('.reader-share');
+    const readerArticle = document.getElementById('reader-article');
 
-    // ========================================
-    // Header Scroll Effect
-    // ========================================
-
-    let lastScrollY = 0;
+    // Header scroll effect
     let ticking = false;
-
     function updateHeader() {
-        if (window.scrollY > 50) {
-            header.classList.add('scrolled');
-        } else {
-            header.classList.remove('scrolled');
-        }
+        header.classList.toggle('scrolled', window.scrollY > 50);
         ticking = false;
     }
-
-    function onScroll() {
-        lastScrollY = window.scrollY;
-        if (!ticking) {
-            window.requestAnimationFrame(updateHeader);
-            ticking = true;
-        }
-    }
-
-    window.addEventListener('scroll', onScroll, { passive: true });
-
-    // Initial check
+    window.addEventListener('scroll', () => {
+        if (!ticking) { window.requestAnimationFrame(updateHeader); ticking = true; }
+    }, { passive: true });
     updateHeader();
 
-    // ========================================
-    // Video Modal
-    // ========================================
-
+    // Video embed URL helper
     function getVideoEmbedUrl(url) {
-        // Handle Vimeo URLs
         const vimeoMatch = url.match(/vimeo\.com\/(\d+)/);
-        if (vimeoMatch) {
-            return `https://player.vimeo.com/video/${vimeoMatch[1]}?autoplay=1&title=0&byline=0&portrait=0`;
-        }
-
-        // Handle Vimeo private URLs with hash
-        const vimeoPrivateMatch = url.match(/vimeo\.com\/(\d+)\/([a-zA-Z0-9]+)/);
-        if (vimeoPrivateMatch) {
-            return `https://player.vimeo.com/video/${vimeoPrivateMatch[1]}?h=${vimeoPrivateMatch[2]}&autoplay=1&title=0&byline=0&portrait=0`;
-        }
-
-        // Handle YouTube URLs
+        if (vimeoMatch) return `https://player.vimeo.com/video/${vimeoMatch[1]}?autoplay=1&title=0&byline=0&portrait=0`;
         const youtubeMatch = url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([a-zA-Z0-9_-]+)/);
-        if (youtubeMatch) {
-            return `https://www.youtube.com/embed/${youtubeMatch[1]}?autoplay=1&rel=0`;
-        }
-
+        if (youtubeMatch) return `https://www.youtube.com/embed/${youtubeMatch[1]}?autoplay=1&rel=0`;
         return null;
     }
 
-    function openModal(videoUrl) {
+    // Video Modal
+    function openVideoModal(videoUrl) {
         const embedUrl = getVideoEmbedUrl(videoUrl);
         if (!embedUrl) return;
-
         const iframe = document.createElement('iframe');
         iframe.src = embedUrl;
         iframe.setAttribute('allow', 'autoplay; fullscreen; picture-in-picture');
         iframe.setAttribute('allowfullscreen', '');
-        iframe.setAttribute('title', 'Video player');
-
         modalVideoContainer.innerHTML = '';
         modalVideoContainer.appendChild(iframe);
-
         modal.classList.add('active');
         modal.setAttribute('aria-hidden', 'false');
         document.body.classList.add('modal-open');
-
-        // Focus trap
         modalClose.focus();
     }
 
-    function closeModal() {
+    function closeVideoModal() {
         modal.classList.remove('active');
         modal.setAttribute('aria-hidden', 'true');
         document.body.classList.remove('modal-open');
-
-        // Clear video to stop playback
-        setTimeout(() => {
-            modalVideoContainer.innerHTML = '';
-        }, 300);
+        setTimeout(() => { modalVideoContainer.innerHTML = ''; }, 300);
     }
 
-    // Event listeners for work items
-    workItems.forEach(item => {
-        item.addEventListener('click', () => {
-            const videoUrl = item.getAttribute('data-video');
-            if (videoUrl) {
-                openModal(videoUrl);
-            }
-        });
-
-        // Keyboard accessibility
+    // Video items click handlers
+    document.querySelectorAll('.video-item[data-video], .podcast-video[data-video]').forEach(item => {
+        item.addEventListener('click', () => openVideoModal(item.dataset.video));
         item.setAttribute('tabindex', '0');
         item.setAttribute('role', 'button');
         item.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                const videoUrl = item.getAttribute('data-video');
-                if (videoUrl) {
-                    openModal(videoUrl);
-                }
-            }
+            if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openVideoModal(item.dataset.video); }
         });
     });
 
-    // Close modal events
-    modalClose.addEventListener('click', closeModal);
-    modalOverlay.addEventListener('click', closeModal);
+    modalClose.addEventListener('click', closeVideoModal);
+    modalOverlay.addEventListener('click', closeVideoModal);
 
+    // Reader Modal
+    let currentArticleId = null;
+
+    function openReader(articleId) {
+        const template = document.getElementById(`article-${articleId}`);
+        if (!template) return;
+        currentArticleId = articleId;
+        readerArticle.innerHTML = template.innerHTML;
+        readerModal.classList.add('active');
+        readerModal.setAttribute('aria-hidden', 'false');
+        document.body.classList.add('modal-open');
+        readerClose.focus();
+        // Update URL hash
+        history.pushState({ article: articleId }, '', `#${articleId}`);
+    }
+
+    function closeReader() {
+        readerModal.classList.remove('active');
+        readerModal.setAttribute('aria-hidden', 'true');
+        document.body.classList.remove('modal-open');
+        currentArticleId = null;
+        if (window.location.hash) history.pushState({}, '', window.location.pathname);
+    }
+
+    // Writing cards click handlers
+    document.querySelectorAll('.writing-card[data-article]').forEach(card => {
+        card.addEventListener('click', () => openReader(card.dataset.article));
+        card.setAttribute('tabindex', '0');
+        card.setAttribute('role', 'button');
+        card.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openReader(card.dataset.article); }
+        });
+    });
+
+    readerClose.addEventListener('click', closeReader);
+    readerOverlay.addEventListener('click', closeReader);
+
+    // Share button
+    readerShare.addEventListener('click', async () => {
+        const url = window.location.href;
+        const title = readerArticle.querySelector('h1')?.textContent || 'Article';
+        if (navigator.share) {
+            try { await navigator.share({ title, url }); }
+            catch (err) { if (err.name !== 'AbortError') console.error(err); }
+        } else {
+            await navigator.clipboard.writeText(url);
+            const span = readerShare.querySelector('span');
+            const original = span.textContent;
+            span.textContent = 'Copied!';
+            setTimeout(() => { span.textContent = original; }, 2000);
+        }
+    });
+
+    // Escape key handler
     document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && modal.classList.contains('active')) {
-            closeModal();
+        if (e.key === 'Escape') {
+            if (modal.classList.contains('active')) closeVideoModal();
+            if (readerModal.classList.contains('active')) closeReader();
         }
     });
 
-    // ========================================
-    // Smooth Scroll for Navigation
-    // ========================================
+    // Handle hash on page load
+    if (window.location.hash) {
+        const articleId = window.location.hash.slice(1);
+        if (document.getElementById(`article-${articleId}`)) {
+            setTimeout(() => openReader(articleId), 100);
+        }
+    }
 
-    const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
+    // Back button support
+    window.addEventListener('popstate', (e) => {
+        if (e.state?.article) openReader(e.state.article);
+        else if (readerModal.classList.contains('active')) closeReader();
+    });
 
-    navLinks.forEach(link => {
+    // Smooth scroll for nav links
+    document.querySelectorAll('.nav-links a[href^="#"]').forEach(link => {
         link.addEventListener('click', (e) => {
-            const targetId = link.getAttribute('href');
-            const targetElement = document.querySelector(targetId);
-
-            if (targetElement) {
+            const target = document.querySelector(link.getAttribute('href'));
+            if (target) {
                 e.preventDefault();
-                const headerHeight = header.offsetHeight;
-                const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
-
-                window.scrollTo({
-                    top: targetPosition,
-                    behavior: 'smooth'
-                });
+                window.scrollTo({ top: target.offsetTop - header.offsetHeight, behavior: 'smooth' });
             }
         });
     });
 
-    // ========================================
-    // Intersection Observer for Animations
-    // ========================================
-
-    const observerOptions = {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.1
-    };
-
-    const animateOnScroll = (entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-                observer.unobserve(entry.target);
-            }
-        });
-    };
-
-    const observer = new IntersectionObserver(animateOnScroll, observerOptions);
-
-    // Observe elements for animation
-    const animatedElements = document.querySelectorAll('.work-item, .project-card, .speaking-item');
-    animatedElements.forEach((el, index) => {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(20px)';
-        el.style.transition = `opacity 0.5s ease ${index * 0.05}s, transform 0.5s ease ${index * 0.05}s`;
-        observer.observe(el);
-    });
-
-    // Add visible class styles
-    const style = document.createElement('style');
-    style.textContent = `
-        .work-item.visible,
-        .project-card.visible,
-        .speaking-item.visible {
-            opacity: 1 !important;
-            transform: translateY(0) !important;
-        }
-    `;
-    document.head.appendChild(style);
-
-    // ========================================
-    // Image Error Handling
-    // ========================================
-
-    const thumbnails = document.querySelectorAll('.work-thumbnail img');
-    thumbnails.forEach(img => {
+    // Image error handling
+    document.querySelectorAll('.video-item img, .podcast-video img').forEach(img => {
         img.addEventListener('error', () => {
-            // Create a fallback placeholder
             img.style.display = 'none';
             const placeholder = document.createElement('div');
-            placeholder.style.cssText = `
-                width: 100%;
-                height: 100%;
-                position: absolute;
-                top: 0;
-                left: 0;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                background: linear-gradient(135deg, var(--color-bg-alt) 0%, var(--color-border) 100%);
-                color: var(--color-text-muted);
-                font-size: 0.85rem;
-                text-transform: uppercase;
-                letter-spacing: 0.1em;
-            `;
+            placeholder.style.cssText = 'width:100%;height:100%;position:absolute;top:0;left:0;display:flex;align-items:center;justify-content:center;background:var(--color-bg-alt);color:var(--color-text-muted);font-size:0.85rem;';
             placeholder.textContent = 'Video';
             img.parentNode.appendChild(placeholder);
         });
     });
-
 })();
