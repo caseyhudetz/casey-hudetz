@@ -1,19 +1,6 @@
-# OSX
+# OS
 .DS_Store
-
-# Node
-node_modules/
-npm-debug.log
-yarn-error.log
-
-# React Native
-.expo/
-.expo-shared/
-
-# Build
-ios/build/
-android/app/build/
-android/.gradle/
+Thumbs.db
 
 # IDE
 .vscode/
@@ -21,10 +8,6 @@ android/.gradle/
 *.swp
 *.swo
 *.swn
-*.bak
-
-# Testing
-coverage/
 
 # Misc
 *.log
