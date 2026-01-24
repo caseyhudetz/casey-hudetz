@@ -55,7 +55,7 @@
         <section class="hero" id="hero">
             <div class="hero-content">
                 <h1 class="hero-name-simple">Casey Hudetz</h1>
-                <p class="hero-intro">AI Strategy & Design Leader | International Speaker</p>
+                <p class="hero-intro">AI Strategy & Design Leader | International Speaker | Neighborhood Steward</p>
             </div>
             <div class="scroll-indicator"><span></span></div>
         </section>
@@ -69,10 +69,10 @@
                     </div>
                     <div class="about-bio">
                         <p class="about-text fade-in">
-                            Casey is a creative leader with 20 years of experience across design, education, filmmaking, and emerging technology. He focuses on storytelling, community-centered work, and building tools that support human judgment and creativity.
+                            Casey is a creative leader working at the intersection of storytelling, technology, and community. Over the past 20 years, his work has spanned design, education, filmmaking, and emerging technology, with a consistent focus on human-centered craft.
                         </p>
                         <p class="about-text fade-in">
-                            He currently leads AI and design at Docusign, where he helps teams integrate AI into their workflows in thoughtful, human-first ways.
+                            He currently leads AI and design at Docusign, helping teams use AI to enhance creativity and decision-making rather than replace it.
                         </p>
                     </div>
                 </div>
@@ -131,6 +131,10 @@
                         <img src="https://vumbnail.com/6251744.jpg" alt="Film" loading="lazy">
                         <div class="video-play"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"></polygon></svg></div>
                     </article>
+                    <article class="video-item fade-in" data-video="https://vimeo.com/103379811">
+                        <img src="https://vumbnail.com/103379811.jpg" alt="Film" loading="lazy">
+                        <div class="video-play"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"></polygon></svg></div>
+                    </article>
                 </div>
             </div>
         </section>
@@ -142,24 +146,38 @@
                     <h2 class="section-title">AI Experiments</h2>
                     <p class="section-subtitle">Playing with generative AI tools to explore new creative possibilities</p>
                 </div>
-                <div class="experiments-grid fade-in">
-                    <div class="experiment-item">
-                        <video class="experiment-video" controls playsinline>
-                            <source src="videos/experiment-1.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
+                <div class="experiments-carousel fade-in">
+                    <div class="carousel-container">
+                        <div class="carousel-track" id="experiments-track">
+                            <div class="carousel-slide">
+                                <video class="experiment-video" id="experiment-video-1" playsinline muted>
+                                    <source src="videos/experiment-1.mp4" type="video/mp4">
+                                </video>
+                            </div>
+                            <div class="carousel-slide">
+                                <video class="experiment-video" controls playsinline>
+                                    <source src="videos/experiment-2.mp4" type="video/mp4">
+                                </video>
+                            </div>
+                            <div class="carousel-slide">
+                                <video class="experiment-video" controls playsinline>
+                                    <source src="videos/experiment-3.mp4" type="video/mp4">
+                                </video>
+                            </div>
+                        </div>
                     </div>
-                    <div class="experiment-item">
-                        <video class="experiment-video" controls playsinline>
-                            <source src="videos/experiment-2.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                    </div>
-                    <div class="experiment-item">
-                        <video class="experiment-video" controls playsinline>
-                            <source src="videos/experiment-3.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
+                    <div class="carousel-nav">
+                        <button class="carousel-btn carousel-prev" aria-label="Previous video">
+                            <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none"><path d="M15 18l-6-6 6-6"/></svg>
+                        </button>
+                        <div class="carousel-dots">
+                            <button class="carousel-dot active" data-slide="0" aria-label="Go to slide 1"></button>
+                            <button class="carousel-dot" data-slide="1" aria-label="Go to slide 2"></button>
+                            <button class="carousel-dot" data-slide="2" aria-label="Go to slide 3"></button>
+                        </div>
+                        <button class="carousel-btn carousel-next" aria-label="Next video">
+                            <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none"><path d="M9 18l6-6-6-6"/></svg>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -315,7 +333,7 @@
                         <img src="images/murals-3.jpg" alt="Chicago Murals" loading="lazy">
                     </a>
                     <!-- Bike Bus Video -->
-                    <div class="community-item community-video-item fade-in" data-video="https://vimeo.com/1025455397">
+                    <div class="community-item community-video-item fade-in" data-video="https://vimeo.com/1025455397/8ea11edad6">
                         <img src="https://vumbnail.com/1025455397.jpg" alt="Bike Bus drone footage" loading="lazy">
                         <div class="video-play"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"></polygon></svg></div>
                     </div>
@@ -335,28 +353,6 @@
                             <p>Event flyers and community gatherings</p>
                         </div>
                     </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Projects Section -->
-        <section class="projects" id="projects">
-            <div class="container">
-                <div class="section-header fade-in">
-                    <h2 class="section-title">Projects</h2>
-                    <p class="section-subtitle">Side projects and creative ventures</p>
-                </div>
-                <div class="projects-grid">
-                    <a href="https://www.artdamagedbook.com" target="_blank" rel="noopener noreferrer" class="project-card fade-in">
-                        <h3 class="project-title">Art Damaged</h3>
-                        <p class="project-type">Book</p>
-                        <span class="project-link">artdamagedbook.com <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></span>
-                    </a>
-                    <a href="https://www.a76pod.com" target="_blank" rel="noopener noreferrer" class="project-card fade-in">
-                        <h3 class="project-title">A76 Podcast</h3>
-                        <p class="project-type">Co-creator</p>
-                        <span class="project-link">a76pod.com <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></span>
-                    </a>
                 </div>
             </div>
         </section>
@@ -383,7 +379,7 @@
 
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2025 Casey Hudetz</p>
+            <p>&copy; 2026 Casey Hudetz</p>
         </div>
     </footer>
 

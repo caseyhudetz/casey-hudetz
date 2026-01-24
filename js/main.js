@@ -110,6 +110,81 @@
     modalClose.addEventListener('click', closeVideoModal);
     modalOverlay.addEventListener('click', closeVideoModal);
 
+    // AI Experiments Carousel
+    const carouselTrack = document.getElementById('experiments-track');
+    const carouselDots = document.querySelectorAll('.carousel-dot');
+    const prevBtn = document.querySelector('.carousel-prev');
+    const nextBtn = document.querySelector('.carousel-next');
+    const firstVideo = document.getElementById('experiment-video-1');
+    let currentSlide = 0;
+    const totalSlides = 3;
+
+    function updateCarousel() {
+        if (!carouselTrack) return;
+        carouselTrack.style.transform = `translateX(-${currentSlide * 100}%)`;
+        carouselDots.forEach((dot, i) => {
+            dot.classList.toggle('active', i === currentSlide);
+        });
+        // Pause all videos except current
+        document.querySelectorAll('.experiment-video').forEach((video, i) => {
+            if (i !== currentSlide) video.pause();
+        });
+    }
+
+    function goToSlide(index) {
+        currentSlide = Math.max(0, Math.min(index, totalSlides - 1));
+        updateCarousel();
+    }
+
+    if (prevBtn && nextBtn) {
+        prevBtn.addEventListener('click', () => goToSlide(currentSlide - 1));
+        nextBtn.addEventListener('click', () => goToSlide(currentSlide + 1));
+    }
+
+    carouselDots.forEach(dot => {
+        dot.addEventListener('click', () => goToSlide(parseInt(dot.dataset.slide)));
+    });
+
+    // Swipe support for carousel
+    if (carouselTrack) {
+        let touchStartX = 0;
+        let touchEndX = 0;
+        carouselTrack.addEventListener('touchstart', (e) => { touchStartX = e.changedTouches[0].screenX; }, { passive: true });
+        carouselTrack.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            const diff = touchStartX - touchEndX;
+            if (Math.abs(diff) > 50) {
+                if (diff > 0) goToSlide(currentSlide + 1);
+                else goToSlide(currentSlide - 1);
+            }
+        }, { passive: true });
+    }
+
+    // First video autoplay (muted) with click to restart
+    if (firstVideo) {
+        // Autoplay when section comes into view
+        const experimentsSection = document.getElementById('experiments');
+        const autoplayObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && currentSlide === 0) {
+                    firstVideo.play().catch(() => {});
+                } else {
+                    firstVideo.pause();
+                }
+            });
+        }, { threshold: 0.3 });
+
+        if (experimentsSection) autoplayObserver.observe(experimentsSection);
+
+        // Click to restart from beginning with sound
+        firstVideo.addEventListener('click', () => {
+            firstVideo.currentTime = 0;
+            firstVideo.muted = false;
+            firstVideo.controls = true;
+            firstVideo.play();
+        });
+    }
+
     // Reader Modal
     let currentArticleId = null;
 
