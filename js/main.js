@@ -6,6 +6,8 @@
 
     // DOM Elements
     const header = document.querySelector('.header');
+    const navToggle = document.querySelector('.nav-toggle');
+    const navLinks = document.querySelector('.nav-links');
     const modal = document.getElementById('video-modal');
     const modalOverlay = modal.querySelector('.modal-overlay');
     const modalClose = modal.querySelector('.modal-close');
@@ -15,6 +17,23 @@
     const readerClose = readerModal.querySelector('.reader-close');
     const readerShare = readerModal.querySelector('.reader-share');
     const readerArticle = document.getElementById('reader-article');
+
+    // Mobile navigation toggle
+    navToggle.addEventListener('click', () => {
+        const isExpanded = navToggle.getAttribute('aria-expanded') === 'true';
+        navToggle.setAttribute('aria-expanded', !isExpanded);
+        navLinks.classList.toggle('active');
+        document.body.classList.toggle('nav-open');
+    });
+
+    // Close mobile nav when clicking a link
+    navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            navToggle.setAttribute('aria-expanded', 'false');
+            navLinks.classList.remove('active');
+            document.body.classList.remove('nav-open');
+        });
+    });
 
     // Header scroll effect
     let ticking = false;
