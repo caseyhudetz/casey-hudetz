@@ -27,6 +27,25 @@
     }, { passive: true });
     updateHeader();
 
+    // Scroll-triggered fade-in animations
+    const fadeElements = document.querySelectorAll('.fade-in');
+    const observerOptions = {
+        root: null,
+        rootMargin: '0px 0px -80px 0px',
+        threshold: 0.1
+    };
+
+    const fadeObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                fadeObserver.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    fadeElements.forEach(el => fadeObserver.observe(el));
+
     // Video embed URL helper
     function getVideoEmbedUrl(url) {
         const vimeoMatch = url.match(/vimeo\.com\/(\d+)/);
@@ -158,14 +177,22 @@
         });
     });
 
-    // Image error handling
+    // Image error handling with better fallback
     document.querySelectorAll('.video-item img, .podcast-video img').forEach(img => {
-        img.addEventListener('error', () => {
-            img.style.display = 'none';
-            const placeholder = document.createElement('div');
-            placeholder.style.cssText = 'width:100%;height:100%;position:absolute;top:0;left:0;display:flex;align-items:center;justify-content:center;background:var(--color-bg-alt);color:var(--color-text-muted);font-size:0.85rem;';
-            placeholder.textContent = 'Video';
-            img.parentNode.appendChild(placeholder);
+        img.addEventListener('error', function() {
+            // Try hqdefault if maxresdefault fails
+            if (this.src.includes('maxresdefault')) {
+                this.src = this.src.replace('maxresdefault', 'hqdefault');
+            } else if (this.src.includes('hqdefault')) {
+                this.src = this.src.replace('hqdefault', 'mqdefault');
+            } else {
+                // Final fallback - show placeholder
+                this.style.display = 'none';
+                const placeholder = document.createElement('div');
+                placeholder.style.cssText = 'width:100%;height:100%;position:absolute;top:0;left:0;display:flex;align-items:center;justify-content:center;background:var(--color-bg-alt);color:var(--color-text-muted);font-size:0.85rem;';
+                placeholder.textContent = 'Video';
+                this.parentNode.appendChild(placeholder);
+            }
         });
     });
 })();
