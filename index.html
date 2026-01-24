@@ -82,7 +82,10 @@
         <!-- Work Section -->
         <section class="work" id="work">
             <div class="container">
-                <h2 class="section-title fade-in">Work</h2>
+                <div class="section-header fade-in">
+                    <h2 class="section-title">Work</h2>
+                    <p class="section-subtitle">Talks, films, and creative projects exploring design, technology, and storytelling</p>
+                </div>
                 <div class="video-grid">
                     <article class="video-item fade-in" data-video="https://vimeo.com/757004803">
                         <img src="https://vumbnail.com/757004803.jpg" alt="The BEAR Test" loading="lazy">
@@ -128,10 +131,63 @@
             </div>
         </section>
 
+        <!-- AI Experiments Section -->
+        <section class="experiments" id="experiments">
+            <div class="container">
+                <div class="section-header fade-in">
+                    <h2 class="section-title">AI Experiments</h2>
+                    <p class="section-subtitle">Playing with generative AI tools to explore new creative possibilities</p>
+                </div>
+                <div class="experiments-carousel fade-in">
+                    <div class="carousel-container">
+                        <div class="carousel-track" id="experiments-track">
+                            <!-- Video 1 -->
+                            <div class="carousel-slide">
+                                <video class="experiment-video" controls playsinline>
+                                    <source src="videos/experiment-1.mp4" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                            <!-- Video 2 -->
+                            <div class="carousel-slide">
+                                <video class="experiment-video" controls playsinline>
+                                    <source src="videos/experiment-2.mp4" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                            <!-- Video 3 -->
+                            <div class="carousel-slide">
+                                <video class="experiment-video" controls playsinline>
+                                    <source src="videos/experiment-3.mp4" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-nav">
+                        <button class="carousel-btn carousel-prev" aria-label="Previous video">
+                            <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none"><path d="M15 18l-6-6 6-6"/></svg>
+                        </button>
+                        <div class="carousel-dots">
+                            <button class="carousel-dot active" data-slide="0" aria-label="Go to slide 1"></button>
+                            <button class="carousel-dot" data-slide="1" aria-label="Go to slide 2"></button>
+                            <button class="carousel-dot" data-slide="2" aria-label="Go to slide 3"></button>
+                        </div>
+                        <button class="carousel-btn carousel-next" aria-label="Next video">
+                            <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none"><path d="M9 18l6-6-6-6"/></svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Writing Section -->
         <section class="writing" id="writing">
             <div class="container">
-                <h2 class="section-title fade-in">Writing</h2>
+                <div class="section-header fade-in">
+                    <h2 class="section-title">Writing</h2>
+                    <p class="section-subtitle">Essays and articles on AI, creativity, and the human experience</p>
+                </div>
                 <div class="writing-grid">
                     <article class="writing-card fade-in" data-article="oegads">
                         <div class="writing-meta">Featured in <em>The UX of AI</em></div>
@@ -158,8 +214,16 @@
         <!-- Podcasts Section -->
         <section class="podcasts" id="podcasts">
             <div class="container">
-                <h2 class="section-title fade-in">Podcasts</h2>
+                <div class="section-header fade-in">
+                    <h2 class="section-title">Podcasts</h2>
+                    <p class="section-subtitle">Conversations about design, AI, and the future of work</p>
+                </div>
                 <div class="podcasts-grid">
+                    <div class="podcast-embed fade-in podcast-video-embed" data-video="https://www.youtube.com/watch?v=GTbPWaMTnsQ">
+                        <img src="https://img.youtube.com/vi/GTbPWaMTnsQ/hqdefault.jpg" alt="Fuego UX Interview" loading="lazy">
+                        <div class="video-play"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"></polygon></svg></div>
+                        <p class="podcast-label">Fuego UX: Integrating New Generative AI Models</p>
+                    </div>
                     <div class="podcast-embed fade-in">
                         <iframe style="border-radius:12px" src="https://open.spotify.com/embed/episode/7JbtXSEqggVHz4RrThFoUo?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
                     </div>
@@ -182,17 +246,20 @@
         <!-- Speaking Section -->
         <section class="speaking" id="speaking">
             <div class="container">
-                <h2 class="section-title fade-in">Speaking</h2>
+                <div class="section-header fade-in">
+                    <h2 class="section-title">Speaking</h2>
+                    <p class="section-subtitle">Keynotes and talks at conferences around the world</p>
+                </div>
                 <div class="speaking-grid">
                     <div class="speaking-item fade-in"><span class="speaking-name">SXSW</span><span class="speaking-detail">3x Speaker</span></div>
                     <div class="speaking-item fade-in"><span class="speaking-name">Design Matters Copenhagen</span><span class="speaking-detail">2023</span></div>
-                    <div class="speaking-item fade-in"><span class="speaking-name">UX STRAT</span><span class="speaking-detail">2023, 2024</span></div>
-                    <div class="speaking-item fade-in"><span class="speaking-name">DDX Munich</span><span class="speaking-detail">2024</span></div>
+                    <div class="speaking-item fade-in"><span class="speaking-name">UX STRAT</span><span class="speaking-detail">Keynote, 2023 & 2024</span></div>
+                    <div class="speaking-item fade-in"><span class="speaking-name">DDX Munich</span><span class="speaking-detail">Keynote, 2024</span></div>
                     <div class="speaking-item fade-in"><span class="speaking-name">uxcon Vienna</span><span class="speaking-detail">2024</span></div>
-                    <div class="speaking-item fade-in"><span class="speaking-name">Gather Festival Stockholm</span><span class="speaking-detail">Keynote</span></div>
+                    <div class="speaking-item fade-in"><span class="speaking-name">Gather Festival Stockholm</span><span class="speaking-detail">Keynote, 2022</span></div>
                     <div class="speaking-item fade-in"><span class="speaking-name">IxDA Chicago</span><span class="speaking-detail">Host</span></div>
                     <div class="speaking-item fade-in"><span class="speaking-name">General Assembly</span><span class="speaking-detail">Instructor</span></div>
-                    <div class="speaking-item fade-in"><span class="speaking-name">Stanford d.school</span><span class="speaking-detail">Educator</span></div>
+                    <div class="speaking-item fade-in"><span class="speaking-name">Stanford d.school</span><span class="speaking-detail">Apprentice</span></div>
                 </div>
             </div>
         </section>
@@ -200,7 +267,10 @@
         <!-- Testimonials Section -->
         <section class="testimonials" id="testimonials">
             <div class="container">
-                <h2 class="section-title fade-in">What People Say</h2>
+                <div class="section-header fade-in">
+                    <h2 class="section-title">What People Say</h2>
+                    <p class="section-subtitle">Kind words from colleagues and collaborators</p>
+                </div>
                 <div class="testimonials-grid">
                     <blockquote class="testimonial fade-in">
                         <p>"In a world where everyone seems to have an opinion on AI, Casey stands out by offering a truly unique perspective—one that everyone deserves to hear. With warmth, humor, and a deep passion for the possibilities of technology, he shows what it means to make AI—and the conversations around it—more human, relatable, and empathetic."</p>
@@ -218,10 +288,60 @@
             </div>
         </section>
 
+        <!-- Community Section -->
+        <section class="community" id="community">
+            <div class="container">
+                <div class="section-header fade-in">
+                    <h2 class="section-title">Community</h2>
+                    <p class="section-subtitle">Building connections and making a difference in the neighborhood</p>
+                </div>
+                <div class="community-grid">
+                    <!-- Featured Image -->
+                    <div class="community-item community-featured fade-in">
+                        <img src="images/community-featured.jpg" alt="Community involvement" loading="lazy">
+                        <div class="community-placeholder">
+                            <span>Featured Image</span>
+                            <p>Add your community photo here</p>
+                        </div>
+                    </div>
+                    <!-- Bike Bus Video -->
+                    <div class="community-item fade-in">
+                        <video class="community-video" controls playsinline>
+                            <source src="videos/bike-bus.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <div class="community-placeholder">
+                            <span>Bike Bus</span>
+                            <p>Drone footage of local bike bus</p>
+                        </div>
+                    </div>
+                    <!-- Trees Infographic -->
+                    <div class="community-item fade-in">
+                        <img src="images/trees-infographic.jpg" alt="New trees in the neighborhood" loading="lazy">
+                        <div class="community-placeholder">
+                            <span>Trees Infographic</span>
+                            <p>New trees in the neighborhood</p>
+                        </div>
+                    </div>
+                    <!-- Block Party Flyers -->
+                    <div class="community-item fade-in">
+                        <img src="images/block-party.jpg" alt="Block party flyer" loading="lazy">
+                        <div class="community-placeholder">
+                            <span>Block Party</span>
+                            <p>Event flyers and community gatherings</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Projects Section -->
         <section class="projects" id="projects">
             <div class="container">
-                <h2 class="section-title fade-in">Projects</h2>
+                <div class="section-header fade-in">
+                    <h2 class="section-title">Projects</h2>
+                    <p class="section-subtitle">Side projects and creative ventures</p>
+                </div>
                 <div class="projects-grid">
                     <a href="https://www.artdamagedbook.com" target="_blank" rel="noopener noreferrer" class="project-card fade-in">
                         <h3 class="project-title">Art Damaged</h3>
