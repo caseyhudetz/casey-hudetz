@@ -69,10 +69,10 @@
                     </div>
                     <div class="about-bio">
                         <p class="about-text fade-in">
-                            With 20 years of experience spanning education, design, filmmaking, and emerging technology, I help organizations navigate the intersection of AI and human experience.
+                            Casey is a creative leader with 20 years of experience across design, education, filmmaking, and emerging technology. He focuses on storytelling, community-centered work, and building tools that support human judgment and creativity.
                         </p>
                         <p class="about-text fade-in">
-                            Currently leading AI and design strategy at Docusign, I focus on how teams can thoughtfully integrate AI into their creative and operational workflows—amplifying human capability rather than replacing it.
+                            He currently leads AI and design at Docusign, where he helps teams integrate AI into their workflows in thoughtful, human-first ways.
                         </p>
                     </div>
                 </div>
@@ -127,6 +127,10 @@
                         <img src="https://img.youtube.com/vi/R2w27TPQxDk/hqdefault.jpg" alt="A Day in the Life" loading="lazy">
                         <div class="video-play"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"></polygon></svg></div>
                     </article>
+                    <article class="video-item fade-in" data-video="https://vimeo.com/6251744">
+                        <img src="https://vumbnail.com/6251744.jpg" alt="Film" loading="lazy">
+                        <div class="video-play"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"></polygon></svg></div>
+                    </article>
                 </div>
             </div>
         </section>
@@ -138,45 +142,49 @@
                     <h2 class="section-title">AI Experiments</h2>
                     <p class="section-subtitle">Playing with generative AI tools to explore new creative possibilities</p>
                 </div>
-                <div class="experiments-carousel fade-in">
-                    <div class="carousel-container">
-                        <div class="carousel-track" id="experiments-track">
-                            <!-- Video 1 -->
-                            <div class="carousel-slide">
-                                <video class="experiment-video" controls playsinline>
-                                    <source src="videos/experiment-1.mp4" type="video/mp4">
-                                    Your browser does not support the video tag.
-                                </video>
-                            </div>
-                            <!-- Video 2 -->
-                            <div class="carousel-slide">
-                                <video class="experiment-video" controls playsinline>
-                                    <source src="videos/experiment-2.mp4" type="video/mp4">
-                                    Your browser does not support the video tag.
-                                </video>
-                            </div>
-                            <!-- Video 3 -->
-                            <div class="carousel-slide">
-                                <video class="experiment-video" controls playsinline>
-                                    <source src="videos/experiment-3.mp4" type="video/mp4">
-                                    Your browser does not support the video tag.
-                                </video>
-                            </div>
-                        </div>
+                <div class="experiments-grid fade-in">
+                    <div class="experiment-item">
+                        <video class="experiment-video" controls playsinline>
+                            <source src="videos/experiment-1.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
                     </div>
-                    <div class="carousel-nav">
-                        <button class="carousel-btn carousel-prev" aria-label="Previous video">
-                            <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none"><path d="M15 18l-6-6 6-6"/></svg>
-                        </button>
-                        <div class="carousel-dots">
-                            <button class="carousel-dot active" data-slide="0" aria-label="Go to slide 1"></button>
-                            <button class="carousel-dot" data-slide="1" aria-label="Go to slide 2"></button>
-                            <button class="carousel-dot" data-slide="2" aria-label="Go to slide 3"></button>
-                        </div>
-                        <button class="carousel-btn carousel-next" aria-label="Next video">
-                            <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none"><path d="M9 18l6-6-6-6"/></svg>
-                        </button>
+                    <div class="experiment-item">
+                        <video class="experiment-video" controls playsinline>
+                            <source src="videos/experiment-2.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
                     </div>
+                    <div class="experiment-item">
+                        <video class="experiment-video" controls playsinline>
+                            <source src="videos/experiment-3.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Animated Films Section -->
+        <section class="films" id="films">
+            <div class="container">
+                <div class="section-header fade-in">
+                    <h2 class="section-title">Animated Films</h2>
+                    <p class="section-subtitle">Short films from my graduate program exploring visual storytelling</p>
+                </div>
+                <div class="films-grid">
+                    <article class="video-item fade-in" data-video="https://vimeo.com/155846438">
+                        <img src="https://vumbnail.com/155846438.jpg" alt="Animated Film" loading="lazy">
+                        <div class="video-play"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"></polygon></svg></div>
+                    </article>
+                    <article class="video-item fade-in" data-video="https://vimeo.com/155010249">
+                        <img src="https://vumbnail.com/155010249.jpg" alt="Animated Film" loading="lazy">
+                        <div class="video-play"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"></polygon></svg></div>
+                    </article>
+                    <article class="video-item fade-in" data-video="https://vimeo.com/159410930">
+                        <img src="https://vumbnail.com/159410930.jpg" alt="Animated Film" loading="lazy">
+                        <div class="video-play"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"></polygon></svg></div>
+                    </article>
                 </div>
             </div>
         </section>
@@ -296,24 +304,20 @@
                     <p class="section-subtitle">Building connections and making a difference in the neighborhood</p>
                 </div>
                 <div class="community-grid">
-                    <!-- Featured Image -->
-                    <div class="community-item community-featured fade-in">
-                        <img src="images/community-featured.jpg" alt="Community involvement" loading="lazy">
-                        <div class="community-placeholder">
-                            <span>Featured Image</span>
-                            <p>Add your community photo here</p>
-                        </div>
-                    </div>
+                    <!-- Murals - Links to Sun-Times story -->
+                    <a href="https://chicago.suntimes.com/murals-mosaics/2024/08/30/chicago-murals-ryan-tova-katz-wendt-park-nettelhorst-school" target="_blank" rel="noopener noreferrer" class="community-item community-featured community-link fade-in">
+                        <img src="images/murals.jpg" alt="Chicago Murals" loading="lazy">
+                    </a>
+                    <a href="https://chicago.suntimes.com/murals-mosaics/2024/08/30/chicago-murals-ryan-tova-katz-wendt-park-nettelhorst-school" target="_blank" rel="noopener noreferrer" class="community-item community-link fade-in">
+                        <img src="images/murals-2.jpg" alt="Chicago Murals" loading="lazy">
+                    </a>
+                    <a href="https://chicago.suntimes.com/murals-mosaics/2024/08/30/chicago-murals-ryan-tova-katz-wendt-park-nettelhorst-school" target="_blank" rel="noopener noreferrer" class="community-item community-link fade-in">
+                        <img src="images/murals-3.jpg" alt="Chicago Murals" loading="lazy">
+                    </a>
                     <!-- Bike Bus Video -->
-                    <div class="community-item fade-in">
-                        <video class="community-video" controls playsinline>
-                            <source src="videos/bike-bus.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                        <div class="community-placeholder">
-                            <span>Bike Bus</span>
-                            <p>Drone footage of local bike bus</p>
-                        </div>
+                    <div class="community-item community-video-item fade-in" data-video="https://vimeo.com/1025455397">
+                        <img src="https://vumbnail.com/1025455397.jpg" alt="Bike Bus drone footage" loading="lazy">
+                        <div class="video-play"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"></polygon></svg></div>
                     </div>
                     <!-- Trees Infographic -->
                     <div class="community-item fade-in">
