@@ -326,19 +326,18 @@
                     <a href="https://chicago.suntimes.com/murals-mosaics/2024/08/30/chicago-murals-ryan-tova-katz-wendt-park-nettelhorst-school" target="_blank" rel="noopener noreferrer" class="community-item community-featured community-link fade-in">
                         <img src="images/murals.jpg" alt="Chicago Murals" loading="lazy">
                     </a>
-                    <a href="https://chicago.suntimes.com/murals-mosaics/2024/08/30/chicago-murals-ryan-tova-katz-wendt-park-nettelhorst-school" target="_blank" rel="noopener noreferrer" class="community-item community-link fade-in">
+                    <div class="community-item community-lightbox fade-in" data-image="images/murals-2.jpg">
                         <img src="images/murals-2.jpg" alt="Chicago Murals" loading="lazy">
-                    </a>
-                    <a href="https://chicago.suntimes.com/murals-mosaics/2024/08/30/chicago-murals-ryan-tova-katz-wendt-park-nettelhorst-school" target="_blank" rel="noopener noreferrer" class="community-item community-link fade-in">
+                    </div>
+                    <div class="community-item community-lightbox fade-in" data-image="images/murals-3.jpg">
                         <img src="images/murals-3.jpg" alt="Chicago Murals" loading="lazy">
-                    </a>
-                    <!-- Bike Bus Video -->
-                    <div class="community-item community-video-item fade-in" data-video="https://vimeo.com/1025455397/8ea11edad6">
-                        <img src="https://vumbnail.com/1025455397.jpg" alt="Bike Bus drone footage" loading="lazy">
-                        <div class="video-play"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"></polygon></svg></div>
+                    </div>
+                    <!-- Bike Bus Video Embed -->
+                    <div class="community-item community-video-embed fade-in">
+                        <iframe src="https://player.vimeo.com/video/1025455397?h=8ea11edad6&badge=0&autopause=0&player_id=0&app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="Bike Bus"></iframe>
                     </div>
                     <!-- Trees Infographic -->
-                    <div class="community-item fade-in">
+                    <div class="community-item community-lightbox fade-in" data-image="images/trees-infographic.jpg">
                         <img src="images/trees-infographic.jpg" alt="New trees in the neighborhood" loading="lazy">
                         <div class="community-placeholder">
                             <span>Trees Infographic</span>
@@ -346,7 +345,7 @@
                         </div>
                     </div>
                     <!-- Block Party Flyers -->
-                    <div class="community-item fade-in">
+                    <div class="community-item community-lightbox fade-in" data-image="images/block-party.jpg">
                         <img src="images/block-party.jpg" alt="Block party flyer" loading="lazy">
                         <div class="community-placeholder">
                             <span>Block Party</span>
@@ -390,6 +389,13 @@
             <button class="modal-close" aria-label="Close video"><svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none"><path d="M18 6L6 18M6 6l12 12"/></svg></button>
             <div class="modal-video" id="modal-video-container"></div>
         </div>
+    </div>
+
+    <!-- Image Lightbox Modal -->
+    <div class="lightbox" id="image-lightbox" aria-hidden="true">
+        <div class="lightbox-overlay"></div>
+        <button class="lightbox-close" aria-label="Close image"><svg viewBox="0 0 24 24" width="32" height="32" stroke="currentColor" stroke-width="2" fill="none"><path d="M18 6L6 18M6 6l12 12"/></svg></button>
+        <img class="lightbox-image" id="lightbox-image" src="" alt="">
     </div>
 
     <!-- Article Reader Modal - Full Overlay -->
