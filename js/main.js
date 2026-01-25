@@ -16,29 +16,36 @@
     const readerShare = readerModal.querySelector('.reader-share');
     const readerArticle = document.getElementById('reader-article');
 
-    // Email copy-to-clipboard functionality
+    // Email copy-to-clipboard functionality (hero section)
     const copyEmailBtn = document.getElementById('copy-email');
     const emailToast = document.getElementById('email-toast');
 
+    async function copyToClipboard(email) {
+        try {
+            await navigator.clipboard.writeText(email);
+            emailToast.classList.add('show');
+            setTimeout(() => emailToast.classList.remove('show'), 2500);
+        } catch (err) {
+            // Fallback for older browsers
+            const textarea = document.createElement('textarea');
+            textarea.value = email;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+            emailToast.classList.add('show');
+            setTimeout(() => emailToast.classList.remove('show'), 2500);
+        }
+    }
+
     if (copyEmailBtn) {
-        copyEmailBtn.addEventListener('click', async () => {
-            const email = copyEmailBtn.dataset.email;
-            try {
-                await navigator.clipboard.writeText(email);
-                emailToast.classList.add('show');
-                setTimeout(() => emailToast.classList.remove('show'), 2500);
-            } catch (err) {
-                // Fallback for older browsers
-                const textarea = document.createElement('textarea');
-                textarea.value = email;
-                document.body.appendChild(textarea);
-                textarea.select();
-                document.execCommand('copy');
-                document.body.removeChild(textarea);
-                emailToast.classList.add('show');
-                setTimeout(() => emailToast.classList.remove('show'), 2500);
-            }
-        });
+        copyEmailBtn.addEventListener('click', () => copyToClipboard(copyEmailBtn.dataset.email));
+    }
+
+    // Contact section email copy-to-clipboard
+    const contactCopyEmailBtn = document.getElementById('contact-copy-email');
+    if (contactCopyEmailBtn) {
+        contactCopyEmailBtn.addEventListener('click', () => copyToClipboard(contactCopyEmailBtn.dataset.email));
     }
 
     // Header scroll effect
@@ -136,7 +143,7 @@
 
     // AI Experiments Carousel
     const carouselTrack = document.getElementById('experiments-track');
-    const carouselDots = document.querySelectorAll('.carousel-dot');
+    const carouselDots = document.querySelectorAll('.experiments-carousel .carousel-dot');
     const prevBtn = document.querySelector('.carousel-prev');
     const nextBtn = document.querySelector('.carousel-next');
     const firstVideo = document.getElementById('experiment-video-1');
@@ -169,7 +176,7 @@
         dot.addEventListener('click', () => goToSlide(parseInt(dot.dataset.slide)));
     });
 
-    // Swipe support for carousel
+    // Swipe support for experiments carousel
     if (carouselTrack) {
         let touchStartX = 0;
         let touchEndX = 0;
@@ -186,7 +193,6 @@
 
     // First video autoplay (muted) with click to restart
     if (firstVideo) {
-        // Autoplay when section comes into view
         const experimentsSection = document.getElementById('experiments');
         const autoplayObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -200,13 +206,82 @@
 
         if (experimentsSection) autoplayObserver.observe(experimentsSection);
 
-        // Click to restart from beginning with sound
         firstVideo.addEventListener('click', () => {
             firstVideo.currentTime = 0;
             firstVideo.muted = false;
             firstVideo.controls = true;
             firstVideo.play();
         });
+    }
+
+    // Animated Films Carousel
+    const filmsTrack = document.getElementById('films-track');
+    const filmsDots = document.querySelectorAll('.films-dots .carousel-dot');
+    const filmsPrevBtn = document.querySelector('.films-prev');
+    const filmsNextBtn = document.querySelector('.films-next');
+    const firstFilmEmbed = document.getElementById('film-embed-1');
+    let currentFilmSlide = 0;
+    const totalFilmSlides = 3;
+
+    function updateFilmsCarousel() {
+        if (!filmsTrack) return;
+        filmsTrack.style.transform = `translateX(-${currentFilmSlide * 100}%)`;
+        filmsDots.forEach((dot, i) => {
+            dot.classList.toggle('active', i === currentFilmSlide);
+        });
+    }
+
+    function goToFilmSlide(index) {
+        currentFilmSlide = Math.max(0, Math.min(index, totalFilmSlides - 1));
+        updateFilmsCarousel();
+
+        // Update first film embed for autoplay behavior
+        if (firstFilmEmbed && currentFilmSlide === 0) {
+            const currentSrc = firstFilmEmbed.src;
+            if (!currentSrc.includes('autoplay=1')) {
+                firstFilmEmbed.src = currentSrc.replace('autoplay=0', 'autoplay=1');
+            }
+        }
+    }
+
+    if (filmsPrevBtn && filmsNextBtn) {
+        filmsPrevBtn.addEventListener('click', () => goToFilmSlide(currentFilmSlide - 1));
+        filmsNextBtn.addEventListener('click', () => goToFilmSlide(currentFilmSlide + 1));
+    }
+
+    filmsDots.forEach(dot => {
+        dot.addEventListener('click', () => goToFilmSlide(parseInt(dot.dataset.slide)));
+    });
+
+    // Swipe support for films carousel
+    if (filmsTrack) {
+        let touchStartX = 0;
+        filmsTrack.addEventListener('touchstart', (e) => { touchStartX = e.changedTouches[0].screenX; }, { passive: true });
+        filmsTrack.addEventListener('touchend', (e) => {
+            const touchEndX = e.changedTouches[0].screenX;
+            const diff = touchStartX - touchEndX;
+            if (Math.abs(diff) > 50) {
+                if (diff > 0) goToFilmSlide(currentFilmSlide + 1);
+                else goToFilmSlide(currentFilmSlide - 1);
+            }
+        }, { passive: true });
+    }
+
+    // First film autoplay on scroll
+    if (firstFilmEmbed) {
+        const filmsSection = document.getElementById('films');
+        const filmAutoplayObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && currentFilmSlide === 0) {
+                    const currentSrc = firstFilmEmbed.src;
+                    if (!currentSrc.includes('autoplay=1')) {
+                        firstFilmEmbed.src = currentSrc.replace('autoplay=0', 'autoplay=1');
+                    }
+                }
+            });
+        }, { threshold: 0.3 });
+
+        if (filmsSection) filmAutoplayObserver.observe(filmsSection);
     }
 
     // Reader Modal
@@ -221,7 +296,6 @@
         readerModal.setAttribute('aria-hidden', 'false');
         document.body.classList.add('modal-open');
         readerClose.focus();
-        // Update URL hash
         history.pushState({ article: articleId }, '', `#${articleId}`);
     }
 
@@ -233,7 +307,6 @@
         if (window.location.hash) history.pushState({}, '', window.location.pathname);
     }
 
-    // Writing cards click handlers
     document.querySelectorAll('.writing-card[data-article]').forEach(card => {
         card.addEventListener('click', () => openReader(card.dataset.article));
         card.setAttribute('tabindex', '0');
@@ -246,7 +319,6 @@
     readerClose.addEventListener('click', closeReader);
     readerOverlay.addEventListener('click', closeReader);
 
-    // Share button
     readerShare.addEventListener('click', async () => {
         const url = window.location.href;
         const title = readerArticle.querySelector('h1')?.textContent || 'Article';
@@ -262,7 +334,6 @@
         }
     });
 
-    // Handle hash on page load
     if (window.location.hash) {
         const articleId = window.location.hash.slice(1);
         if (document.getElementById(`article-${articleId}`)) {
@@ -270,7 +341,6 @@
         }
     }
 
-    // Back button support
     window.addEventListener('popstate', (e) => {
         if (e.state?.article) openReader(e.state.article);
         else if (readerModal.classList.contains('active')) closeReader();
@@ -279,13 +349,11 @@
     // Image error handling with better fallback
     document.querySelectorAll('.video-item img, .podcast-video img, .podcast-video-embed img').forEach(img => {
         img.addEventListener('error', function() {
-            // Try hqdefault if maxresdefault fails
             if (this.src.includes('maxresdefault')) {
                 this.src = this.src.replace('maxresdefault', 'hqdefault');
             } else if (this.src.includes('hqdefault')) {
                 this.src = this.src.replace('hqdefault', 'mqdefault');
             } else {
-                // Final fallback - show placeholder
                 this.style.display = 'none';
                 const placeholder = document.createElement('div');
                 placeholder.style.cssText = 'width:100%;height:100%;position:absolute;top:0;left:0;display:flex;align-items:center;justify-content:center;background:var(--color-bg-alt);color:var(--color-text-muted);font-size:0.85rem;';
@@ -304,11 +372,9 @@
     const lightboxNext = lightbox?.querySelector('.lightbox-next');
     const lightboxCounter = document.getElementById('lightbox-counter');
 
-    // Gallery images array for community section
     let galleryImages = [];
     let currentGalleryIndex = 0;
 
-    // Collect gallery items
     const galleryItems = document.querySelectorAll('.gallery-item[data-image]');
     galleryItems.forEach((item, index) => {
         galleryImages.push(item.dataset.image);
@@ -334,7 +400,6 @@
         if (lightboxCounter) {
             lightboxCounter.textContent = `${currentGalleryIndex + 1} / ${galleryImages.length}`;
         }
-        // Show/hide nav buttons
         if (lightboxPrev) {
             lightboxPrev.classList.toggle('hidden', galleryImages.length <= 1);
         }
@@ -361,13 +426,11 @@
         setTimeout(() => { if (lightboxImage) lightboxImage.src = ''; }, 300);
     }
 
-    // Lightbox navigation
     if (lightboxPrev) lightboxPrev.addEventListener('click', galleryPrevious);
     if (lightboxNext) lightboxNext.addEventListener('click', galleryNext);
     if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
     if (lightboxOverlay) lightboxOverlay.addEventListener('click', closeLightbox);
 
-    // Keyboard navigation for lightbox
     document.addEventListener('keydown', (e) => {
         if (lightbox?.classList.contains('active')) {
             if (e.key === 'ArrowLeft') galleryPrevious();
@@ -375,7 +438,6 @@
         }
     });
 
-    // Swipe support for lightbox
     if (lightbox) {
         let touchStartX = 0;
         lightbox.addEventListener('touchstart', (e) => { touchStartX = e.changedTouches[0].screenX; }, { passive: true });

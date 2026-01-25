@@ -226,20 +226,16 @@ section { padding: var(--section-spacing) 0; }
     .carousel-nav { gap: 1rem; }
 }
 
-/* Animated Films Grid - Larger tiles */
+/* Animated Films Carousel */
 .films { }
-.films-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; max-width: 1000px; margin: 0 auto; }
-.films-grid .video-item { aspect-ratio: 16 / 9; border-radius: 12px; }
-.films-grid .video-item img { border-radius: 12px; }
-@media (max-width: 900px) { .films-grid { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 560px) { .films-grid { grid-template-columns: 1fr; max-width: 500px; } }
+.films-carousel { max-width: 900px; margin: 0 auto; }
+.film-embed { width: 100%; aspect-ratio: 16 / 9; background: #000; display: block; border-radius: 16px; }
 
 /* Community Section */
 .community { background: var(--color-bg-alt); }
-.community-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+.community-layout-v2 { display: flex; flex-direction: column; gap: 1.5rem; }
 /* Widescreen Vimeo Embed */
 .community-video-wide {
-    grid-column: span 2;
     position: relative;
     border-radius: 16px;
     overflow: hidden;
@@ -250,28 +246,28 @@ section { padding: var(--section-spacing) 0; }
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 177.78vh; /* 16:9 aspect ratio hack to fill container */
+    width: 177.78vh;
     height: 100vh;
     min-width: 100%;
     min-height: 100%;
     transform: translate(-50%, -50%);
     border: none;
 }
-/* Sun-Times Article Link */
-.community-article-link {
+/* Murals Full Width Featured */
+.community-murals-featured {
     position: relative;
     border-radius: 16px;
     overflow: hidden;
-    aspect-ratio: 4 / 3;
+    aspect-ratio: 21 / 9;
     display: block;
 }
-.community-article-link img {
+.community-murals-featured img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     transition: transform var(--transition-slow), filter var(--transition-base);
 }
-.community-article-link:hover img { transform: scale(1.05); filter: brightness(0.85); }
+.community-murals-featured:hover img { transform: scale(1.03); filter: brightness(0.85); }
 .article-badge {
     position: absolute;
     bottom: 1rem;
@@ -286,14 +282,14 @@ section { padding: var(--section-spacing) 0; }
     text-transform: uppercase;
     letter-spacing: 0.03em;
 }
-/* 2x2 Image Gallery */
-.community-gallery { border-radius: 16px; overflow: hidden; }
-.gallery-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; }
+/* Side by side murals row */
+.community-murals-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
 .gallery-item {
     position: relative;
-    aspect-ratio: 1;
+    aspect-ratio: 16 / 10;
     cursor: pointer;
     overflow: hidden;
+    border-radius: 16px;
 }
 .gallery-item img {
     width: 100%;
@@ -301,23 +297,13 @@ section { padding: var(--section-spacing) 0; }
     object-fit: cover;
     transition: transform var(--transition-slow), filter var(--transition-base);
 }
-.gallery-item:hover img { transform: scale(1.08); filter: brightness(0.85); }
-.gallery-item::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: rgba(0,0,0,0);
-    transition: background var(--transition-fast);
-    pointer-events: none;
-}
-.gallery-item:hover::after { background: rgba(0,0,0,0.1); }
+.gallery-item:hover img { transform: scale(1.05); filter: brightness(0.85); }
 @media (max-width: 768px) {
-    .community-layout { grid-template-columns: 1fr; }
-    .community-video-wide { grid-column: span 1; aspect-ratio: 16 / 9; }
-    .community-article-link { aspect-ratio: 16 / 9; }
+    .community-video-wide { aspect-ratio: 16 / 9; }
+    .community-murals-featured { aspect-ratio: 16 / 9; }
 }
 @media (max-width: 480px) {
-    .gallery-grid { gap: 2px; }
+    .community-murals-row { grid-template-columns: 1fr; }
 }
 
 /* Writing Section */
@@ -349,8 +335,11 @@ section { padding: var(--section-spacing) 0; }
 
 /* Speaking */
 .speaking-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1rem; }
-.speaking-item { display: flex; justify-content: space-between; align-items: center; padding: 1.25rem 1.5rem; background: var(--color-bg-alt); border-radius: 12px; transition: all var(--transition-fast); border: 1px solid transparent; }
+.speaking-item { display: flex; align-items: center; gap: 0.75rem; padding: 1.25rem 1.5rem; background: var(--color-bg-alt); border-radius: 12px; transition: all var(--transition-fast); border: 1px solid transparent; }
 .speaking-item:hover { background: var(--color-bg); border-color: var(--color-border); transform: translateY(-2px); box-shadow: var(--shadow-sm); }
+.speaking-flag { font-size: 1.25rem; flex-shrink: 0; }
+.speaking-name { flex: 1; }
+.speaking-detail { margin-left: auto; }
 .speaking-name { font-family: var(--font-display); font-weight: 600; font-size: 0.95rem; letter-spacing: -0.01em; }
 .speaking-detail { font-size: 0.8rem; color: var(--color-accent); font-weight: 600; }
 
@@ -383,8 +372,9 @@ section { padding: var(--section-spacing) 0; }
 .contact-links { display: flex; flex-wrap: wrap; gap: 1rem; }
 .contact-link { display: inline-flex; align-items: center; gap: 0.5rem; padding: 1rem 1.75rem; border: 2px solid var(--color-border); border-radius: 12px; font-family: var(--font-display); font-weight: 600; font-size: 0.95rem; transition: all var(--transition-base); }
 .contact-link:hover { border-color: var(--color-accent); color: var(--color-accent); transform: translateY(-2px); }
-.contact-link-primary { background: var(--color-text); color: var(--color-bg); border-color: var(--color-text); }
+.contact-link-primary { background: var(--color-text); color: var(--color-bg); border-color: var(--color-text); cursor: pointer; }
 .contact-link-primary:hover { background: var(--color-accent); border-color: var(--color-accent); color: white; }
+.contact-email-btn { cursor: pointer; }
 .contact-photo img { width: 100%; border-radius: 16px; aspect-ratio: 1; object-fit: cover; transition: transform var(--transition-slow); }
 .contact-photo:hover img { transform: scale(1.02); }
 @media (max-width: 768px) {

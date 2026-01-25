@@ -71,10 +71,10 @@
                     </div>
                     <div class="about-bio">
                         <p class="about-text fade-in">
-                            Casey is a creative leader working at the intersection of storytelling, technology, and community. Over the past 20 years, his work has spanned design, education, filmmaking, and emerging technology, with a consistent focus on human-centered craft.
+                            Casey is an AI strategist and creative leader who believes the best technology should feel human. For two decades, he's been drawn to the places where storytelling meets innovation—whether that's designing products, teaching, making films, or figuring out how to throw a really good block party.
                         </p>
                         <p class="about-text fade-in">
-                            He currently leads AI and design at Docusign, helping teams use AI to enhance creativity and decision-making rather than replace it.
+                            Currently, he leads AI strategy and design at Docusign, where he helps teams think through how AI can support better decisions without losing the spark of human judgment. He's happiest when he can make complicated things feel simple—and maybe even a little fun.
                         </p>
                     </div>
                 </div>
@@ -192,19 +192,33 @@
                     <h2 class="section-title">Animated Films</h2>
                     <p class="section-subtitle">Short films from my graduate program exploring visual storytelling</p>
                 </div>
-                <div class="films-grid">
-                    <article class="video-item fade-in" data-video="https://vimeo.com/155846438">
-                        <img src="https://vumbnail.com/155846438.jpg" alt="Animated Film" loading="lazy">
-                        <div class="video-play"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"></polygon></svg></div>
-                    </article>
-                    <article class="video-item fade-in" data-video="https://vimeo.com/155010249">
-                        <img src="https://vumbnail.com/155010249.jpg" alt="Animated Film" loading="lazy">
-                        <div class="video-play"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"></polygon></svg></div>
-                    </article>
-                    <article class="video-item fade-in" data-video="https://vimeo.com/159410930">
-                        <img src="https://vumbnail.com/159410930.jpg" alt="Animated Film" loading="lazy">
-                        <div class="video-play"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"></polygon></svg></div>
-                    </article>
+                <div class="films-carousel fade-in">
+                    <div class="carousel-container">
+                        <div class="carousel-track" id="films-track">
+                            <div class="carousel-slide">
+                                <iframe class="film-embed" id="film-embed-1" src="https://player.vimeo.com/video/155846438?background=1&autoplay=0&loop=1&muted=1" frameborder="0" allow="autoplay; fullscreen" title="Animated Film 1"></iframe>
+                            </div>
+                            <div class="carousel-slide">
+                                <iframe class="film-embed" src="https://player.vimeo.com/video/155010249?title=0&byline=0&portrait=0" frameborder="0" allow="autoplay; fullscreen" title="Animated Film 2"></iframe>
+                            </div>
+                            <div class="carousel-slide">
+                                <iframe class="film-embed" src="https://player.vimeo.com/video/159410930?title=0&byline=0&portrait=0" frameborder="0" allow="autoplay; fullscreen" title="Animated Film 3"></iframe>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-nav">
+                        <button class="carousel-btn films-prev" aria-label="Previous film">
+                            <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none"><path d="M15 18l-6-6 6-6"/></svg>
+                        </button>
+                        <div class="carousel-dots films-dots">
+                            <button class="carousel-dot active" data-slide="0" aria-label="Go to film 1"></button>
+                            <button class="carousel-dot" data-slide="1" aria-label="Go to film 2"></button>
+                            <button class="carousel-dot" data-slide="2" aria-label="Go to film 3"></button>
+                        </div>
+                        <button class="carousel-btn films-next" aria-label="Next film">
+                            <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none"><path d="M9 18l6-6-6-6"/></svg>
+                        </button>
+                    </div>
                 </div>
             </div>
         </section>
@@ -218,7 +232,7 @@
                 </div>
                 <div class="writing-grid">
                     <article class="writing-card fade-in" data-article="oegads">
-                        <div class="writing-meta">Featured in <em>The UX of AI</em></div>
+                        <div class="writing-meta">Featured in <a href="https://www.amazon.com/UX-AI-Framework-Designing-AI-Driven/dp/1394345925" target="_blank" rel="noopener noreferrer"><em>UX of AI: A Framework for Designing AI-Driven Products</em></a></div>
                         <h3 class="writing-title">Oh Egads! Preserving Your Creative Voice in the Age of AI</h3>
                         <p class="writing-excerpt">How do we stay human in the age of AI? How do we retain our unique voice as AI tools can easily drown us out?</p>
                         <span class="writing-cta">Read essay <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
@@ -239,11 +253,11 @@
             </div>
         </section>
 
-        <!-- Podcasts Section -->
-        <section class="podcasts" id="podcasts">
+        <!-- Interviews Section -->
+        <section class="podcasts" id="interviews">
             <div class="container">
                 <div class="section-header fade-in">
-                    <h2 class="section-title">Podcasts</h2>
+                    <h2 class="section-title">Interviews</h2>
                     <p class="section-subtitle">Conversations about design, AI, and the future of work</p>
                 </div>
                 <div class="podcasts-grid">
@@ -279,15 +293,15 @@
                     <p class="section-subtitle">Keynotes and talks at conferences around the world</p>
                 </div>
                 <div class="speaking-grid">
-                    <div class="speaking-item fade-in"><span class="speaking-name">SXSW</span><span class="speaking-detail">3x Speaker</span></div>
-                    <div class="speaking-item fade-in"><span class="speaking-name">Design Matters Copenhagen</span><span class="speaking-detail">2023</span></div>
-                    <div class="speaking-item fade-in"><span class="speaking-name">UX STRAT</span><span class="speaking-detail">Keynote, 2023 & 2024</span></div>
-                    <div class="speaking-item fade-in"><span class="speaking-name">DDX Munich</span><span class="speaking-detail">Keynote, 2024</span></div>
-                    <div class="speaking-item fade-in"><span class="speaking-name">uxcon Vienna</span><span class="speaking-detail">2024</span></div>
-                    <div class="speaking-item fade-in"><span class="speaking-name">Gather Festival Stockholm</span><span class="speaking-detail">Keynote, 2022</span></div>
-                    <div class="speaking-item fade-in"><span class="speaking-name">IxDA Chicago</span><span class="speaking-detail">Host</span></div>
-                    <div class="speaking-item fade-in"><span class="speaking-name">General Assembly</span><span class="speaking-detail">Instructor</span></div>
-                    <div class="speaking-item fade-in"><span class="speaking-name">Stanford d.school</span><span class="speaking-detail">Apprentice</span></div>
+                    <div class="speaking-item fade-in"><span class="speaking-flag">🇺🇸</span><span class="speaking-name">SXSW</span><span class="speaking-detail">2018, 2019 & 2022</span></div>
+                    <div class="speaking-item fade-in"><span class="speaking-flag">🇩🇰</span><span class="speaking-name">Design Matters Copenhagen</span><span class="speaking-detail">2023</span></div>
+                    <div class="speaking-item fade-in"><span class="speaking-flag">🇺🇸</span><span class="speaking-name">UX STRAT</span><span class="speaking-detail">Keynote, 2023 & 2024</span></div>
+                    <div class="speaking-item fade-in"><span class="speaking-flag">🇩🇪</span><span class="speaking-name">DDX Munich</span><span class="speaking-detail">Keynote, 2024</span></div>
+                    <div class="speaking-item fade-in"><span class="speaking-flag">🇦🇹</span><span class="speaking-name">uxcon Vienna</span><span class="speaking-detail">2024</span></div>
+                    <div class="speaking-item fade-in"><span class="speaking-flag">🇸🇪</span><span class="speaking-name">Gather Festival Stockholm</span><span class="speaking-detail">Keynote, 2022</span></div>
+                    <div class="speaking-item fade-in"><span class="speaking-flag">🇺🇸</span><span class="speaking-name">IxDA Chicago</span><span class="speaking-detail">Host</span></div>
+                    <div class="speaking-item fade-in"><span class="speaking-flag">🇺🇸</span><span class="speaking-name">General Assembly</span><span class="speaking-detail">Instructor</span></div>
+                    <div class="speaking-item fade-in"><span class="speaking-flag">🇺🇸</span><span class="speaking-name">Stanford d.school</span><span class="speaking-detail">Apprentice</span></div>
                 </div>
             </div>
         </section>
@@ -323,31 +337,23 @@
                     <h2 class="section-title">Community</h2>
                     <p class="section-subtitle">Building connections and making a difference in the neighborhood</p>
                 </div>
-                <div class="community-layout">
+                <div class="community-layout-v2">
                     <!-- Widescreen Vimeo Embed with autoplay -->
                     <div class="community-video-wide fade-in" id="community-video">
                         <iframe src="https://player.vimeo.com/video/1025455397?h=8ea11edad6&background=1&autoplay=0&loop=1&muted=1&controls=0" frameborder="0" allow="autoplay; fullscreen" title="Bike Bus"></iframe>
                     </div>
-                    <!-- Murals - Links to Sun-Times story -->
-                    <a href="https://chicago.suntimes.com/murals-mosaics/2024/08/30/chicago-murals-ryan-tova-katz-wendt-park-nettelhorst-school" target="_blank" rel="noopener noreferrer" class="community-article-link fade-in">
+                    <!-- Murals - Full width, links to Sun-Times story -->
+                    <a href="https://chicago.suntimes.com/murals-mosaics/2024/08/30/chicago-murals-ryan-tova-katz-wendt-park-nettelhorst-school" target="_blank" rel="noopener noreferrer" class="community-murals-featured fade-in">
                         <img src="images/murals.jpg" alt="Chicago Murals" loading="lazy">
                         <span class="article-badge">Sun-Times Article</span>
                     </a>
-                    <!-- 2x2 Image Grid with Gallery -->
-                    <div class="community-gallery fade-in">
-                        <div class="gallery-grid">
-                            <div class="gallery-item" data-index="0" data-image="images/murals-2.jpg">
-                                <img src="images/murals-2.jpg" alt="Chicago Murals" loading="lazy">
-                            </div>
-                            <div class="gallery-item" data-index="1" data-image="images/murals-3.jpg">
-                                <img src="images/murals-3.jpg" alt="Chicago Murals" loading="lazy">
-                            </div>
-                            <div class="gallery-item" data-index="2" data-image="images/trees-infographic.jpg">
-                                <img src="images/trees-infographic.jpg" alt="New trees in the neighborhood" loading="lazy">
-                            </div>
-                            <div class="gallery-item" data-index="3" data-image="images/block-party.jpg">
-                                <img src="images/block-party.jpg" alt="Block party flyer" loading="lazy">
-                            </div>
+                    <!-- Two murals side by side -->
+                    <div class="community-murals-row fade-in">
+                        <div class="gallery-item" data-index="0" data-image="images/murals-2.jpg">
+                            <img src="images/murals-2.jpg" alt="Chicago Murals" loading="lazy">
+                        </div>
+                        <div class="gallery-item" data-index="1" data-image="images/murals-3.jpg">
+                            <img src="images/murals-3.jpg" alt="Chicago Murals" loading="lazy">
                         </div>
                     </div>
                 </div>
@@ -362,7 +368,10 @@
                         <h2 class="section-title">Get in Touch</h2>
                         <p class="contact-intro">Interested in speaking engagements, collaboration, or just want to say hello?</p>
                         <div class="contact-links">
-                            <a href="mailto:caseymhudetz@gmail.com" class="contact-link contact-link-primary"><span>caseymhudetz@gmail.com</span></a>
+                            <button class="contact-link contact-link-primary contact-email-btn" id="contact-copy-email" data-email="caseymhudetz@gmail.com">
+                                <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                                <span>caseymhudetz@gmail.com</span>
+                            </button>
                             <a href="https://www.linkedin.com/in/hudetz/" target="_blank" rel="noopener noreferrer" class="contact-link"><span>LinkedIn</span><svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></a>
                         </div>
                     </div>
@@ -413,7 +422,7 @@
 
     <!-- Article Templates -->
     <template id="article-oegads">
-        <div class="article-meta">Featured essay in <em>The UX of AI</em></div>
+        <div class="article-meta">Featured essay in <a href="https://www.amazon.com/UX-AI-Framework-Designing-AI-Driven/dp/1394345925" target="_blank" rel="noopener noreferrer"><em>UX of AI: A Framework for Designing AI-Driven Products</em></a></div>
         <h1>Oh Egads! Preserving Your Creative Voice in the Age of AI</h1>
         <p class="article-lead">Before any formal event I have to Google: How to Tie a Tie. I check Google Maps before heading to places I've been countless times. The reason I admit to this slightly embarrassing trait is because I know I'm not alone. There's actually a scientific term for this phenomenon of outsourcing memory to the internet: Digital Amnesia, or The Google Effect.</p>
         <p>I really don't mind that my hippocampus is part cloud-based now. But lately I've noticed something else that is being impacted by new technology: My creative process.</p>
