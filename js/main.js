@@ -129,7 +129,7 @@
     }
 
     // Video items click handlers
-    document.querySelectorAll('.video-item[data-video], .podcast-video[data-video], .podcast-video-embed[data-video], .community-video-item[data-video]').forEach(item => {
+    document.querySelectorAll('.video-item[data-video], .podcast-video[data-video], .podcast-video-embed[data-video], .community-video-item[data-video], .fta-video-embed[data-video]').forEach(item => {
         item.addEventListener('click', () => openVideoModal(item.dataset.video));
         item.setAttribute('tabindex', '0');
         item.setAttribute('role', 'button');

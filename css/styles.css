@@ -231,6 +231,50 @@ section { padding: var(--section-spacing) 0; }
 .films-carousel { max-width: 900px; margin: 0 auto; }
 .film-embed { width: 100%; aspect-ratio: 16 / 9; background: #000; display: block; border-radius: 16px; }
 
+/* For the Ages Section */
+.for-the-ages { background: var(--color-bg-alt); }
+.fta-content { max-width: 900px; margin: 0 auto; }
+.fta-description { font-size: 1.1rem; line-height: 1.7; color: var(--color-text-muted); margin-bottom: 2.5rem; text-align: center; }
+.fta-description em { color: var(--color-text); font-style: italic; }
+.fta-videos { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+.fta-video { text-align: center; }
+.fta-video-embed {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    border-radius: 16px;
+    overflow: hidden;
+    cursor: pointer;
+    background: #000;
+}
+.fta-video-embed img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-slow), filter var(--transition-base);
+}
+.fta-video-embed:hover img { transform: scale(1.05); filter: brightness(0.7); }
+.fta-video-embed .video-play {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 64px;
+    height: 64px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+.fta-video-embed .video-play svg { width: 24px; height: 24px; color: var(--color-text); margin-left: 3px; }
+.fta-video-embed:hover .video-play { transform: translate(-50%, -50%) scale(1.1); box-shadow: 0 8px 30px rgba(0,0,0,0.3); }
+.fta-video-title { font-family: var(--font-display); font-size: 1.1rem; font-weight: 600; margin-top: 1rem; }
+.fta-video-desc { font-size: 0.9rem; color: var(--color-text-muted); margin-top: 0.25rem; }
+@media (max-width: 600px) {
+    .fta-videos { grid-template-columns: 1fr; gap: 1.5rem; }
+}
+
 /* Community Section */
 .community { background: var(--color-bg-alt); }
 .community-layout-v2 { display: flex; flex-direction: column; gap: 1.5rem; }
@@ -253,6 +297,20 @@ section { padding: var(--section-spacing) 0; }
     transform: translate(-50%, -50%);
     border: none;
 }
+.video-credit {
+    position: absolute;
+    bottom: 0.75rem;
+    right: 1rem;
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.7);
+    z-index: 10;
+}
+.video-credit a {
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+.video-credit a:hover { color: white; }
 /* Murals Full Width Featured */
 .community-murals-featured {
     position: relative;
