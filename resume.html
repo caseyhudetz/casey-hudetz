@@ -46,6 +46,12 @@
         .resume-header .subtitle {
             font-size: 1rem;
             color: #666;
+            margin-bottom: 8px;
+        }
+
+        .resume-header .contact-info {
+            font-size: 0.875rem;
+            color: #888;
             margin-bottom: 24px;
         }
 
@@ -78,12 +84,14 @@
         }
 
         .section-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.25rem;
+            font-size: 0.75rem;
             font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #c45a2c;
             margin-bottom: 20px;
             padding-bottom: 8px;
-            border-bottom: 2px solid #1a1a1a;
+            border-bottom: 1px solid #e5e5e5;
         }
 
         /* Summary */
@@ -95,6 +103,9 @@
 
         /* Experience */
         .experience-item {
+            display: grid;
+            grid-template-columns: 140px 1fr;
+            gap: 24px;
             margin-bottom: 28px;
         }
 
@@ -102,28 +113,25 @@
             margin-bottom: 0;
         }
 
-        .experience-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            flex-wrap: wrap;
-            gap: 8px;
+        .experience-meta {
+            font-size: 0.875rem;
+            color: #666;
+        }
+
+        .experience-dates {
             margin-bottom: 4px;
+        }
+
+        .experience-company {
+            font-weight: 500;
+        }
+
+        .experience-content {
         }
 
         .experience-title {
             font-weight: 600;
             font-size: 1rem;
-        }
-
-        .experience-dates {
-            font-size: 0.875rem;
-            color: #666;
-        }
-
-        .experience-company {
-            font-size: 0.9375rem;
-            color: #666;
             margin-bottom: 8px;
         }
 
@@ -141,20 +149,11 @@
             margin-bottom: 4px;
         }
 
-        /* Speaking Venues */
-        .venues-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-            gap: 8px 24px;
-        }
-
-        .venue-item {
-            font-size: 0.9375rem;
-            color: #444;
-        }
-
         /* Education */
         .education-item {
+            display: grid;
+            grid-template-columns: 140px 1fr;
+            gap: 24px;
             margin-bottom: 16px;
         }
 
@@ -162,45 +161,64 @@
             margin-bottom: 0;
         }
 
+        .education-school {
+            font-size: 0.875rem;
+            color: #666;
+        }
+
+        .education-content {
+        }
+
         .education-degree {
             font-weight: 600;
             font-size: 1rem;
         }
 
-        .education-school {
-            font-size: 0.9375rem;
+        .education-type {
+            font-size: 0.875rem;
             color: #666;
         }
 
-        /* Skills */
-        .skills-grid {
+        /* Skills/Expertise */
+        .expertise-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-            gap: 8px 24px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
         }
 
-        .skill-item {
+        .expertise-category h3 {
+            font-size: 0.8125rem;
+            font-weight: 500;
+            color: #888;
+            margin-bottom: 12px;
+        }
+
+        .expertise-category p {
             font-size: 0.9375rem;
             color: #444;
+            line-height: 1.6;
         }
 
         /* Recognition */
         .recognition-item {
-            margin-bottom: 12px;
+            display: grid;
+            grid-template-columns: 140px 1fr;
+            gap: 24px;
+            margin-bottom: 16px;
         }
 
         .recognition-item:last-child {
             margin-bottom: 0;
         }
 
-        .recognition-title {
-            font-weight: 600;
-            font-size: 0.9375rem;
-        }
-
-        .recognition-details {
+        .recognition-year {
             font-size: 0.875rem;
             color: #666;
+        }
+
+        .recognition-title {
+            font-weight: 600;
+            font-size: 1rem;
         }
 
         /* Back Link */
@@ -255,14 +273,16 @@
                 font-size: 2rem;
             }
 
-            .experience-header {
-                flex-direction: column;
-                gap: 2px;
+            .experience-item,
+            .education-item,
+            .recognition-item {
+                grid-template-columns: 1fr;
+                gap: 4px;
             }
 
-            .venues-grid,
-            .skills-grid {
-                grid-template-columns: 1fr 1fr;
+            .expertise-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
             }
         }
     </style>
@@ -279,6 +299,7 @@
         <header class="resume-header">
             <h1>Casey Hudetz</h1>
             <p class="subtitle">Design Leader · AI Strategist · Keynote Speaker</p>
+            <p class="contact-info">caseymhudetz@gmail.com · linkedin.com/in/hudetz · caseyhudetz.com · Chicago, IL</p>
             <a href="casey-hudetz-resume.pdf" class="download-btn" download>
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
@@ -290,97 +311,133 @@
         </header>
 
         <section class="section summary">
-            <h2 class="section-title">Summary</h2>
-            <p>Design executive with 15+ years leading product design, research, and AI strategy for enterprise organizations. Known for translating emerging technology into human-centered experiences, building high-performing design teams, and delivering keynotes on design leadership and AI. Currently focused on the intersection of generative AI and enterprise design systems.</p>
+            <p>Senior Manager of Product Design at Docusign, leading teams at the intersection of AI and human-centered design. With a background in HCI, filmmaking, and teaching, I bring a rare mix of technical insight and storytelling to building digital products. Internationally recognized keynote speaker on AI, design, and speculative futures — from SXSW to Design Matters Copenhagen. My nonlinear path — from Peace Corps Paraguay to UX and emerging technology — shapes an empathetic, systems-minded approach to leadership and craft.</p>
         </section>
 
         <section class="section">
             <h2 class="section-title">Experience</h2>
 
             <div class="experience-item">
-                <div class="experience-header">
-                    <span class="experience-title">Senior Director, Product Design</span>
-                    <span class="experience-dates">2023 - Present</span>
+                <div class="experience-meta">
+                    <div class="experience-dates">2023 – Present</div>
+                    <div class="experience-company">Docusign</div>
                 </div>
-                <div class="experience-company">Docusign · San Francisco, CA (Remote)</div>
-                <div class="experience-description">
-                    <ul>
-                        <li>Lead design strategy for AI-powered agreement experiences across the Docusign platform</li>
-                        <li>Manage and mentor a team of 12 designers and researchers</li>
-                        <li>Established AI design principles and governance framework adopted company-wide</li>
-                    </ul>
+                <div class="experience-content">
+                    <div class="experience-title">Senior Manager, Product Design</div>
+                    <div class="experience-description">
+                        Leading a team of five designers across 10+ product areas including AI features, Negotiation, Reporting, Notifications, Data Onboarding, and Metadata. Building high-agency design culture, scaling design systems, and integrating AI tooling through programs like the AI Accelerator and Product Builder initiative.
+                    </div>
                 </div>
             </div>
 
             <div class="experience-item">
-                <div class="experience-header">
-                    <span class="experience-title">Director, Product Design</span>
-                    <span class="experience-dates">2021 - 2023</span>
+                <div class="experience-meta">
+                    <div class="experience-dates">2022 – 2023</div>
+                    <div class="experience-company">Docusign</div>
                 </div>
-                <div class="experience-company">Docusign · San Francisco, CA (Remote)</div>
-                <div class="experience-description">
-                    <ul>
-                        <li>Led end-to-end design for CLM and agreement workflow products</li>
-                        <li>Drove design system adoption increasing team velocity by 40%</li>
-                        <li>Partnered with product and engineering to ship 3 major product launches</li>
-                    </ul>
+                <div class="experience-content">
+                    <div class="experience-title">Product Design Manager</div>
+                    <div class="experience-description">
+                        Managed cross-functional design work for core product areas, establishing team rituals, design standards, and partnerships with product and engineering.
+                    </div>
                 </div>
             </div>
 
             <div class="experience-item">
-                <div class="experience-header">
-                    <span class="experience-title">Keynote Speaker & Workshop Facilitator</span>
-                    <span class="experience-dates">2014 - Present</span>
+                <div class="experience-meta">
+                    <div class="experience-dates">2021 – 2022</div>
+                    <div class="experience-company">Docusign</div>
                 </div>
-                <div class="experience-company">Independent</div>
-                <div class="experience-description">
-                    <ul>
-                        <li>Delivered 50+ keynotes and workshops on design leadership, AI strategy, and creative technology</li>
-                        <li>Featured speaker at SXSW, Web Summit, Figma Config, and Fortune 500 events</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="experience-item">
-                <div class="experience-header">
-                    <span class="experience-title">Associate Design Director</span>
-                    <span class="experience-dates">2018 - 2021</span>
-                </div>
-                <div class="experience-company">Digitas · Chicago, IL</div>
-                <div class="experience-description">
-                    <ul>
-                        <li>Led experience design for enterprise clients including United Airlines, Allstate, and Carnival</li>
-                        <li>Built and managed a team of 8 UX designers and content strategists</li>
-                    </ul>
+                <div class="experience-content">
+                    <div class="experience-title">Senior Product Designer</div>
+                    <div class="experience-description">
+                        Individual contributor designing experiences for core agreement workflow products, contributing to the Ink design system.
+                    </div>
                 </div>
             </div>
 
             <div class="experience-item">
-                <div class="experience-header">
-                    <span class="experience-title">Lead UX Instructor</span>
-                    <span class="experience-dates">2016 - 2019</span>
+                <div class="experience-meta">
+                    <div class="experience-dates">2014 – Present</div>
+                    <div class="experience-company">Independent</div>
                 </div>
-                <div class="experience-company">General Assembly · Chicago, IL</div>
-                <div class="experience-description">
-                    <ul>
-                        <li>Taught UX design fundamentals, prototyping, and research methods</li>
-                        <li>Mentored 100+ students transitioning into design careers</li>
-                    </ul>
+                <div class="experience-content">
+                    <div class="experience-title">International Keynote Speaker / Trainer / Event Host</div>
+                    <div class="experience-description">
+                        Speaking and facilitating on AI, design, public speaking, and speculative futures. Contributing author, The UX of AI. Developer of the BEAR Test AI evaluation framework.
+                        <ul>
+                            <li>SXSW (×3), Gather Festival Stockholm, Design Matters Copenhagen, UXCon Vienna</li>
+                            <li>STRAT (×2), DDX, HCI International, IxDA, Speculative Futures</li>
+                            <li>Deloitte Digital, Sloan Kettering Cancer Center, Pratt Institute, DePaul University</li>
+                            <li>Semester at Sea, Stanford University, General Assembly, Docusign Tech Connect</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-        </section>
 
-        <section class="section">
-            <h2 class="section-title">Selected Speaking Venues</h2>
-            <div class="venues-grid">
-                <span class="venue-item">SXSW</span>
-                <span class="venue-item">Web Summit</span>
-                <span class="venue-item">Figma Config</span>
-                <span class="venue-item">Design Leadership Summit</span>
-                <span class="venue-item">UX Copenhagen</span>
-                <span class="venue-item">Chicago Ideas Week</span>
-                <span class="venue-item">Midwest UX</span>
-                <span class="venue-item">Fortune 500 Events</span>
+            <div class="experience-item">
+                <div class="experience-meta">
+                    <div class="experience-dates">2017 – 2021</div>
+                    <div class="experience-company">Digitas North America</div>
+                </div>
+                <div class="experience-content">
+                    <div class="experience-title">Senior Experience Designer</div>
+                    <div class="experience-description">
+                        Led UX strategy and design for enterprise digital products and campaigns, partnering with product, technology, and strategy teams across major brand accounts.
+                    </div>
+                </div>
+            </div>
+
+            <div class="experience-item">
+                <div class="experience-meta">
+                    <div class="experience-dates">2018 – 2021</div>
+                    <div class="experience-company">General Assembly</div>
+                </div>
+                <div class="experience-content">
+                    <div class="experience-title">Design Instructor</div>
+                    <div class="experience-description">
+                        Taught UX design fundamentals, research methods, and portfolio development for career-changers and emerging designers.
+                    </div>
+                </div>
+            </div>
+
+            <div class="experience-item">
+                <div class="experience-meta">
+                    <div class="experience-dates">2016 – 2017</div>
+                    <div class="experience-company">MCD Partners</div>
+                </div>
+                <div class="experience-content">
+                    <div class="experience-title">User Experience Designer</div>
+                    <div class="experience-description">
+                        Designed digital experiences for financial services clients, contributing to strategy, wireframing, and interaction design.
+                    </div>
+                </div>
+            </div>
+
+            <div class="experience-item">
+                <div class="experience-meta">
+                    <div class="experience-dates">2014 – 2016</div>
+                    <div class="experience-company">DePaul University</div>
+                </div>
+                <div class="experience-content">
+                    <div class="experience-title">Instructional Designer</div>
+                    <div class="experience-description">
+                        Designed and developed online learning experiences for university curricula, applying UX and multimedia production skills.
+                    </div>
+                </div>
+            </div>
+
+            <div class="experience-item">
+                <div class="experience-meta">
+                    <div class="experience-dates">2007 – 2011</div>
+                    <div class="experience-company">Francis Parker School</div>
+                </div>
+                <div class="experience-content">
+                    <div class="experience-title">Multimedia & Technology Instructor</div>
+                    <div class="experience-description">
+                        Taught filmmaking, digital media, and technology to middle and high school students.
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -388,46 +445,59 @@
             <h2 class="section-title">Education</h2>
 
             <div class="education-item">
-                <div class="education-degree">M.S. Human-Computer Interaction</div>
-                <div class="education-school">DePaul University · Chicago, IL</div>
+                <div class="education-school">DePaul University</div>
+                <div class="education-content">
+                    <div class="education-degree">M.S., Human-Computer Interaction</div>
+                </div>
             </div>
 
             <div class="education-item">
-                <div class="education-degree">B.A. Psychology</div>
-                <div class="education-school">DePaul University · Chicago, IL</div>
+                <div class="education-school">DePaul University</div>
+                <div class="education-content">
+                    <div class="education-degree">B.A., Psychology</div>
+                </div>
             </div>
 
             <div class="education-item">
-                <div class="education-degree">Professional Certificate in AI Strategy</div>
-                <div class="education-school">MIT Sloan School of Management</div>
+                <div class="education-school">MIT</div>
+                <div class="education-content">
+                    <div class="education-degree">AI: Implications for Business Strategy</div>
+                    <div class="education-type">Certificate</div>
+                </div>
             </div>
 
             <div class="education-item">
-                <div class="education-degree">Executive Education Certificate</div>
-                <div class="education-school">Harvard Business School</div>
+                <div class="education-school">Harvard Business School Online</div>
+                <div class="education-content">
+                    <div class="education-degree">Management Essentials</div>
+                    <div class="education-type">Certificate</div>
+                </div>
             </div>
 
             <div class="education-item">
-                <div class="education-degree">Mini-MBA Program</div>
                 <div class="education-school">Loyola University Chicago</div>
+                <div class="education-content">
+                    <div class="education-degree">Mini-MBA, Quinlan School of Business</div>
+                    <div class="education-type">Certificate</div>
+                </div>
             </div>
         </section>
 
         <section class="section">
-            <h2 class="section-title">Skills</h2>
-            <div class="skills-grid">
-                <span class="skill-item">Design Strategy</span>
-                <span class="skill-item">AI/ML Product Design</span>
-                <span class="skill-item">Team Leadership</span>
-                <span class="skill-item">Design Systems</span>
-                <span class="skill-item">User Research</span>
-                <span class="skill-item">Prototyping</span>
-                <span class="skill-item">Workshop Facilitation</span>
-                <span class="skill-item">Public Speaking</span>
-                <span class="skill-item">Executive Communication</span>
-                <span class="skill-item">Figma</span>
-                <span class="skill-item">Design Ops</span>
-                <span class="skill-item">Agile/Scrum</span>
+            <h2 class="section-title">Areas of Expertise</h2>
+            <div class="expertise-grid">
+                <div class="expertise-category">
+                    <h3>Design Leadership</h3>
+                    <p>Team development · Design strategy · Design systems · Cross-functional partnerships</p>
+                </div>
+                <div class="expertise-category">
+                    <h3>AI & Emerging Tech</h3>
+                    <p>AI product design · Prototyping (V0, Claude) · AI evaluation frameworks · Human-AI interaction</p>
+                </div>
+                <div class="expertise-category">
+                    <h3>Communication</h3>
+                    <p>Keynote speaking · Workshop facilitation · Executive storytelling · Writing & thought leadership</p>
+                </div>
             </div>
         </section>
 
@@ -435,18 +505,18 @@
             <h2 class="section-title">Recognition</h2>
 
             <div class="recognition-item">
-                <div class="recognition-title">Design Leader of the Year Nominee</div>
-                <div class="recognition-details">Design Leadership Summit · 2023</div>
+                <div class="recognition-year">2025</div>
+                <div class="recognition-title">Docusign Hackathon Winner</div>
             </div>
 
             <div class="recognition-item">
-                <div class="recognition-title">Webby Award - Best User Experience</div>
-                <div class="recognition-details">Webby Awards · 2020</div>
+                <div class="recognition-year">2020</div>
+                <div class="recognition-title">Publicis Groupe Hackathon Winner</div>
             </div>
 
             <div class="recognition-item">
-                <div class="recognition-title">40 Under 40 in Design</div>
-                <div class="recognition-details">Chicago Design Museum · 2019</div>
+                <div class="recognition-year">DePaul University</div>
+                <div class="recognition-title">Outstanding Senior Leader · Vincentian Endowment Fund Grant · Implicit Bias Research Study Grant</div>
             </div>
         </section>
     </div>
