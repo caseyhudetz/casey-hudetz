@@ -13,7 +13,7 @@
     const readerModal = document.getElementById('reader-modal');
     const readerOverlay = readerModal.querySelector('.reader-overlay');
     const readerClose = readerModal.querySelector('.reader-close');
-    const readerShare = readerModal.querySelector('.reader-share');
+    const readerShare = document.querySelector('.reader-share');
     const readerArticle = document.getElementById('reader-article');
 
     // Email copy-to-clipboard functionality (hero section)
@@ -459,4 +459,11 @@
             if (lightbox?.classList.contains('active')) closeLightbox();
         }
     });
+})();
+
+(function loadNeighborhoodExperiments() {
+    const script = document.createElement('script');
+    script.src = 'js/neighborhood-experiments.js';
+    script.defer = true;
+    document.body.appendChild(script);
 })();
