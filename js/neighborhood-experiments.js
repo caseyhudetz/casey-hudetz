@@ -1,8 +1,8 @@
 (function () {
     'use strict';
 
-    const communitySection = document.getElementById('community');
-    if (!communitySection || document.getElementById('neighborhood-experiments')) return;
+    const aboutSection = document.getElementById('about');
+    if (!aboutSection || document.getElementById('neighborhood-experiments')) return;
 
     const style = document.createElement('style');
     style.textContent = `
@@ -17,6 +17,9 @@
             margin-top: 3rem;
         }
         .neighborhood-card {
+            position: relative;
+            isolation: isolate;
+            overflow: hidden;
             display: flex;
             flex-direction: column;
             min-height: 340px;
@@ -28,10 +31,26 @@
             text-decoration: none;
             transition: transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease;
         }
+        .neighborhood-card::before {
+            content: '';
+            position: absolute;
+            z-index: -1;
+            inset: 0;
+            background-image: var(--neighborhood-image);
+            background-position: center;
+            background-size: cover;
+            opacity: 0.13;
+            filter: grayscale(1) contrast(0.85);
+            transition: opacity 220ms ease, transform 350ms ease;
+        }
         .neighborhood-card:hover {
             transform: translateY(-5px);
             border-color: var(--color-accent);
             box-shadow: 0 18px 45px rgba(0,0,0,0.08);
+        }
+        .neighborhood-card:hover::before {
+            opacity: 0.18;
+            transform: scale(1.02);
         }
         .neighborhood-card-kicker {
             margin-bottom: auto;
@@ -97,21 +116,21 @@
                 <p class="section-subtitle">Small tools for understanding and improving the place where I live</p>
             </div>
             <div class="neighborhood-grid">
-                <a class="neighborhood-card" href="https://stump.caseymhudetz.workers.dev" target="_blank" rel="noopener noreferrer">
+                <a class="neighborhood-card" href="https://stump.hudetz.workers.dev" target="_blank" rel="noopener noreferrer" style="--neighborhood-image: url('images/neighborhood/stump.jpg')">
                     <span class="neighborhood-card-kicker">Trees + 311</span>
                     <h3>Stump</h3>
                     <p class="neighborhood-question">Why doesn’t removing a tree automatically start the process of replacing it?</p>
                     <p class="neighborhood-description">Tracks Chicago tree removals and planting requests to expose the gap between taking a tree down and putting one back.</p>
                     <span class="neighborhood-link">Explore Stump ↗</span>
                 </a>
-                <a class="neighborhood-card" href="https://gone.caseymhudetz.workers.dev" target="_blank" rel="noopener noreferrer">
+                <a class="neighborhood-card" href="https://gone.hudetz.workers.dev" target="_blank" rel="noopener noreferrer" style="--neighborhood-image: url('images/neighborhood/gone.jpg')">
                     <span class="neighborhood-card-kicker">311 + computer vision</span>
                     <h3>Gone</h3>
                     <p class="neighborhood-question">What if reporting a neighborhood problem took one photograph?</p>
                     <p class="neighborhood-description">Photograph graffiti, a missing tree or another street-level problem. Gone identifies the issue and prepares the right 311 request.</p>
                     <span class="neighborhood-link">Explore Gone ↗</span>
                 </a>
-                <a class="neighborhood-card" href="https://github.com/caseyhudetz/jurisdiction" target="_blank" rel="noopener noreferrer">
+                <a class="neighborhood-card" href="https://jurisdiction.hudetz.workers.dev" target="_blank" rel="noopener noreferrer" style="--neighborhood-image: url('images/neighborhood/jurisdiction.jpg')">
                     <span class="neighborhood-card-kicker">Civic systems + maps</span>
                     <h3>Jurisdiction</h3>
                     <p class="neighborhood-question">Who actually controls this spot?</p>
@@ -123,5 +142,5 @@
         </div>
     `;
 
-    communitySection.parentNode.insertBefore(section, communitySection);
+    aboutSection.parentNode.insertBefore(section, aboutSection.nextSibling);
 })();
