@@ -89,8 +89,9 @@
             font-weight: 600;
             color: var(--color-accent);
         }
-        .neighborhood-feature {
-            margin-top: 2rem;
+        .cross-broadway-feature {
+            padding: 5rem 0 7rem;
+            background: var(--color-bg);
         }
         .neighborhood-api-note {
             max-width: 820px;
@@ -141,7 +142,16 @@
                     <span class="neighborhood-link">Explore Jurisdiction ↗</span>
                 </a>
             </div>
-            <a href="https://crossing-broadway.hudetz.workers.dev/" target="_blank" rel="noopener noreferrer" class="experiment-card neighborhood-feature fade-in visible" aria-label="Play Cross Broadway, opens in a new tab">
+            <p class="neighborhood-api-note fade-in visible"><strong>Working experiments, not finished products.</strong> Direct access to Chicago’s APIs would let these move from explaining and preparing civic actions to actually initiating them.</p>
+        </div>
+    `;
+
+    const crossSection = document.createElement('section');
+    crossSection.className = 'cross-broadway-feature';
+    crossSection.setAttribute('aria-label', 'Cross Broadway');
+    crossSection.innerHTML = `
+        <div class="container">
+            <a href="https://crossing-broadway.hudetz.workers.dev/" target="_blank" rel="noopener noreferrer" class="experiment-card fade-in visible" aria-label="Play Cross Broadway, opens in a new tab">
                 <div class="experiment-media">
                     <img src="images/cross-broadway.png" alt="Cross Broadway game showing traffic moving through Lakeview streets" loading="lazy">
                     <span class="experiment-badge">Interactive game</span>
@@ -153,9 +163,9 @@
                     <span class="experiment-cta">Play the game <span aria-hidden="true">↗</span></span>
                 </div>
             </a>
-            <p class="neighborhood-api-note fade-in visible"><strong>Working experiments, not finished products.</strong> Direct access to Chicago’s APIs would let these move from explaining and preparing civic actions to actually initiating them.</p>
         </div>
     `;
 
     aboutSection.parentNode.insertBefore(section, aboutSection.nextSibling);
+    section.parentNode.insertBefore(crossSection, section.nextSibling);
 })();
