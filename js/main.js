@@ -107,14 +107,27 @@
 
     // Video Modal
     function openVideoModal(videoUrl) {
-        const embedUrl = getVideoEmbedUrl(videoUrl);
-        if (!embedUrl) return;
-        const iframe = document.createElement('iframe');
-        iframe.src = embedUrl;
-        iframe.setAttribute('allow', 'autoplay; fullscreen; picture-in-picture');
-        iframe.setAttribute('allowfullscreen', '');
+        const isDirectVideo = /\.(mp4|webm|ogg)(?:[?#]|$)/i.test(videoUrl);
         modalVideoContainer.innerHTML = '';
-        modalVideoContainer.appendChild(iframe);
+
+        if (isDirectVideo) {
+            const video = document.createElement('video');
+            video.src = videoUrl;
+            video.controls = true;
+            video.autoplay = true;
+            video.playsInline = true;
+            video.preload = 'metadata';
+            modalVideoContainer.appendChild(video);
+        } else {
+            const embedUrl = getVideoEmbedUrl(videoUrl);
+            if (!embedUrl) return;
+            const iframe = document.createElement('iframe');
+            iframe.src = embedUrl;
+            iframe.setAttribute('allow', 'autoplay; fullscreen; picture-in-picture');
+            iframe.setAttribute('allowfullscreen', '');
+            modalVideoContainer.appendChild(iframe);
+        }
+
         modal.classList.add('active');
         modal.setAttribute('aria-hidden', 'false');
         document.body.classList.add('modal-open');
