@@ -89,6 +89,9 @@
             font-weight: 600;
             color: var(--color-accent);
         }
+        .neighborhood-feature {
+            margin-top: 2rem;
+        }
         .neighborhood-api-note {
             max-width: 820px;
             margin: 2.25rem auto 0;
@@ -138,6 +141,18 @@
                     <span class="neighborhood-link">Explore Jurisdiction ↗</span>
                 </a>
             </div>
+            <a href="https://crossing-broadway.hudetz.workers.dev/" target="_blank" rel="noopener noreferrer" class="experiment-card neighborhood-feature fade-in visible" aria-label="Play Cross Broadway, opens in a new tab">
+                <div class="experiment-media">
+                    <img src="images/cross-broadway.png" alt="Cross Broadway game showing traffic moving through Lakeview streets" loading="lazy">
+                    <span class="experiment-badge">Interactive game</span>
+                </div>
+                <div class="experiment-body">
+                    <div class="experiment-meta">Broadway · Lakeview, Chicago</div>
+                    <h3 class="experiment-title">Cross Broadway</h3>
+                    <p class="experiment-description">A playful civic experiment about the danger of crossing Broadway on foot. Make it from Cornelia to Belmont as traffic accelerates at every corner, then explore the real crash data behind the game.</p>
+                    <span class="experiment-cta">Play the game <span aria-hidden="true">↗</span></span>
+                </div>
+            </a>
             <p class="neighborhood-api-note fade-in visible"><strong>Working experiments, not finished products.</strong> Direct access to Chicago’s APIs would let these move from explaining and preparing civic actions to actually initiating them.</p>
         </div>
     `;
