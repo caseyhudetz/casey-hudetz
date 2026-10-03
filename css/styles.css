@@ -361,9 +361,26 @@ section { padding: var(--section-spacing) 0; }
     font-size: 0.9rem;
     font-weight: 700;
 }
+/* East Lakeview Ledger */
+.ledger-card {
+    grid-template-columns: minmax(280px, 0.82fr) minmax(0, 1.18fr);
+}
+.ledger-card .experiment-media {
+    min-height: 0;
+    aspect-ratio: 1217 / 1600;
+    background: #f8f5ed;
+}
+.ledger-card .experiment-media img {
+    object-fit: cover;
+}
 @media (max-width: 850px) {
-    .experiment-card { grid-template-columns: 1fr; }
+    .experiment-card,
+    .ledger-card { grid-template-columns: 1fr; }
     .experiment-media { min-height: 0; aspect-ratio: 16 / 10; }
+    .ledger-card .experiment-media {
+        aspect-ratio: 4 / 5;
+        max-height: 680px;
+    }
 }
 /* Widescreen Vimeo Embed */
 .community-video-wide {
