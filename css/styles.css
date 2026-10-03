@@ -836,7 +836,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--color-accent); 
         top: -15%;
         right: -8%;
         border: 1px solid rgba(232, 93, 4, 0.2);
-        transform: translate3d(0, calc(var(--hero-progress) * 60px), 0);
+        transform: translate3d(0, var(--hero-orbit-down, 0px), 0);
     }
 
     .hero::after {
@@ -845,16 +845,16 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--color-accent); 
         bottom: 5%;
         left: -7%;
         background: rgba(69, 111, 101, 0.06);
-        transform: translate3d(0, calc(var(--hero-progress) * -45px), 0);
+        transform: translate3d(0, var(--hero-orbit-up, 0px), 0);
     }
 
     .hero-content {
         position: relative;
         z-index: 1;
         width: min(100%, 1100px);
-        translate: 0 calc(var(--hero-progress) * -5vh);
-        scale: calc(1 - (var(--hero-progress) * 0.035));
-        filter: blur(calc(var(--hero-progress) * 1.5px));
+        translate: 0 var(--hero-shift, 0px);
+        scale: var(--hero-scale, 1);
+        filter: blur(var(--hero-blur, 0px));
     }
 
     .hero-name-simple {
