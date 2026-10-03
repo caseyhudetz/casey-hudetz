@@ -57,16 +57,27 @@
         contactCopyEmailBtn.addEventListener('click', () => copyToClipboard(contactCopyEmailBtn.dataset.email, contactEmailToast));
     }
 
-    // Header scroll effect
+    // Header, progress bar, and restrained hero depth on scroll
     let ticking = false;
-    function updateHeader() {
-        header.classList.toggle('scrolled', window.scrollY > 50);
+    function updateScrollEffects() {
+        const scrollTop = window.scrollY;
+        const scrollable = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+        const pageProgress = Math.min(1, Math.max(0, scrollTop / scrollable));
+        const heroProgress = Math.min(1, Math.max(0, scrollTop / Math.max(1, window.innerHeight)));
+
+        header.classList.toggle('scrolled', scrollTop > 50);
+        document.documentElement.style.setProperty('--scroll-progress', pageProgress.toFixed(4));
+        document.documentElement.style.setProperty('--hero-progress', heroProgress.toFixed(4));
         ticking = false;
     }
     window.addEventListener('scroll', () => {
-        if (!ticking) { window.requestAnimationFrame(updateHeader); ticking = true; }
+        if (!ticking) {
+            window.requestAnimationFrame(updateScrollEffects);
+            ticking = true;
+        }
     }, { passive: true });
-    updateHeader();
+    window.addEventListener('resize', updateScrollEffects, { passive: true });
+    updateScrollEffects();
 
     // Scroll-triggered fade-in animations
     const fadeElements = document.querySelectorAll('.fade-in');
