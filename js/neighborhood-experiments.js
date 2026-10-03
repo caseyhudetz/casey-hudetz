@@ -103,6 +103,45 @@
             font-size: 0.92rem;
             line-height: 1.65;
         }
+        /* Editorial palette and larger, more tactile cards */
+        .neighborhood-experiments {
+            --color-bg: #f7fbf8;
+            --color-bg-alt: #dce9e0;
+            --color-text: #18201c;
+            --color-text-muted: #59645e;
+            --color-border: #c7d7cd;
+            background: #dce9e0;
+        }
+        .neighborhood-experiments .section-header::before {
+            content: 'Civic tools / In progress';
+            display: block;
+            margin-bottom: 1rem;
+            color: var(--color-accent);
+            font-family: var(--font-display);
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.13em;
+            text-transform: uppercase;
+        }
+        .neighborhood-card {
+            min-height: 390px;
+            border-color: var(--color-border);
+            border-radius: 24px;
+            background: rgba(255, 255, 255, 0.72);
+            box-shadow: 0 14px 38px rgba(29, 46, 36, 0.07);
+            backdrop-filter: blur(8px);
+        }
+        .neighborhood-card:hover {
+            box-shadow: 0 22px 55px rgba(29, 46, 36, 0.14);
+        }
+        .cross-broadway-feature {
+            --color-bg: #fffaf4;
+            --color-bg-alt: #f8f1e6;
+            --color-text: #201b18;
+            --color-text-muted: #685f59;
+            --color-border: #dfcfc1;
+            background: #f8f1e6;
+        }
         @media (max-width: 900px) {
             .neighborhood-grid { grid-template-columns: 1fr; }
             .neighborhood-card { min-height: 300px; }
