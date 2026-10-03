@@ -12,124 +12,109 @@
     style.textContent = `
         .neighborhood-grid {
             display: grid;
-            grid-template-columns: 1fr;
-            gap: 1rem;
+            border-bottom: 1px solid var(--color-border);
         }
         .neighborhood-card {
-            position: relative;
-            isolation: isolate;
-            overflow: hidden;
             display: grid;
-            grid-template-columns: minmax(150px, 0.45fr) minmax(0, 1.55fr);
-            grid-template-areas:
-                'kicker kicker'
-                'title question'
-                'title description'
-                'title link';
-            column-gap: clamp(1.5rem, 4vw, 3.5rem);
+            grid-template-columns: minmax(105px, 0.55fr) minmax(150px, 0.75fr) minmax(0, 1.8fr) auto;
+            grid-template-areas: 'kicker title copy link';
+            gap: clamp(1.25rem, 3vw, 2.5rem);
             align-items: start;
-            min-height: 0;
-            padding: clamp(1.5rem, 3vw, 2.25rem);
-            border: 1px solid var(--color-border);
-            border-radius: 24px;
-            background: rgba(255, 255, 255, 0.72);
+            padding: clamp(1.75rem, 3.5vw, 2.5rem) 0;
+            border-top: 1px solid var(--color-border);
             color: var(--color-text);
             text-decoration: none;
-            box-shadow: 0 14px 38px rgba(29, 46, 36, 0.07);
-            backdrop-filter: blur(8px);
-            transition: transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease;
+            transition: color 180ms ease;
         }
-        .neighborhood-card::before {
-            content: '';
-            position: absolute;
-            z-index: -1;
-            inset: 0;
-            background-image: var(--neighborhood-image);
-            background-position: center;
-            background-size: cover;
-            opacity: 0.13;
-            filter: grayscale(1) contrast(0.85);
-            transition: opacity 220ms ease, transform 350ms ease;
+        .neighborhood-card:hover h3,
+        .neighborhood-card:focus-visible h3 {
+            color: var(--color-accent);
         }
-        .neighborhood-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--color-accent);
-            box-shadow: 0 22px 55px rgba(29, 46, 36, 0.14);
-        }
-        .neighborhood-card:hover::before {
-            opacity: 0.18;
-            transform: scale(1.02);
+        .neighborhood-card:focus-visible {
+            outline: 2px solid var(--color-accent);
+            outline-offset: 8px;
         }
         .neighborhood-card-kicker {
             grid-area: kicker;
-            margin-bottom: 1.5rem;
-            font-family: var(--font-body);
-            font-size: 0.78rem;
-            font-weight: 600;
-            letter-spacing: 0.09em;
-            text-transform: uppercase;
             color: var(--color-text-muted);
+            font-size: 0.82rem;
+            font-weight: 500;
+            line-height: 1.4;
         }
         .neighborhood-card h3 {
             grid-area: title;
             margin: 0;
             font-family: var(--font-display);
-            font-size: clamp(1.9rem, 2.6vw, 2.35rem);
+            font-size: clamp(1.75rem, 2.5vw, 2.25rem);
+            line-height: 1.05;
+            letter-spacing: -0.035em;
             overflow-wrap: anywhere;
-            line-height: 1;
+            transition: color 180ms ease;
+        }
+        .neighborhood-copy {
+            grid-area: copy;
+            max-width: 620px;
         }
         .neighborhood-question {
-            grid-area: question;
-            margin: 0 0 0.75rem;
+            margin: 0 0 0.65rem;
             font-family: var(--font-display);
-            font-size: 1.08rem;
+            font-size: 1.02rem;
             font-weight: 500;
-            line-height: 1.4;
+            line-height: 1.5;
         }
         .neighborhood-description {
-            grid-area: description;
             margin: 0;
             color: var(--color-text-muted);
             font-size: 0.95rem;
-            line-height: 1.65;
+            line-height: 1.75;
         }
         .neighborhood-link {
             grid-area: link;
-            justify-self: start;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.35rem;
-            margin-top: 1.7rem;
+            align-self: center;
+            white-space: nowrap;
             color: var(--color-accent);
             font-size: 0.9rem;
             font-weight: 600;
         }
         .neighborhood-api-note {
-            max-width: 820px;
-            margin: 2.25rem auto 0;
-            padding-top: 1.5rem;
-            border-top: 1px solid var(--color-border);
+            max-width: 760px;
+            margin: 2rem 0 0;
             color: var(--color-text-muted);
-            text-align: center;
-            font-size: 0.92rem;
-            line-height: 1.65;
+            font-size: 0.9rem;
+            line-height: 1.7;
         }
         .community-crossing .experiment-card {
-            background: rgba(255, 255, 255, 0.72);
+            background: var(--color-bg);
         }
-        @media (max-width: 720px) {
+        @media (max-width: 1000px) {
+            .neighborhood-card {
+                grid-template-columns: minmax(120px, 0.55fr) minmax(0, 1.45fr);
+                grid-template-areas:
+                    'kicker kicker'
+                    'title copy'
+                    '. link';
+            }
+            .neighborhood-link {
+                justify-self: start;
+                margin-top: 0.75rem;
+            }
+        }
+        @media (max-width: 680px) {
             .neighborhood-card {
                 grid-template-columns: 1fr;
                 grid-template-areas:
                     'kicker'
                     'title'
-                    'question'
-                    'description'
+                    'copy'
                     'link';
+                gap: 0;
+                padding: 2rem 0;
             }
-            .neighborhood-card h3 { margin-bottom: 1rem; }
+            .neighborhood-card-kicker { margin-bottom: 0.75rem; }
+            .neighborhood-card h3 { margin-bottom: 1.25rem; }
+            .neighborhood-link { margin-top: 1.25rem; }
         }
-    `;
+`;
     document.head.appendChild(style);
 
     const tools = document.createElement('div');
@@ -138,33 +123,39 @@
     tools.innerHTML = `
         <div class="chapter-subheader fade-in visible">
             <span class="chapter-kicker">Civic tools</span>
-            <h3>Small software for stubborn systems</h3>
-            <p>Working experiments for understanding—and eventually improving—the systems around my neighborhood.</p>
+            <h3>Tools for neighborhood problems</h3>
+            <p>Small experiments that help explain how city systems work.</p>
         </div>
         <div class="neighborhood-grid">
-            <a class="neighborhood-card" href="https://stump.hudetz.workers.dev" target="_blank" rel="noopener noreferrer" style="--neighborhood-image: url('images/neighborhood/stump.jpg')">
+            <a class="neighborhood-card" href="https://stump.hudetz.workers.dev" target="_blank" rel="noopener noreferrer">
                 <span class="neighborhood-card-kicker">Trees + 311</span>
                 <h3>Stump</h3>
-                <p class="neighborhood-question">Why doesn’t removing a tree automatically start the process of replacing it?</p>
-                <p class="neighborhood-description">Tracks Chicago tree removals and planting requests to expose the gap between taking a tree down and putting one back.</p>
+                <div class="neighborhood-copy">
+                    <p class="neighborhood-question">Why doesn’t removing a tree start a replacement request?</p>
+                    <p class="neighborhood-description">Tracks tree removals and planting requests to show the gap between taking a tree down and putting one back.</p>
+                </div>
                 <span class="neighborhood-link">Explore Stump ↗</span>
             </a>
-            <a class="neighborhood-card" href="https://gone.hudetz.workers.dev" target="_blank" rel="noopener noreferrer" style="--neighborhood-image: url('images/neighborhood/gone.jpg')">
+            <a class="neighborhood-card" href="https://gone.hudetz.workers.dev" target="_blank" rel="noopener noreferrer">
                 <span class="neighborhood-card-kicker">311 + computer vision</span>
                 <h3>Gone</h3>
-                <p class="neighborhood-question">What if reporting a neighborhood problem took one photograph?</p>
-                <p class="neighborhood-description">Photograph graffiti, a missing tree, or another street-level problem. Gone identifies the issue and prepares the right 311 request.</p>
+                <div class="neighborhood-copy">
+                    <p class="neighborhood-question">What if reporting a neighborhood problem took one photo?</p>
+                    <p class="neighborhood-description">Photograph graffiti, a missing tree, or another street problem. Gone identifies it and prepares the right 311 request.</p>
+                </div>
                 <span class="neighborhood-link">Explore Gone ↗</span>
             </a>
-            <a class="neighborhood-card" href="https://jurisdiction.hudetz.workers.dev" target="_blank" rel="noopener noreferrer" style="--neighborhood-image: url('images/neighborhood/jurisdiction.jpg')">
+            <a class="neighborhood-card" href="https://jurisdiction.hudetz.workers.dev" target="_blank" rel="noopener noreferrer">
                 <span class="neighborhood-card-kicker">Civic systems + maps</span>
                 <h3>Jurisdiction</h3>
-                <p class="neighborhood-question">Who actually controls this spot?</p>
-                <p class="neighborhood-description">Enter an address to see its overlapping political, civic, and service boundaries—and who owns the sidewalk, parkway tree, alley, and pipe underneath.</p>
+                <div class="neighborhood-copy">
+                    <p class="neighborhood-question">Who controls this spot?</p>
+                    <p class="neighborhood-description">Enter an address to see its civic and service boundaries, plus who owns the sidewalk, parkway tree, alley, and pipe below.</p>
+                </div>
                 <span class="neighborhood-link">Explore Jurisdiction ↗</span>
             </a>
         </div>
-        <p class="neighborhood-api-note"><strong>Working experiments, not finished products.</strong> Direct access to Chicago’s APIs would let these move from explaining and preparing civic actions to actually initiating them.</p>
+        <p class="neighborhood-api-note">These are working experiments, not finished products. Direct access to Chicago’s APIs would let them do more than explain and prepare.</p>
     `;
 
     const crossing = document.createElement('div');
@@ -173,7 +164,7 @@
         <div class="chapter-subheader fade-in visible">
             <span class="chapter-kicker">Interactive experiment</span>
             <h3>Crossing Broadway</h3>
-            <p>A game about the everyday danger of crossing one busy Chicago street.</p>
+            <p>A game about crossing one busy Chicago street.</p>
         </div>
         <a href="https://crossing-broadway.hudetz.workers.dev/" target="_blank" rel="noopener noreferrer" class="experiment-card fade-in visible" aria-label="Play Cross Broadway, opens in a new tab">
             <div class="experiment-media">
@@ -195,7 +186,7 @@
         <div class="chapter-subheader fade-in visible">
             <span class="chapter-kicker">Projects + publications</span>
             <h3>Life on the block</h3>
-            <p>Satire, safer streets, public art, and other attempts to make East Lakeview more connected.</p>
+            <p>Satire, safer streets, public art, and neighborhood projects.</p>
         </div>
     `;
 
