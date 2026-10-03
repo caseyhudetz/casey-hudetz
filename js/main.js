@@ -68,6 +68,11 @@
         header.classList.toggle('scrolled', scrollTop > 50);
         document.documentElement.style.setProperty('--scroll-progress', pageProgress.toFixed(4));
         document.documentElement.style.setProperty('--hero-progress', heroProgress.toFixed(4));
+        document.documentElement.style.setProperty('--hero-shift', `${(-heroProgress * window.innerHeight * 0.05).toFixed(2)}px`);
+        document.documentElement.style.setProperty('--hero-scale', (1 - heroProgress * 0.035).toFixed(4));
+        document.documentElement.style.setProperty('--hero-blur', `${(heroProgress * 1.5).toFixed(2)}px`);
+        document.documentElement.style.setProperty('--hero-orbit-down', `${(heroProgress * 60).toFixed(2)}px`);
+        document.documentElement.style.setProperty('--hero-orbit-up', `${(heroProgress * -45).toFixed(2)}px`);
         ticking = false;
     }
     window.addEventListener('scroll', () => {
