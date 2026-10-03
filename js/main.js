@@ -501,7 +501,7 @@
 
 (function loadNeighborhoodExperiments() {
     const script = document.createElement('script');
-    script.src = 'js/neighborhood-experiments.js?v=20261002-narrative-2';
+    script.src = 'js/neighborhood-experiments.js?v=20261003-polish-1';
     script.defer = true;
     document.body.appendChild(script);
 })();
