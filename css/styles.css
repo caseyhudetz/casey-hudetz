@@ -773,3 +773,485 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--color-accent); 
     body { font-size: 12pt; color: #000; background: #fff; }
     section { padding: 2rem 0; page-break-inside: avoid; }
 }
+
+
+/* ========================================
+   Editorial scroll experience
+   Layered panels, sticky chapter headers,
+   and a warmer civic-inspired palette
+   ======================================== */
+@media screen {
+    :root {
+        --scroll-progress: 0;
+        --hero-progress: 0;
+        --panel-radius: clamp(24px, 4vw, 48px);
+    }
+
+    body {
+        background: var(--color-bg);
+        overflow-x: clip;
+    }
+
+    .page-progress {
+        position: fixed;
+        z-index: 1100;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        background: linear-gradient(90deg, #e85d04, #f3a34a);
+        transform: scaleX(var(--scroll-progress));
+        transform-origin: left center;
+        pointer-events: none;
+    }
+
+    /* The hero stays behind the page as the first panel rises over it. */
+    .hero {
+        position: sticky;
+        z-index: 0;
+        top: 0;
+        min-height: 100svh;
+        overflow: hidden;
+        isolation: isolate;
+        background:
+            radial-gradient(circle at 18% 24%, rgba(232, 93, 4, 0.16), transparent 28%),
+            radial-gradient(circle at 82% 72%, rgba(69, 111, 101, 0.15), transparent 30%),
+            var(--color-bg);
+    }
+
+    .hero::before,
+    .hero::after {
+        content: '';
+        position: absolute;
+        z-index: -1;
+        border-radius: 999px;
+        filter: blur(2px);
+        pointer-events: none;
+        transition: transform 120ms linear;
+    }
+
+    .hero::before {
+        width: clamp(260px, 36vw, 560px);
+        aspect-ratio: 1;
+        top: -15%;
+        right: -8%;
+        border: 1px solid rgba(232, 93, 4, 0.2);
+        transform: translate3d(0, calc(var(--hero-progress) * 60px), 0);
+    }
+
+    .hero::after {
+        width: clamp(180px, 24vw, 380px);
+        aspect-ratio: 1;
+        bottom: 5%;
+        left: -7%;
+        background: rgba(69, 111, 101, 0.06);
+        transform: translate3d(0, calc(var(--hero-progress) * -45px), 0);
+    }
+
+    .hero-content {
+        position: relative;
+        z-index: 1;
+        width: min(100%, 1100px);
+        translate: 0 calc(var(--hero-progress) * -5vh);
+        scale: calc(1 - (var(--hero-progress) * 0.035));
+        filter: blur(calc(var(--hero-progress) * 1.5px));
+    }
+
+    .hero-name-simple {
+        font-size: clamp(4.25rem, 14vw, 10rem);
+        letter-spacing: -0.075em;
+        text-wrap: balance;
+    }
+
+    .hero-intro {
+        max-width: 780px;
+        margin-right: auto;
+        margin-left: auto;
+        text-wrap: balance;
+    }
+
+    /* Full-width panels create a clear chapter rhythm. */
+    main > section:not(.hero) {
+        position: relative;
+        z-index: 1;
+        margin-top: -2rem;
+        border-radius: var(--panel-radius) var(--panel-radius) 0 0;
+        box-shadow: 0 -18px 45px rgba(20, 24, 22, 0.055);
+    }
+
+    .about {
+        --color-bg: #f2eadf;
+        --color-bg-alt: #f2eadf;
+        --color-text: #1b1e1c;
+        --color-text-muted: #5e625f;
+        --color-border: #d7cec1;
+        background: #f2eadf;
+    }
+
+    .work {
+        --color-bg: #fbf9f4;
+        --color-bg-alt: #eeeae2;
+        --color-text: #191c1a;
+        --color-text-muted: #626560;
+        --color-border: #ddd8cf;
+        background: #fbf9f4;
+    }
+
+    .experiments {
+        --color-bg: #222523;
+        --color-bg-alt: #171918;
+        --color-text: #f8f3ea;
+        --color-text-muted: #bbbdb8;
+        --color-text-light: #969a94;
+        --color-border: #3e423f;
+        --color-accent: #ff8648;
+        background:
+            radial-gradient(circle at 90% 10%, rgba(255, 134, 72, 0.12), transparent 34%),
+            #171918;
+        color: var(--color-text);
+    }
+
+    .films {
+        --color-bg: #e3edf3;
+        --color-bg-alt: #d7e4ec;
+        --color-text: #182026;
+        --color-text-muted: #58656d;
+        --color-border: #c5d4dd;
+        background: #e3edf3;
+    }
+
+    .writing {
+        --color-bg: #fffaf4;
+        --color-bg-alt: #f2e4d8;
+        --color-text: #201b18;
+        --color-text-muted: #685f59;
+        --color-border: #dfcfc1;
+        background: #f2e4d8;
+    }
+
+    .podcasts {
+        --color-bg: #fbf9f4;
+        --color-bg-alt: #eeebe4;
+        --color-text: #191c1a;
+        --color-text-muted: #626560;
+        --color-border: #ddd8cf;
+        background: #fbf9f4;
+    }
+
+    .speaking {
+        --color-bg: #f7fbf8;
+        --color-bg-alt: #e3ece7;
+        --color-text: #18201c;
+        --color-text-muted: #58645d;
+        --color-border: #cbd9d0;
+        background: #e3ece7;
+    }
+
+    .community {
+        --color-bg: #fff9f1;
+        --color-bg-alt: #eee4d5;
+        --color-text: #211d18;
+        --color-text-muted: #6b6258;
+        --color-border: #ded0bd;
+        background: #eee4d5;
+    }
+
+    .contact {
+        --color-bg: #171918;
+        --color-bg-alt: #252825;
+        --color-text: #f8f3ea;
+        --color-text-muted: #b9bcb7;
+        --color-text-light: #929791;
+        --color-border: #424641;
+        --color-accent: #ff8648;
+        background:
+            radial-gradient(circle at 82% 28%, rgba(255, 134, 72, 0.15), transparent 28%),
+            #171918;
+        color: var(--color-text);
+    }
+
+    .footer {
+        --color-text-light: #9ca09a;
+        --color-border: #343735;
+        background: #171918;
+        color: #f8f3ea;
+    }
+
+    /* Chapter labels make the long page easier to scan. */
+    .section-header::before {
+        display: block;
+        margin-bottom: 1rem;
+        color: var(--color-accent);
+        font-family: var(--font-display);
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.13em;
+        text-transform: uppercase;
+    }
+
+    .work .section-header::before { content: '01 / Selected work'; }
+    .experiments .section-header::before { content: '02 / Prototypes'; }
+    .films .section-header::before { content: '03 / Motion'; }
+    .writing .section-header::before { content: '04 / Ideas'; }
+    .podcasts .section-header::before { content: '05 / Conversations'; }
+    .speaking .section-header::before { content: '06 / On stage'; }
+    .community .section-header::before { content: '07 / On the block'; }
+
+    .section-title {
+        font-size: clamp(2.65rem, 5.5vw, 4.8rem);
+        line-height: 0.96;
+        letter-spacing: -0.055em;
+        text-wrap: balance;
+    }
+
+    .section-subtitle {
+        max-width: 520px;
+        font-size: clamp(1rem, 1.7vw, 1.15rem);
+        text-wrap: balance;
+    }
+
+    .about-content {
+        grid-template-columns: minmax(220px, 0.65fr) minmax(0, 1.35fr);
+        gap: clamp(3rem, 8vw, 8rem);
+        align-items: start;
+    }
+
+    .about-photo {
+        top: 8rem;
+    }
+
+    .about-photo img {
+        border-radius: 24px;
+        box-shadow: 0 22px 60px rgba(36, 30, 24, 0.12);
+    }
+
+    .about-text {
+        max-width: 760px;
+        font-size: clamp(1.25rem, 2.3vw, 1.75rem);
+        line-height: 1.55;
+        letter-spacing: -0.02em;
+    }
+
+    .video-grid {
+        gap: 0.9rem;
+    }
+
+    .video-item {
+        border: 1px solid color-mix(in srgb, var(--color-border), transparent 15%);
+        border-radius: 18px;
+        box-shadow: var(--shadow-sm);
+        transition: transform var(--transition-base), box-shadow var(--transition-base);
+    }
+
+    .video-item:hover {
+        z-index: 2;
+        transform: translateY(-5px);
+        box-shadow: 0 20px 48px rgba(21, 24, 22, 0.16);
+    }
+
+    .video-play {
+        opacity: 0.22;
+        backdrop-filter: blur(8px);
+    }
+
+    .carousel-container,
+    .film-embed,
+    .community-video-wide,
+    .community-murals-featured,
+    .gallery-item {
+        border-radius: 24px;
+        box-shadow: 0 24px 65px rgba(18, 22, 20, 0.13);
+    }
+
+    .carousel-btn {
+        box-shadow: 0 8px 20px rgba(18, 22, 20, 0.08);
+    }
+
+    .writing-card,
+    .speaking-item,
+    .podcast-embed,
+    .experiment-card {
+        border: 1px solid var(--color-border);
+        box-shadow: 0 12px 32px rgba(30, 26, 22, 0.07);
+    }
+
+    .writing-card {
+        min-height: 285px;
+        display: flex;
+        flex-direction: column;
+        border-radius: 22px;
+        padding: clamp(1.5rem, 3vw, 2.35rem);
+    }
+
+    .writing-excerpt {
+        flex: 1;
+    }
+
+    .speaking-item {
+        border-radius: 16px;
+    }
+
+    .community-layout-v2 {
+        gap: 2rem;
+    }
+
+    .experiment-card {
+        border-radius: 28px;
+    }
+
+    .contact-content {
+        min-height: 52vh;
+    }
+
+    .contact .section-title {
+        font-size: clamp(3.25rem, 8vw, 7rem);
+    }
+
+    .contact-link {
+        border-color: var(--color-border);
+    }
+
+    .contact-link-primary {
+        background: var(--color-text);
+        color: var(--color-bg);
+        border-color: var(--color-text);
+    }
+
+    .contact-photo img {
+        border-radius: 50%;
+        filter: saturate(0.8);
+        box-shadow: 0 0 0 10px rgba(255,255,255,0.05);
+    }
+
+    /* On larger screens, selected chapter headings remain while the work scrolls. */
+    @media (min-width: 1000px) {
+        .work > .container,
+        .writing > .container,
+        .podcasts > .container,
+        .speaking > .container,
+        .community > .container {
+            display: grid;
+            grid-template-columns: minmax(210px, 0.34fr) minmax(0, 1fr);
+            gap: clamp(3rem, 6vw, 6rem);
+            align-items: start;
+        }
+
+        .work .section-header,
+        .writing .section-header,
+        .podcasts .section-header,
+        .speaking .section-header,
+        .community .section-header {
+            position: sticky;
+            top: 7rem;
+            margin-bottom: 0;
+        }
+
+        .work .video-grid,
+        .writing .writing-grid,
+        .podcasts .podcasts-grid,
+        .speaking .speaking-grid,
+        .community .community-layout-v2 {
+            grid-column: 2;
+            min-width: 0;
+        }
+
+        .work .video-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .writing .writing-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .podcasts .podcasts-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    /* A subtle image drift adds depth in browsers that support scroll timelines. */
+    @supports (animation-timeline: view()) {
+        .video-item img,
+        .community-murals-featured img,
+        .gallery-item img {
+            animation: media-drift linear both;
+            animation-timeline: view();
+            animation-range: entry -10% exit 110%;
+        }
+
+        @keyframes media-drift {
+            from { object-position: center 42%; }
+            to { object-position: center 58%; }
+        }
+    }
+
+    @media (max-width: 999px) {
+        main > section:not(.hero) {
+            margin-top: -1rem;
+            border-radius: 24px 24px 0 0;
+        }
+
+        .section-header {
+            margin-bottom: 2.5rem;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .hero {
+            position: relative;
+            min-height: 92svh;
+        }
+
+        .hero-content {
+            translate: none;
+            scale: 1;
+            filter: none;
+        }
+
+        .hero-name-simple {
+            font-size: clamp(3.8rem, 20vw, 6rem);
+        }
+
+        .about-content {
+            grid-template-columns: 1fr;
+            gap: 2.5rem;
+        }
+
+        .about-photo {
+            position: relative;
+            top: auto;
+            max-width: 240px;
+        }
+
+        .about-text {
+            font-size: clamp(1.12rem, 5vw, 1.35rem);
+        }
+
+        .video-play {
+            opacity: 0.86;
+        }
+
+        .writing-card {
+            min-height: 0;
+        }
+
+        .contact-content {
+            min-height: auto;
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .page-progress {
+            display: none;
+        }
+
+        .hero {
+            position: relative;
+        }
+
+        .hero-content {
+            translate: none;
+            scale: 1;
+            filter: none;
+        }
+    }
+}
