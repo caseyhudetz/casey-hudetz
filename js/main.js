@@ -161,7 +161,7 @@
     const nextBtn = document.querySelector('.carousel-next');
     const firstVideo = document.getElementById('experiment-video-1');
     let currentSlide = 0;
-    const totalSlides = 3;
+    const totalSlides = carouselTrack ? carouselTrack.children.length : 0;
 
     function updateCarousel() {
         if (!carouselTrack) return;
