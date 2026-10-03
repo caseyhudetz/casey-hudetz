@@ -1477,46 +1477,6 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--color-accent); 
         padding-top: clamp(3.5rem, 5vw, 5rem);
     }
 
-    .community {
-        position: relative;
-        isolation: isolate;
-    }
-
-    .community > .container {
-        position: relative;
-        z-index: 1;
-    }
-
-    .community-video-background {
-        position: absolute;
-        z-index: 0;
-        inset: 0;
-        overflow: hidden;
-        pointer-events: none;
-        opacity: 0.11;
-    }
-
-    .community-video-background::after {
-        content: '';
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(180deg, rgba(220, 233, 224, 0.5), rgba(220, 233, 224, 0.72));
-    }
-
-    .community-video-background iframe {
-        position: sticky;
-        top: 0;
-        left: 50%;
-        display: block;
-        width: 177.78vh;
-        height: 100vh;
-        min-width: 100%;
-        min-height: 56.25vw;
-        border: 0;
-        transform: translateX(-50%);
-        filter: grayscale(0.15) saturate(0.75) contrast(1.05);
-    }
-
     .community-block + .community-block {
         margin-top: clamp(3.5rem, 5vw, 5rem);
     }
@@ -1541,20 +1501,6 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--color-accent); 
 
     .community-mural-story .chapter-subheader p {
         max-width: 680px;
-    }
-
-    .community-background-credit {
-        grid-column: 2;
-        margin-top: 1.25rem;
-        color: var(--color-text-muted);
-        font-size: 0.76rem;
-        line-height: 1.5;
-        opacity: 0.8;
-    }
-
-    .community-background-credit a {
-        color: inherit;
-        text-underline-offset: 0.2em;
     }
 
     .leadership-grid,
@@ -1606,9 +1552,6 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--color-accent); 
             gap: 0;
         }
 
-        .community-background-credit {
-            grid-column: auto;
-        }
     }
 
     @media (max-width: 680px) {
@@ -1628,12 +1571,6 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--color-accent); 
 
         .community-murals-row {
             grid-template-columns: 1fr;
-        }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-        .community-video-background {
-            display: none;
         }
     }
 }
