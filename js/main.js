@@ -19,12 +19,22 @@
     // Email copy-to-clipboard functionality (hero section)
     const copyEmailBtn = document.getElementById('copy-email');
     const emailToast = document.getElementById('email-toast');
+    const contactEmailToast = document.getElementById('contact-email-toast');
+    const emailToastTimers = new WeakMap();
 
-    async function copyToClipboard(email) {
+    function showEmailToast(toast) {
+        if (!toast) return;
+        const existingTimer = emailToastTimers.get(toast);
+        if (existingTimer) clearTimeout(existingTimer);
+        toast.classList.add('show');
+        const timer = setTimeout(() => toast.classList.remove('show'), 2500);
+        emailToastTimers.set(toast, timer);
+    }
+
+    async function copyToClipboard(email, toast = emailToast) {
         try {
             await navigator.clipboard.writeText(email);
-            emailToast.classList.add('show');
-            setTimeout(() => emailToast.classList.remove('show'), 2500);
+            showEmailToast(toast);
         } catch (err) {
             // Fallback for older browsers
             const textarea = document.createElement('textarea');
@@ -33,8 +43,7 @@
             textarea.select();
             document.execCommand('copy');
             document.body.removeChild(textarea);
-            emailToast.classList.add('show');
-            setTimeout(() => emailToast.classList.remove('show'), 2500);
+            showEmailToast(toast);
         }
     }
 
@@ -45,7 +54,7 @@
     // Contact section email copy-to-clipboard
     const contactCopyEmailBtn = document.getElementById('contact-copy-email');
     if (contactCopyEmailBtn) {
-        contactCopyEmailBtn.addEventListener('click', () => copyToClipboard(contactCopyEmailBtn.dataset.email));
+        contactCopyEmailBtn.addEventListener('click', () => copyToClipboard(contactCopyEmailBtn.dataset.email, contactEmailToast));
     }
 
     // Header scroll effect
