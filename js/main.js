@@ -57,32 +57,19 @@
         contactCopyEmailBtn.addEventListener('click', () => copyToClipboard(contactCopyEmailBtn.dataset.email, contactEmailToast));
     }
 
-    // Header, progress bar, and restrained hero depth on scroll
+    // Reveal the compact name header after the opening screen.
     let ticking = false;
-    function updateScrollEffects() {
-        const scrollTop = window.scrollY;
-        const scrollable = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
-        const pageProgress = Math.min(1, Math.max(0, scrollTop / scrollable));
-        const heroProgress = Math.min(1, Math.max(0, scrollTop / Math.max(1, window.innerHeight)));
-
-        header.classList.toggle('scrolled', scrollTop > 50);
-        document.documentElement.style.setProperty('--scroll-progress', pageProgress.toFixed(4));
-        document.documentElement.style.setProperty('--hero-progress', heroProgress.toFixed(4));
-        document.documentElement.style.setProperty('--hero-shift', `${(-heroProgress * window.innerHeight * 0.05).toFixed(2)}px`);
-        document.documentElement.style.setProperty('--hero-scale', (1 - heroProgress * 0.035).toFixed(4));
-        document.documentElement.style.setProperty('--hero-blur', `${(heroProgress * 1.5).toFixed(2)}px`);
-        document.documentElement.style.setProperty('--hero-orbit-down', `${(heroProgress * 60).toFixed(2)}px`);
-        document.documentElement.style.setProperty('--hero-orbit-up', `${(heroProgress * -45).toFixed(2)}px`);
+    function updateHeader() {
+        header.classList.toggle('scrolled', window.scrollY > 50);
         ticking = false;
     }
     window.addEventListener('scroll', () => {
         if (!ticking) {
-            window.requestAnimationFrame(updateScrollEffects);
+            window.requestAnimationFrame(updateHeader);
             ticking = true;
         }
     }, { passive: true });
-    window.addEventListener('resize', updateScrollEffects, { passive: true });
-    updateScrollEffects();
+    updateHeader();
 
     // Scroll-triggered fade-in animations
     const fadeElements = document.querySelectorAll('.fade-in');
@@ -483,7 +470,7 @@
 
 (function loadNeighborhoodExperiments() {
     const script = document.createElement('script');
-    script.src = 'js/neighborhood-experiments.js?v=20261003-cleanup-2';
+    script.src = 'js/neighborhood-experiments.js?v=20261003-restraint-3';
     script.defer = true;
     document.body.appendChild(script);
 })();
