@@ -12,17 +12,24 @@
     style.textContent = `
         .neighborhood-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(235px, 1fr));
-            gap: 1.25rem;
+            grid-template-columns: 1fr;
+            gap: 1rem;
         }
         .neighborhood-card {
             position: relative;
             isolation: isolate;
             overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            min-height: 360px;
-            padding: clamp(1.4rem, 2.2vw, 1.8rem);
+            display: grid;
+            grid-template-columns: minmax(150px, 0.45fr) minmax(0, 1.55fr);
+            grid-template-areas:
+                'kicker kicker'
+                'title question'
+                'title description'
+                'title link';
+            column-gap: clamp(1.5rem, 4vw, 3.5rem);
+            align-items: start;
+            min-height: 0;
+            padding: clamp(1.5rem, 3vw, 2.25rem);
             border: 1px solid var(--color-border);
             border-radius: 24px;
             background: rgba(255, 255, 255, 0.72);
@@ -54,7 +61,8 @@
             transform: scale(1.02);
         }
         .neighborhood-card-kicker {
-            margin-bottom: auto;
+            grid-area: kicker;
+            margin-bottom: 1.5rem;
             font-family: var(--font-body);
             font-size: 0.78rem;
             font-weight: 600;
@@ -63,26 +71,31 @@
             color: var(--color-text-muted);
         }
         .neighborhood-card h3 {
-            margin: 2.5rem 0 0.85rem;
+            grid-area: title;
+            margin: 0;
             font-family: var(--font-display);
             font-size: clamp(1.9rem, 2.6vw, 2.35rem);
             overflow-wrap: anywhere;
             line-height: 1;
         }
         .neighborhood-question {
-            margin: 0 0 1rem;
+            grid-area: question;
+            margin: 0 0 0.75rem;
             font-family: var(--font-display);
             font-size: 1.08rem;
             font-weight: 500;
             line-height: 1.4;
         }
         .neighborhood-description {
+            grid-area: description;
             margin: 0;
             color: var(--color-text-muted);
             font-size: 0.95rem;
             line-height: 1.65;
         }
         .neighborhood-link {
+            grid-area: link;
+            justify-self: start;
             display: inline-flex;
             align-items: center;
             gap: 0.35rem;
@@ -104,9 +117,17 @@
         .community-crossing .experiment-card {
             background: rgba(255, 255, 255, 0.72);
         }
-        @media (max-width: 760px) {
-            .neighborhood-grid { grid-template-columns: 1fr; }
-            .neighborhood-card { min-height: 300px; }
+        @media (max-width: 720px) {
+            .neighborhood-card {
+                grid-template-columns: 1fr;
+                grid-template-areas:
+                    'kicker'
+                    'title'
+                    'question'
+                    'description'
+                    'link';
+            }
+            .neighborhood-card h3 { margin-bottom: 1rem; }
         }
     `;
     document.head.appendChild(style);
