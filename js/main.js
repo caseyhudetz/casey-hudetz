@@ -103,24 +103,6 @@
 
     fadeElements.forEach(el => fadeObserver.observe(el));
 
-    // Vimeo autoplay on scroll for community video
-    const communityVideo = document.getElementById('community-video');
-    if (communityVideo) {
-        const iframe = communityVideo.querySelector('iframe');
-        const videoObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    // Update iframe src to enable autoplay
-                    const currentSrc = iframe.src;
-                    if (!currentSrc.includes('autoplay=1')) {
-                        iframe.src = currentSrc.replace('autoplay=0', 'autoplay=1');
-                    }
-                }
-            });
-        }, { threshold: 0.3 });
-        videoObserver.observe(communityVideo);
-    }
-
     // Video embed URL helper
     function getVideoEmbedUrl(url) {
         const vimeoMatch = url.match(/vimeo\.com\/(\d+)/);
@@ -501,7 +483,7 @@
 
 (function loadNeighborhoodExperiments() {
     const script = document.createElement('script');
-    script.src = 'js/neighborhood-experiments.js?v=20261003-polish-1';
+    script.src = 'js/neighborhood-experiments.js?v=20261003-cleanup-2';
     script.defer = true;
     document.body.appendChild(script);
 })();
