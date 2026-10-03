@@ -19,12 +19,22 @@
     // Email copy-to-clipboard functionality (hero section)
     const copyEmailBtn = document.getElementById('copy-email');
     const emailToast = document.getElementById('email-toast');
+    const contactEmailToast = document.getElementById('contact-email-toast');
+    const emailToastTimers = new WeakMap();
 
-    async function copyToClipboard(email) {
+    function showEmailToast(toast) {
+        if (!toast) return;
+        const existingTimer = emailToastTimers.get(toast);
+        if (existingTimer) clearTimeout(existingTimer);
+        toast.classList.add('show');
+        const timer = setTimeout(() => toast.classList.remove('show'), 2500);
+        emailToastTimers.set(toast, timer);
+    }
+
+    async function copyToClipboard(email, toast = emailToast) {
         try {
             await navigator.clipboard.writeText(email);
-            emailToast.classList.add('show');
-            setTimeout(() => emailToast.classList.remove('show'), 2500);
+            showEmailToast(toast);
         } catch (err) {
             // Fallback for older browsers
             const textarea = document.createElement('textarea');
@@ -33,8 +43,7 @@
             textarea.select();
             document.execCommand('copy');
             document.body.removeChild(textarea);
-            emailToast.classList.add('show');
-            setTimeout(() => emailToast.classList.remove('show'), 2500);
+            showEmailToast(toast);
         }
     }
 
@@ -45,19 +54,35 @@
     // Contact section email copy-to-clipboard
     const contactCopyEmailBtn = document.getElementById('contact-copy-email');
     if (contactCopyEmailBtn) {
-        contactCopyEmailBtn.addEventListener('click', () => copyToClipboard(contactCopyEmailBtn.dataset.email));
+        contactCopyEmailBtn.addEventListener('click', () => copyToClipboard(contactCopyEmailBtn.dataset.email, contactEmailToast));
     }
 
-    // Header scroll effect
+    // Header, progress bar, and restrained hero depth on scroll
     let ticking = false;
-    function updateHeader() {
-        header.classList.toggle('scrolled', window.scrollY > 50);
+    function updateScrollEffects() {
+        const scrollTop = window.scrollY;
+        const scrollable = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+        const pageProgress = Math.min(1, Math.max(0, scrollTop / scrollable));
+        const heroProgress = Math.min(1, Math.max(0, scrollTop / Math.max(1, window.innerHeight)));
+
+        header.classList.toggle('scrolled', scrollTop > 50);
+        document.documentElement.style.setProperty('--scroll-progress', pageProgress.toFixed(4));
+        document.documentElement.style.setProperty('--hero-progress', heroProgress.toFixed(4));
+        document.documentElement.style.setProperty('--hero-shift', `${(-heroProgress * window.innerHeight * 0.05).toFixed(2)}px`);
+        document.documentElement.style.setProperty('--hero-scale', (1 - heroProgress * 0.035).toFixed(4));
+        document.documentElement.style.setProperty('--hero-blur', `${(heroProgress * 1.5).toFixed(2)}px`);
+        document.documentElement.style.setProperty('--hero-orbit-down', `${(heroProgress * 60).toFixed(2)}px`);
+        document.documentElement.style.setProperty('--hero-orbit-up', `${(heroProgress * -45).toFixed(2)}px`);
         ticking = false;
     }
     window.addEventListener('scroll', () => {
-        if (!ticking) { window.requestAnimationFrame(updateHeader); ticking = true; }
+        if (!ticking) {
+            window.requestAnimationFrame(updateScrollEffects);
+            ticking = true;
+        }
     }, { passive: true });
-    updateHeader();
+    window.addEventListener('resize', updateScrollEffects, { passive: true });
+    updateScrollEffects();
 
     // Scroll-triggered fade-in animations
     const fadeElements = document.querySelectorAll('.fade-in');
@@ -107,14 +132,27 @@
 
     // Video Modal
     function openVideoModal(videoUrl) {
-        const embedUrl = getVideoEmbedUrl(videoUrl);
-        if (!embedUrl) return;
-        const iframe = document.createElement('iframe');
-        iframe.src = embedUrl;
-        iframe.setAttribute('allow', 'autoplay; fullscreen; picture-in-picture');
-        iframe.setAttribute('allowfullscreen', '');
+        const isDirectVideo = /\.(mp4|webm|ogg)(?:[?#]|$)/i.test(videoUrl);
         modalVideoContainer.innerHTML = '';
-        modalVideoContainer.appendChild(iframe);
+
+        if (isDirectVideo) {
+            const video = document.createElement('video');
+            video.src = videoUrl;
+            video.controls = true;
+            video.autoplay = true;
+            video.playsInline = true;
+            video.preload = 'metadata';
+            modalVideoContainer.appendChild(video);
+        } else {
+            const embedUrl = getVideoEmbedUrl(videoUrl);
+            if (!embedUrl) return;
+            const iframe = document.createElement('iframe');
+            iframe.src = embedUrl;
+            iframe.setAttribute('allow', 'autoplay; fullscreen; picture-in-picture');
+            iframe.setAttribute('allowfullscreen', '');
+            modalVideoContainer.appendChild(iframe);
+        }
+
         modal.classList.add('active');
         modal.setAttribute('aria-hidden', 'false');
         document.body.classList.add('modal-open');
@@ -148,7 +186,7 @@
     const nextBtn = document.querySelector('.carousel-next');
     const firstVideo = document.getElementById('experiment-video-1');
     let currentSlide = 0;
-    const totalSlides = 3;
+    const totalSlides = carouselTrack ? carouselTrack.children.length : 0;
 
     function updateCarousel() {
         if (!carouselTrack) return;
@@ -463,7 +501,7 @@
 
 (function loadNeighborhoodExperiments() {
     const script = document.createElement('script');
-    script.src = 'js/neighborhood-experiments.js';
+    script.src = 'js/neighborhood-experiments.js?v=20261003-polish-1';
     script.defer = true;
     document.body.appendChild(script);
 })();
