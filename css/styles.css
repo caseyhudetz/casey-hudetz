@@ -1444,3 +1444,196 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--color-accent); 
         }
     }
 }
+
+
+/* ========================================
+   Alignment, pacing, and stewardship polish
+   ======================================== */
+@media screen {
+    .work,
+    .making,
+    .ideas-public,
+    .community {
+        overflow: clip;
+    }
+
+    .work .section-title,
+    .making .section-title,
+    .ideas-public .section-title,
+    .community .section-title {
+        max-width: 100%;
+        overflow-wrap: normal;
+        word-break: normal;
+        hyphens: none;
+    }
+
+    .making-stream,
+    .ideas-stream {
+        gap: 0;
+    }
+
+    .chapter-block + .chapter-block {
+        margin-top: clamp(3.5rem, 5vw, 5rem);
+        padding-top: clamp(3.5rem, 5vw, 5rem);
+    }
+
+    .community {
+        position: relative;
+        isolation: isolate;
+    }
+
+    .community > .container {
+        position: relative;
+        z-index: 1;
+    }
+
+    .community-video-background {
+        position: absolute;
+        z-index: 0;
+        inset: 0;
+        overflow: hidden;
+        pointer-events: none;
+        opacity: 0.11;
+    }
+
+    .community-video-background::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(180deg, rgba(220, 233, 224, 0.5), rgba(220, 233, 224, 0.72));
+    }
+
+    .community-video-background iframe {
+        position: sticky;
+        top: 0;
+        left: 50%;
+        display: block;
+        width: 177.78vh;
+        height: 100vh;
+        min-width: 100%;
+        min-height: 56.25vw;
+        border: 0;
+        transform: translateX(-50%);
+        filter: grayscale(0.15) saturate(0.75) contrast(1.05);
+    }
+
+    .community-block + .community-block {
+        margin-top: clamp(3.5rem, 5vw, 5rem);
+    }
+
+    .community .community-layout-v2 {
+        margin-top: 1.75rem;
+        padding-top: 0;
+        border-top: 0;
+        gap: clamp(3rem, 5vw, 4.5rem);
+    }
+
+    .community-mural-story {
+        display: grid;
+        gap: 1.25rem;
+        padding-top: clamp(3rem, 5vw, 4.5rem);
+        border-top: 1px solid var(--color-border);
+    }
+
+    .community-mural-story .chapter-subheader {
+        margin-bottom: 0.5rem;
+    }
+
+    .community-mural-story .chapter-subheader p {
+        max-width: 680px;
+    }
+
+    .community-background-credit {
+        grid-column: 2;
+        margin-top: 1.25rem;
+        color: var(--color-text-muted);
+        font-size: 0.76rem;
+        line-height: 1.5;
+        opacity: 0.8;
+    }
+
+    .community-background-credit a {
+        color: inherit;
+        text-underline-offset: 0.2em;
+    }
+
+    .leadership-grid,
+    .creative-video-grid {
+        align-content: start;
+    }
+
+    @media (min-width: 1160px) {
+        .work > .container,
+        .making > .container,
+        .ideas-public > .container,
+        .community > .container {
+            grid-template-columns: minmax(270px, 300px) minmax(0, 1fr);
+            gap: clamp(3rem, 4.5vw, 4.75rem);
+        }
+
+        .work .section-title,
+        .making .section-title,
+        .ideas-public .section-title,
+        .community .section-title {
+            font-size: clamp(2.8rem, 3.8vw, 3.65rem);
+            line-height: 0.98;
+            letter-spacing: -0.05em;
+        }
+    }
+
+    @media (min-width: 1000px) and (max-width: 1159px) {
+        .work > .container,
+        .making > .container,
+        .ideas-public > .container,
+        .community > .container {
+            grid-template-columns: minmax(230px, 250px) minmax(0, 1fr);
+            gap: 2.75rem;
+        }
+
+        .work .section-title,
+        .making .section-title,
+        .ideas-public .section-title,
+        .community .section-title {
+            font-size: clamp(2.45rem, 4vw, 2.9rem);
+            line-height: 1;
+            letter-spacing: -0.045em;
+        }
+    }
+
+    @media (max-width: 999px) {
+        .making-stream,
+        .ideas-stream {
+            gap: 0;
+        }
+
+        .community-background-credit {
+            grid-column: auto;
+        }
+    }
+
+    @media (max-width: 680px) {
+        .leadership-grid,
+        .creative-video-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .chapter-block + .chapter-block {
+            margin-top: 3rem;
+            padding-top: 3rem;
+        }
+
+        .community .community-layout-v2 {
+            gap: 3rem;
+        }
+
+        .community-murals-row {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .community-video-background {
+            display: none;
+        }
+    }
+}
