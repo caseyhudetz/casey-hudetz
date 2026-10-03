@@ -12,7 +12,7 @@
     style.textContent = `
         .neighborhood-grid {
             display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(235px, 1fr));
             gap: 1.25rem;
         }
         .neighborhood-card {
@@ -21,8 +21,8 @@
             overflow: hidden;
             display: flex;
             flex-direction: column;
-            min-height: 390px;
-            padding: 2rem;
+            min-height: 360px;
+            padding: clamp(1.4rem, 2.2vw, 1.8rem);
             border: 1px solid var(--color-border);
             border-radius: 24px;
             background: rgba(255, 255, 255, 0.72);
@@ -63,9 +63,10 @@
             color: var(--color-text-muted);
         }
         .neighborhood-card h3 {
-            margin: 3rem 0 0.85rem;
+            margin: 2.5rem 0 0.85rem;
             font-family: var(--font-display);
-            font-size: clamp(2rem, 3vw, 2.7rem);
+            font-size: clamp(1.9rem, 2.6vw, 2.35rem);
+            overflow-wrap: anywhere;
             line-height: 1;
         }
         .neighborhood-question {
@@ -103,7 +104,7 @@
         .community-crossing .experiment-card {
             background: rgba(255, 255, 255, 0.72);
         }
-        @media (max-width: 900px) {
+        @media (max-width: 760px) {
             .neighborhood-grid { grid-template-columns: 1fr; }
             .neighborhood-card { min-height: 300px; }
         }
