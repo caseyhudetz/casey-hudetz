@@ -16,11 +16,11 @@
         }
         .neighborhood-card {
             display: grid;
-            grid-template-columns: minmax(105px, 0.55fr) minmax(150px, 0.75fr) minmax(0, 1.8fr) auto;
+            grid-template-columns: minmax(7rem, 0.618fr) minmax(10rem, 1fr) minmax(0, 1.618fr) auto;
             grid-template-areas: 'kicker title copy link';
-            gap: clamp(1.25rem, 3vw, 2.5rem);
+            gap: clamp(1.625rem, 3vw, 2.625rem);
             align-items: start;
-            padding: clamp(1.75rem, 3.5vw, 2.5rem) 0;
+            padding: clamp(1.625rem, 3.5vw, 2.625rem) 0;
             border-top: 1px solid var(--color-border);
             color: var(--color-text);
             text-decoration: none;
@@ -45,7 +45,7 @@
             grid-area: title;
             margin: 0;
             font-family: var(--font-display);
-            font-size: clamp(1.75rem, 2.5vw, 2.25rem);
+            font-size: clamp(1.625rem, 2.5vw, 2.625rem);
             line-height: 1.05;
             letter-spacing: -0.035em;
             overflow-wrap: anywhere;
@@ -53,10 +53,10 @@
         }
         .neighborhood-copy {
             grid-area: copy;
-            max-width: 620px;
+            max-width: 61.8ch;
         }
         .neighborhood-question {
-            margin: 0 0 0.65rem;
+            margin: 0 0 0.625rem;
             font-family: var(--font-display);
             font-size: 1.02rem;
             font-weight: 500;
@@ -77,8 +77,8 @@
             font-weight: 600;
         }
         .neighborhood-api-note {
-            max-width: 760px;
-            margin: 2rem 0 0;
+            max-width: 61.8ch;
+            margin: 2.625rem 0 0;
             color: var(--color-text-muted);
             font-size: 0.9rem;
             line-height: 1.7;
@@ -88,7 +88,7 @@
         }
         @media (max-width: 1000px) {
             .neighborhood-card {
-                grid-template-columns: minmax(120px, 0.55fr) minmax(0, 1.45fr);
+                grid-template-columns: minmax(9rem, 0.618fr) minmax(0, 1fr);
                 grid-template-areas:
                     'kicker kicker'
                     'title copy'
@@ -108,11 +108,11 @@
                     'copy'
                     'link';
                 gap: 0;
-                padding: 2rem 0;
+                padding: 2.625rem 0;
             }
-            .neighborhood-card-kicker { margin-bottom: 0.75rem; }
-            .neighborhood-card h3 { margin-bottom: 1.25rem; }
-            .neighborhood-link { margin-top: 1.25rem; }
+            .neighborhood-card-kicker { margin-bottom: 0.625rem; }
+            .neighborhood-card h3 { margin-bottom: 1rem; }
+            .neighborhood-link { margin-top: 1.625rem; }
         }
 `;
     document.head.appendChild(style);
