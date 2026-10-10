@@ -16,39 +16,39 @@
             <h3>Small tools for stubborn city systems</h3>
             <p>Each starts with a familiar neighborhood frustration and turns it into something you can see, understand, or act on.</p>
         </div>
-        <div class="neighborhood-grid">
-            <a class="neighborhood-card neighborhood-card--stump" href="https://stump.hudetz.workers.dev" target="_blank" rel="noopener noreferrer">
-                <div class="neighborhood-card-header">
+        <div class="neighborhood-projects">
+            <a class="neighborhood-project" href="https://stump.hudetz.workers.dev" target="_blank" rel="noopener noreferrer">
+                <div class="neighborhood-project-copy">
                     <h4>Stump</h4>
                     <p class="neighborhood-question">A tree comes down. Why doesn’t a replacement request go up?</p>
-                    <p class="neighborhood-description">Pairs removal and planting records to show where the handoff breaks.</p>
+                    <p class="neighborhood-description">Stump pairs removal and planting records to show where the handoff breaks and which trees are still waiting.</p>
+                    <span class="neighborhood-link">Open Stump <span aria-hidden="true">↗</span></span>
                 </div>
-                <div class="neighborhood-diagram" aria-hidden="true">
-                    <span>Tree removed</span><i></i><span>Replacement?</span>
+                <div class="neighborhood-project-media">
+                    <img src="images/neighborhood/stump.jpg" alt="Stump interface mapping tree removals and replacement requests in East Lakeview" loading="lazy">
                 </div>
-                <span class="neighborhood-link">Follow the missing tree</span>
             </a>
-            <a class="neighborhood-card neighborhood-card--gone" href="https://gone.hudetz.workers.dev" target="_blank" rel="noopener noreferrer">
-                <div class="neighborhood-card-header">
+            <a class="neighborhood-project neighborhood-project--reverse" href="https://gone.hudetz.workers.dev" target="_blank" rel="noopener noreferrer">
+                <div class="neighborhood-project-copy">
                     <h4>Gone</h4>
                     <p class="neighborhood-question">Turn one photo into the right 311 report.</p>
-                    <p class="neighborhood-description">Identifies the problem and prepares the request, without making residents learn the system first.</p>
+                    <p class="neighborhood-description">Gone identifies a street-level problem and prepares the request, without making residents learn the system first.</p>
+                    <span class="neighborhood-link">Try Gone <span aria-hidden="true">↗</span></span>
                 </div>
-                <div class="neighborhood-diagram" aria-hidden="true">
-                    <span>Photo</span><i></i><span>311 draft</span>
+                <div class="neighborhood-project-media">
+                    <img src="images/neighborhood/gone.jpg" alt="Gone interface for turning a photo of graffiti into a 311 request" loading="lazy">
                 </div>
-                <span class="neighborhood-link">Try Gone</span>
             </a>
-            <a class="neighborhood-card neighborhood-card--jurisdiction" href="https://jurisdiction.hudetz.workers.dev" target="_blank" rel="noopener noreferrer">
-                <div class="neighborhood-card-header">
+            <a class="neighborhood-project" href="https://jurisdiction.hudetz.workers.dev" target="_blank" rel="noopener noreferrer">
+                <div class="neighborhood-project-copy">
                     <h4>Jurisdiction</h4>
                     <p class="neighborhood-question">One address. Every layer of responsibility.</p>
-                    <p class="neighborhood-description">Shows who controls the ward, sidewalk, parkway tree, alley, and pipe below.</p>
+                    <p class="neighborhood-description">Jurisdiction shows who controls the ward, sidewalk, parkway tree, alley, water line, and other overlapping systems around a place.</p>
+                    <span class="neighborhood-link">Explore the map <span aria-hidden="true">↗</span></span>
                 </div>
-                <div class="neighborhood-layers" aria-hidden="true">
-                    <span>Ward</span><span>Sidewalk</span><span>Water</span><span>Alley</span>
+                <div class="neighborhood-project-media">
+                    <img src="images/neighborhood/jurisdiction.jpg" alt="Jurisdiction interface showing overlapping civic boundaries across East Lakeview" loading="lazy">
                 </div>
-                <span class="neighborhood-link">Map the layers</span>
             </a>
         </div>
         <p class="neighborhood-api-note">Working prototypes built around public data and the limits of Chicago’s current APIs.</p>
