@@ -2611,3 +2611,177 @@ html {
         min-height: 0;
     }
 }
+
+
+/* Civic projects: wide interface showcases */
+.community-tools .chapter-subheader {
+    max-width: 42rem;
+    margin-bottom: var(--phi-4);
+}
+
+.neighborhood-projects {
+    display: grid;
+    gap: clamp(2.625rem, 6vw, 5rem);
+}
+
+.neighborhood-project,
+.neighborhood-project--reverse {
+    display: grid;
+    grid-template-columns: 1fr;
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.68);
+    color: var(--color-text);
+    text-decoration: none;
+    transition: border-color 180ms ease, transform 180ms ease;
+}
+
+.neighborhood-project:hover {
+    border-color: var(--color-accent);
+    transform: translateY(-2px);
+}
+
+.neighborhood-project:focus-visible {
+    outline: 3px solid var(--color-accent);
+    outline-offset: 4px;
+}
+
+.neighborhood-project .neighborhood-project-media,
+.neighborhood-project--reverse .neighborhood-project-media {
+    grid-column: 1;
+    grid-row: 1;
+    min-height: 0;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    border: 0;
+    border-bottom: 1px solid var(--color-border);
+    background: #fff;
+}
+
+.neighborhood-project-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    transition: transform 240ms ease;
+}
+
+.neighborhood-project:hover .neighborhood-project-media img {
+    transform: scale(1.01);
+}
+
+.neighborhood-project .neighborhood-project-copy,
+.neighborhood-project--reverse .neighborhood-project-copy {
+    grid-column: 1;
+    grid-row: 2;
+    display: grid;
+    grid-template-columns: minmax(9rem, 0.42fr) minmax(0, 1fr) auto;
+    align-items: start;
+    gap: clamp(1.625rem, 4vw, 3.5rem);
+    min-width: 0;
+    padding: clamp(1.625rem, 4vw, 3rem);
+}
+
+.neighborhood-project-copy h4 {
+    max-width: none;
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: clamp(2.625rem, 5vw, 4.25rem);
+    font-weight: 700;
+    line-height: 0.95;
+    letter-spacing: -0.06em;
+    overflow-wrap: normal;
+    word-break: normal;
+}
+
+.neighborhood-project-summary {
+    min-width: 0;
+}
+
+.neighborhood-question {
+    max-width: 32ch;
+    margin: 0 0 var(--phi-2);
+    font-family: var(--font-display);
+    font-size: clamp(1.1rem, 1.8vw, 1.3rem);
+    font-weight: 500;
+    line-height: 1.35;
+    letter-spacing: -0.02em;
+}
+
+.neighborhood-description {
+    max-width: 52ch;
+    margin: 0;
+    color: var(--color-text-muted);
+    font-size: 0.95rem;
+    line-height: 1.65;
+}
+
+.neighborhood-link {
+    display: inline-flex;
+    align-items: center;
+    align-self: center;
+    white-space: nowrap;
+    margin: 0;
+    color: var(--color-accent);
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.neighborhood-api-note {
+    max-width: 52ch;
+    margin: var(--phi-3) 0 0;
+    color: var(--color-text-muted);
+    font-size: 0.88rem;
+    line-height: 1.65;
+}
+
+.community-tools + .community-mural-story {
+    margin-top: clamp(5rem, 10vw, 8rem);
+    padding-top: clamp(4rem, 8vw, 6.5rem);
+    border-top: 1px solid var(--color-border);
+}
+
+@media (max-width: 880px) {
+    .neighborhood-project .neighborhood-project-copy,
+    .neighborhood-project--reverse .neighborhood-project-copy {
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: var(--phi-2) var(--phi-3);
+    }
+
+    .neighborhood-project-copy h4 {
+        grid-column: 1;
+        grid-row: 1;
+    }
+
+    .neighborhood-project-summary {
+        grid-column: 1 / -1;
+        grid-row: 2;
+    }
+
+    .neighborhood-link {
+        grid-column: 2;
+        grid-row: 1;
+        align-self: center;
+    }
+}
+
+@media (max-width: 600px) {
+    .neighborhood-project .neighborhood-project-copy,
+    .neighborhood-project--reverse .neighborhood-project-copy {
+        grid-template-columns: 1fr;
+        padding: var(--phi-3);
+    }
+
+    .neighborhood-project-copy h4,
+    .neighborhood-project-summary,
+    .neighborhood-link {
+        grid-column: 1;
+        grid-row: auto;
+    }
+
+    .neighborhood-link {
+        margin-top: var(--phi-1);
+        white-space: normal;
+    }
+}
