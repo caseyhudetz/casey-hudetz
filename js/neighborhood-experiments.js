@@ -19,7 +19,6 @@
         <div class="neighborhood-grid">
             <a class="neighborhood-card neighborhood-card--stump" href="https://stump.hudetz.workers.dev" target="_blank" rel="noopener noreferrer">
                 <div class="neighborhood-card-header">
-                    <span class="neighborhood-card-meta">Tree removals + 311</span>
                     <h4>Stump</h4>
                     <p class="neighborhood-question">A tree comes down. Why doesn’t a replacement request go up?</p>
                     <p class="neighborhood-description">Pairs removal and planting records to show where the handoff breaks.</p>
@@ -31,7 +30,6 @@
             </a>
             <a class="neighborhood-card neighborhood-card--gone" href="https://gone.hudetz.workers.dev" target="_blank" rel="noopener noreferrer">
                 <div class="neighborhood-card-header">
-                    <span class="neighborhood-card-meta">Computer vision + 311</span>
                     <h4>Gone</h4>
                     <p class="neighborhood-question">Turn one photo into the right 311 report.</p>
                     <p class="neighborhood-description">Identifies the problem and prepares the request, without making residents learn the system first.</p>
@@ -43,7 +41,6 @@
             </a>
             <a class="neighborhood-card neighborhood-card--jurisdiction" href="https://jurisdiction.hudetz.workers.dev" target="_blank" rel="noopener noreferrer">
                 <div class="neighborhood-card-header">
-                    <span class="neighborhood-card-meta">Boundaries + public infrastructure</span>
                     <h4>Jurisdiction</h4>
                     <p class="neighborhood-question">One address. Every layer of responsibility.</p>
                     <p class="neighborhood-description">Shows who controls the ward, sidewalk, parkway tree, alley, and pipe below.</p>
@@ -61,17 +58,14 @@
     crossing.className = 'community-block community-crossing';
     crossing.innerHTML = `
         <div class="chapter-subheader fade-in visible">
-            <span class="chapter-kicker">Interactive experiment</span>
             <h3>Crossing Broadway</h3>
             <p>A game about crossing one busy Chicago street.</p>
         </div>
         <a href="https://crossing-broadway.hudetz.workers.dev/" target="_blank" rel="noopener noreferrer" class="experiment-card fade-in visible" aria-label="Play Cross Broadway, opens in a new tab">
             <div class="experiment-media">
                 <img src="images/cross-broadway.png" alt="Cross Broadway game showing traffic moving through Lakeview streets" loading="lazy">
-                <span class="experiment-badge">Interactive game</span>
             </div>
             <div class="experiment-body">
-                <div class="experiment-meta">Broadway · Lakeview, Chicago</div>
                 <h3 class="experiment-title">Cross Broadway</h3>
                 <p class="experiment-description">Make it from Cornelia to Belmont as traffic accelerates at every corner, then explore the real crash data behind the game.</p>
                 <span class="experiment-cta">Play the game <span aria-hidden="true">↗</span></span>
@@ -83,7 +77,6 @@
     life.className = 'community-block community-life';
     life.innerHTML = `
         <div class="chapter-subheader fade-in visible">
-            <span class="chapter-kicker">Projects + publications</span>
             <h3>Life on the block</h3>
             <p>Public art, safer streets, and neighborhood projects.</p>
         </div>
