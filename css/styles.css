@@ -2391,12 +2391,15 @@ html {
     }
 
     .neighborhood-project-copy h4 {
+        max-width: 100%;
         margin: 0 0 var(--phi-2);
         font-family: var(--font-display);
         font-size: clamp(2.5rem, 4.8vw, 4rem);
         font-weight: 700;
         line-height: 0.95;
         letter-spacing: -0.06em;
+        overflow-wrap: anywhere;
+        word-break: normal;
     }
 
     .neighborhood-question {
