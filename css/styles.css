@@ -2785,3 +2785,63 @@ html {
         white-space: normal;
     }
 }
+
+
+/* Civic cards: stable single-column captions */
+.neighborhood-project .neighborhood-project-copy,
+.neighborhood-project--reverse .neighborhood-project-copy {
+    display: block;
+    min-height: 0;
+    padding: clamp(1.625rem, 3.5vw, 2.625rem);
+}
+
+.neighborhood-project-copy h4 {
+    margin: 0 0 var(--phi-2);
+    font-size: clamp(2.625rem, 5vw, 3.5rem);
+    line-height: 0.95;
+}
+
+.neighborhood-question {
+    max-width: 36ch;
+    margin: 0 0 0.7rem;
+    font-size: clamp(1.08rem, 1.7vw, 1.22rem);
+    line-height: 1.38;
+}
+
+.neighborhood-description {
+    max-width: 56ch;
+    line-height: 1.65;
+}
+
+.neighborhood-link {
+    display: inline-flex;
+    margin-top: var(--phi-3);
+    white-space: normal;
+}
+
+.neighborhood-project--stump .neighborhood-project-media img {
+    transform: scale(1.7);
+}
+
+.neighborhood-project--gone .neighborhood-project-media img {
+    transform: scale(1.45);
+}
+
+.neighborhood-project--stump:hover .neighborhood-project-media img {
+    transform: scale(1.73);
+}
+
+.neighborhood-project--gone:hover .neighborhood-project-media img {
+    transform: scale(1.48);
+}
+
+@media (max-width: 600px) {
+    .neighborhood-project .neighborhood-project-copy,
+    .neighborhood-project--reverse .neighborhood-project-copy {
+        padding: 1.5rem;
+    }
+
+    .neighborhood-project-copy h4 {
+        font-size: 2.625rem;
+    }
+}
