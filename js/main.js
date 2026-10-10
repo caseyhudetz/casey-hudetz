@@ -470,7 +470,7 @@
 
 (function loadNeighborhoodExperiments() {
     const script = document.createElement('script');
-    script.src = 'js/neighborhood-experiments.js?v=20261004-phi-1';
+    script.src = 'js/neighborhood-experiments.js?v=20261009-civic-1';
     script.defer = true;
     document.body.appendChild(script);
 })();
