@@ -2535,3 +2535,79 @@ html {
         }
     }
 }
+
+
+/* About + speaking proportion and alignment */
+.about {
+    padding-block: clamp(3.5rem, 6vw, 4.25rem);
+}
+
+.about-content {
+    grid-template-columns: minmax(17rem, 0.72fr) minmax(0, 1fr);
+    align-items: center;
+    gap: clamp(2.625rem, 6vw, 5rem);
+}
+
+.about-photo {
+    position: static;
+    top: auto;
+    max-width: none;
+}
+
+.about-photo img {
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    object-position: center 38%;
+}
+
+.about-bio {
+    align-self: center;
+    max-width: 42rem;
+}
+
+.about-text:last-child {
+    margin-bottom: 0;
+}
+
+.speaking-grid {
+    align-items: stretch;
+    column-gap: clamp(2.625rem, 6vw, 5rem);
+    grid-auto-rows: minmax(5.25rem, auto);
+}
+
+.ideas-public .speaking-item,
+.ideas-public .speaking-item:hover {
+    justify-content: center;
+    min-height: 5.25rem;
+    padding: 1.25rem 0 1.35rem;
+    border-color: var(--color-border);
+    background: transparent;
+    box-shadow: none;
+    transform: none;
+}
+
+@media (max-width: 768px) {
+    .about {
+        padding-block: var(--phi-4);
+    }
+
+    .about-content {
+        grid-template-columns: 1fr;
+        gap: var(--phi-3);
+    }
+
+    .about-photo {
+        width: min(100%, 24rem);
+        max-width: none;
+        margin: 0;
+    }
+
+    .speaking-grid {
+        grid-auto-rows: auto;
+    }
+
+    .ideas-public .speaking-item,
+    .ideas-public .speaking-item:hover {
+        min-height: 0;
+    }
+}
