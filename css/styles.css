@@ -346,26 +346,10 @@ section { padding: var(--section-spacing) 0; }
     font-size: 0.9rem;
     font-weight: 700;
 }
-/* East Lakeview Ledger */
-.ledger-card {
-    grid-template-columns: minmax(280px, 0.82fr) minmax(0, 1.18fr);
-}
-.ledger-card .experiment-media {
-    min-height: 0;
-    aspect-ratio: 1217 / 1600;
-    background: #f8f5ed;
-}
-.ledger-card .experiment-media img {
-    object-fit: cover;
-}
+/* Responsive feature cards */
 @media (max-width: 850px) {
-    .experiment-card,
-    .ledger-card { grid-template-columns: 1fr; }
+    .experiment-card { grid-template-columns: 1fr; }
     .experiment-media { min-height: 0; aspect-ratio: 16 / 10; }
-    .ledger-card .experiment-media {
-        aspect-ratio: 4 / 5;
-        max-height: 680px;
-    }
 }
 /* Widescreen Vimeo Embed */
 .community-video-wide {
@@ -2041,6 +2025,249 @@ html {
 
         .section-title {
             max-width: 100%;
+        }
+    }
+}
+
+
+/* ========================================
+   Civic tools feature grid
+   ======================================== */
+@media screen {
+    .community-tools .chapter-subheader {
+        max-width: 46rem;
+    }
+
+    .community-tools .chapter-subheader h3 {
+        max-width: 14ch;
+    }
+
+    .neighborhood-grid {
+        display: grid;
+        grid-template-columns: repeat(12, minmax(0, 1fr));
+        grid-template-rows: repeat(2, minmax(15rem, auto));
+        gap: var(--phi-2);
+    }
+
+    .neighborhood-card {
+        position: relative;
+        isolation: isolate;
+        display: flex;
+        flex-direction: column;
+        min-width: 0;
+        overflow: hidden;
+        padding: clamp(1.625rem, 3vw, 2.625rem);
+        border: 1px solid currentColor;
+        border-radius: 6px;
+        color: #17201c;
+        text-decoration: none;
+        transition: transform 180ms ease, box-shadow 180ms ease;
+    }
+
+    .neighborhood-card--stump {
+        grid-column: span 7;
+        grid-row: span 2;
+        min-height: 31rem;
+        background: #f4ead9;
+        border-color: #d3c1a5;
+    }
+
+    .neighborhood-card--gone {
+        grid-column: span 5;
+        background: #17433c;
+        border-color: #17433c;
+        color: #f7f2e8;
+    }
+
+    .neighborhood-card--jurisdiction {
+        grid-column: span 5;
+        background: #d8e6ef;
+        border-color: #b7ccd9;
+        color: #17242d;
+    }
+
+    .neighborhood-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 16px 36px rgba(24, 36, 30, 0.12);
+    }
+
+    .neighborhood-card:focus-visible {
+        outline: 3px solid var(--color-accent);
+        outline-offset: 4px;
+    }
+
+    .neighborhood-card-header {
+        position: relative;
+        z-index: 1;
+    }
+
+    .neighborhood-card-meta {
+        display: block;
+        margin-bottom: var(--phi-2);
+        font-size: 0.82rem;
+        font-weight: 500;
+        line-height: 1.4;
+        opacity: 0.72;
+    }
+
+    .neighborhood-card h4 {
+        margin: 0 0 var(--phi-2);
+        font-family: var(--font-display);
+        font-size: clamp(2.625rem, 5vw, 4.25rem);
+        line-height: 0.95;
+        letter-spacing: -0.055em;
+    }
+
+    .neighborhood-card--gone h4,
+    .neighborhood-card--jurisdiction h4 {
+        font-size: clamp(2rem, 3.6vw, 2.625rem);
+    }
+
+    .neighborhood-question {
+        max-width: 28ch;
+        margin: 0 0 var(--phi-2);
+        font-family: var(--font-display);
+        font-size: clamp(1.125rem, 2vw, 1.272rem);
+        font-weight: 500;
+        line-height: 1.35;
+        letter-spacing: -0.015em;
+    }
+
+    .neighborhood-description {
+        max-width: 48ch;
+        margin: 0;
+        font-size: 0.95rem;
+        line-height: 1.65;
+        opacity: 0.75;
+    }
+
+    .neighborhood-diagram {
+        display: flex;
+        align-items: center;
+        gap: var(--phi-2);
+        margin-top: auto;
+        padding-top: var(--phi-4);
+        font-size: 0.76rem;
+        font-weight: 600;
+    }
+
+    .neighborhood-diagram span {
+        flex: 0 0 auto;
+        padding: 0.625rem 0.8rem;
+        border: 1px solid currentColor;
+        border-radius: 2px;
+    }
+
+    .neighborhood-diagram i {
+        position: relative;
+        flex: 1;
+        min-width: 2rem;
+        height: 1px;
+        background: currentColor;
+        opacity: 0.55;
+        transform-origin: left;
+        transition: transform 220ms ease;
+    }
+
+    .neighborhood-diagram i::after {
+        content: '';
+        position: absolute;
+        top: -3px;
+        right: 0;
+        width: 6px;
+        height: 6px;
+        border-top: 1px solid currentColor;
+        border-right: 1px solid currentColor;
+        transform: rotate(45deg);
+    }
+
+    .neighborhood-card:hover .neighborhood-diagram i {
+        transform: scaleX(1.06);
+    }
+
+    .neighborhood-layers {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.5rem;
+        margin-top: auto;
+        padding-top: var(--phi-3);
+    }
+
+    .neighborhood-layers span {
+        padding: 0.625rem;
+        border-top: 1px solid currentColor;
+        font-size: 0.76rem;
+        font-weight: 600;
+    }
+
+    .neighborhood-link {
+        display: inline-flex;
+        align-items: center;
+        align-self: flex-start;
+        gap: 0.35rem;
+        margin-top: var(--phi-3);
+        font-size: 0.9rem;
+        font-weight: 650;
+    }
+
+    .neighborhood-link::after {
+        content: '↗';
+        transition: transform 180ms ease;
+    }
+
+    .neighborhood-card:hover .neighborhood-link::after {
+        transform: translate(2px, -2px);
+    }
+
+    .neighborhood-api-note {
+        max-width: 52ch;
+        margin: var(--phi-3) 0 0;
+        color: var(--color-text-muted);
+        font-size: 0.88rem;
+        line-height: 1.65;
+    }
+
+    @media (max-width: 900px) {
+        .neighborhood-grid {
+            grid-template-columns: 1fr;
+            grid-template-rows: none;
+        }
+
+        .neighborhood-card--stump,
+        .neighborhood-card--gone,
+        .neighborhood-card--jurisdiction {
+            grid-column: auto;
+            grid-row: auto;
+            min-height: 22rem;
+        }
+
+        .neighborhood-card h4,
+        .neighborhood-card--gone h4,
+        .neighborhood-card--jurisdiction h4 {
+            font-size: clamp(2.3rem, 8vw, 3.4rem);
+        }
+    }
+
+    @media (max-width: 560px) {
+        .neighborhood-card {
+            min-height: 0;
+            padding: var(--phi-3);
+        }
+
+        .neighborhood-card--stump,
+        .neighborhood-card--gone,
+        .neighborhood-card--jurisdiction {
+            min-height: 25rem;
+        }
+
+        .neighborhood-diagram {
+            gap: 0.625rem;
+            padding-top: var(--phi-3);
+        }
+
+        .neighborhood-diagram span {
+            padding: 0.625rem;
+            font-size: 0.7rem;
         }
     }
 }
