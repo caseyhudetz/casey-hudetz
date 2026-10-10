@@ -2254,15 +2254,22 @@ html {
     }
 
     .speaking-grid {
-        grid-template-columns: 1fr;
-        gap: 0;
-        border-top: 1px solid var(--color-border);
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        column-gap: var(--phi-4);
+        row-gap: 0;
+        border-top: 0;
     }
 
     .speaking-item {
-        padding: 1rem 0;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.45rem;
+        min-width: 0;
+        padding: var(--phi-3) 0;
         border: 0;
-        border-bottom: 1px solid var(--color-border);
+        border-top: 1px solid var(--color-border);
         border-radius: 0;
         background: transparent;
     }
@@ -2274,14 +2281,24 @@ html {
         transform: none;
     }
 
+    .speaking-flag {
+        display: none;
+    }
+
     .speaking-name {
-        font-family: var(--font-body);
-        font-weight: 500;
+        font-family: var(--font-display);
+        font-size: 1.1rem;
+        font-weight: 600;
+        line-height: 1.25;
+        letter-spacing: -0.02em;
     }
 
     .speaking-detail {
+        margin-left: 0;
         color: var(--color-text-muted);
+        font-size: 0.82rem;
         font-weight: 500;
+        line-height: 1.4;
     }
 
     .podcast-embed {
@@ -2478,6 +2495,10 @@ html {
     }
 
     @media (max-width: 768px) {
+        .speaking-grid {
+            grid-template-columns: 1fr;
+        }
+
         .hero {
             min-height: 82svh;
         }
